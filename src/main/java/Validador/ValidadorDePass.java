@@ -52,7 +52,7 @@ public class ValidadorDePass {
             fr.close();
     }
 
-    private static void arrayToFile (String [] array) {  //Pasa array ordenado a archivo nuevo
+    private static void arrayToFile () {  //Pasa array ordenado a archivo nuevo
         FileWriter fichero = null;
         PrintWriter pw;
         try
@@ -77,7 +77,7 @@ public class ValidadorDePass {
         }
     }
 
-    private static void sortArray (String [] array) { //Ordena el array
+    private static void sortArray () { //Ordena el array
         strArray = Stream.of(strArray).sorted().toArray(String[]::new);
         // System.out.print("Strings in Sorted Order: " + Arrays.toString(strArray));
     }
@@ -92,8 +92,8 @@ public class ValidadorDePass {
         archivo = new File (pathModificado);
         if (!archivo.exists()) {
             fileToArray(pathSinModificar);
-            sortArray(strArray);
-            arrayToFile(strArray);
+            sortArray();
+            arrayToFile();
         }
         else
             fileToArray(pathModificado);
