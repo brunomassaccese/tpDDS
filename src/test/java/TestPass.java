@@ -1,5 +1,4 @@
-package Validador;
-
+import Validador.ValidadorDePass;
 import org.junit.Assert;
 import org.junit.Test;
 
