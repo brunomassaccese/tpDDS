@@ -10,3 +10,5 @@ public class Usuario extends Persona implements EstrategiaDeNotificacion {
     }
 
 }
+
+
