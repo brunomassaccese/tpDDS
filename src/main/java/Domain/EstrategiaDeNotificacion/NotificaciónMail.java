@@ -1,13 +1,9 @@
-package Domain.Notificacion;
-
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
+package Domain.EstrategiaDeNotificacion;
 
 import com.sendgrid.*;
 import java.io.IOException;
 
-public class NotificaciónMail {
+public class NotificaciónMail implements Strategy {
 
     public static final String emailOrigen = "Rescastistas";
     public static final String emailOrigen = "refugioanimales@hotmail.com";
