@@ -6,15 +6,12 @@ import java.io.IOException;
 public class NotificaciónMail implements Strategy {
 
     public static final String emailOrigen = "Rescastistas";
-    public static final String emailOrigen = "refugioanimales@hotmail.com";
     public static final String authToken = "476ebdad8135ba4b1e7385c30a389e0f";
-
-
 
     public static void enviarAviso(InfoContacto contacto, String mensaje){
         Email from = new Email(emailOrigen);
         String subject = "Sending with SendGrid is Fun";
-        Email to = new Email(contacto.telefono);
+        Email to = new Email(contacto.email);
         Content content = new Content("text/plain", mensaje);
         Mail mail = new Mail(from, subject, to, content);
 

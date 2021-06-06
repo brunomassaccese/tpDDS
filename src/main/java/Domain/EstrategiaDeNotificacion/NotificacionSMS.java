@@ -8,7 +8,7 @@ public class NotificacionSMS implements Strategy{
     public static final String authToken = "476ebdad8135ba4b1e7385c30a389e0f";
     public static final String numeroOrigen = "+18325166562";
 
-    public static void enviarAviso(InfoContacto contacto, String mensaje) {
+    public static void enviarAviso(InfoContacto contacto, String mensaje){
         Twilio.init(accountSID, authToken);
 
         Message message = Message.creator(new PhoneNumber(contacto.telefono), new PhoneNumber(numeroOrigen),

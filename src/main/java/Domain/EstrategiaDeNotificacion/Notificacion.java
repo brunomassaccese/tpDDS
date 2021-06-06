@@ -6,7 +6,7 @@ public class Notificacion{
     private Strategy strategy = new NotificacionSMS();
 
     //PARA LA PRUEBA (ver)
-    private InfoContacto contacto = new InfoContacto();
+    private InfoContacto contacto = new InfoContacto("42323","ahisd@hotmail.com");
     private String mensaje = "Mensaje de prueba";
 
     public void ejecutarAviso() {

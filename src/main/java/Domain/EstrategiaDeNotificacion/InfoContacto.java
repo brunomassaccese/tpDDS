@@ -1,6 +1,10 @@
 package Domain.EstrategiaDeNotificacion;
 
-public class InfoContacto(int telefono, String email) {
-        this.telefono = telefono;
-        this.email = email;
+public class InfoContacto{
+        public String telefono;
+        public String email;
+        public InfoContacto(String tel,String mail) {
+                this.telefono = tel;
+                this.email = mail;
+        }
 }

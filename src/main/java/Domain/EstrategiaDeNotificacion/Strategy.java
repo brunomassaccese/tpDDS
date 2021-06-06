@@ -1,5 +1,8 @@
 package Domain.EstrategiaDeNotificacion;
 
 public interface Strategy {
-    public void enviarAviso(this.contacto, this.mensaje);
+
+    public static void enviarAviso(InfoContacto contacto, String mensaje) {
+
+    }
 }
