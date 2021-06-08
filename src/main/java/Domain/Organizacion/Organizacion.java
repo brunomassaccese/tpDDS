@@ -1,9 +1,8 @@
-package Domain.Mascota;
+package Domain.Organizacion;
 
 import java.util.List;
 
-public class Caracteristica {
-
+public class Organizacion {
     private List<String> caracteristicas = null;
 
     public void agregarCaracteristica(String nuevaCaracteristica){
