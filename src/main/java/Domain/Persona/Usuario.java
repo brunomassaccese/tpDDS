@@ -1,9 +1,11 @@
 package Domain.Persona;
 
+import Domain.EstrategiaDeNotificacion.Strategy;
 import Domain.Mascota.Mascota;
-import Domain.Notificacion.EstrategiaDeNotificacion;
 
-public class Usuario extends Persona implements EstrategiaDeNotificacion {
+public class Usuario extends Persona implements Strategy {
+    public String nombre;
+    //Lista con permisos
 
     public void registrarMascota(Mascota mascota){
         //TODO
