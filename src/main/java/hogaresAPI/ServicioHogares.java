@@ -10,7 +10,6 @@ import java.io.IOException;
 
 public class ServicioHogares {
     private static ServicioHogares instancia = null;
-    //private static int maximaCantidadRegistrosDefault = 200;
     private static final String urlApi = "https://api.refugiosdds.com.ar/api/";
     private Retrofit retrofit;
 

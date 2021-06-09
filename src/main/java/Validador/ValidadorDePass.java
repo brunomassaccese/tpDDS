@@ -11,7 +11,7 @@ public class ValidadorDePass {
     private static final String pathModificado = "src/main/java/Validador/sorted-10k-worst-passwords.txt";
     //Declaro y defino las variables que uso en el array
     private static final int LINES = 10000;
-    public static String[] strArray = new String[LINES];
+    public static String[] keyArray = new String[LINES];
 
     //Funcion principal validadora de pass
     public Boolean validar(String pass) throws IOException {
@@ -44,7 +44,7 @@ public class ValidadorDePass {
         String linea;
         while((linea=br.readLine())!=null) {
            // if(linea.length()>=8)
-            strArray[i] = linea; //voy cargando el array
+            keyArray[i] = linea; //voy cargando el array
 
             i++;
             //System.out.println(linea);
@@ -61,7 +61,7 @@ public class ValidadorDePass {
             pw = new PrintWriter(fichero);
 
             for (int i = 0; i < LINES; i++)
-                pw.println(strArray[i]);
+                pw.println(keyArray[i]);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,7 +78,7 @@ public class ValidadorDePass {
     }
 
     private static void sortArray () { //Ordena el array
-        strArray = Stream.of(strArray).sorted().toArray(String[]::new);
+        keyArray = Stream.of(keyArray).sorted().toArray(String[]::new);
         // System.out.print("Strings in Sorted Order: " + Arrays.toString(strArray));
     }
 
@@ -99,7 +99,7 @@ public class ValidadorDePass {
             fileToArray(pathModificado);
 
 
-        return Arrays.binarySearch(strArray, pass) > 0;
+        return Arrays.binarySearch(keyArray, pass) > 0;
     }
 
     //VALIDAR QUE LA LONGITUD SEA > 8

@@ -10,7 +10,7 @@ public class Notificacion{
     private String mensaje = "Mensaje de prueba";
 
     public void ejecutarAviso() {
-        this.strategy.enviarAviso(this.contacto, this.mensaje);
+        Strategy.enviarAviso(this.contacto, this.mensaje);
     }
     public void setStrategy(Strategy newStrategy) {
         this.strategy = newStrategy;

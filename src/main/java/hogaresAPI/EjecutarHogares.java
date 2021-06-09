@@ -12,22 +12,13 @@ import java.util.stream.Stream;
 
 public class EjecutarHogares {
 
-    public static void main(String[] args) throws IOException, java.io.IOException {
+
+    public static void solicitarHogares() throws IOException, java.io.IOException {
 
         int offset = 1; //hardcodeado
         int total;
         ServicioHogares servicioHogares = ServicioHogares.instancia();
         List<Hogar> listaHogaresTemp = java.util.Arrays.asList();
-
-        /*
-        do {
-            ListadoHogares listadoDeHogares = servicioHogares.listadoDeHogares(offset);
-            offset++;
-            total = listadoDeHogares.total;
-            listaHogaresTemp = Stream.concat(listaHogaresTemp.stream(), listadoDeHogares.hogares.stream())
-                    .collect(Collectors.toList());
-        } while ((offset * 10) <= total);
-        */
 
         ListadoHogares listadoDeHogares = servicioHogares.listadoDeHogares(offset);
         total = listadoDeHogares.total;
@@ -40,7 +31,7 @@ public class EjecutarHogares {
 
         for (int i = 1; i <= cantGETs; i++) {
             listadoDeHogares = servicioHogares.listadoDeHogares(i);
-            listaHogaresTemp = Stream.concat(listaHogaresTemp.stream(), listadoDeHogares.hogares.stream())
+           listaHogaresTemp = Stream.concat(listaHogaresTemp.stream(), listadoDeHogares.hogares.stream())
                                        .collect(Collectors.toList());
         }
 
@@ -48,5 +39,12 @@ public class EjecutarHogares {
         for (Hogar unHogar : listaHogaresTemp) { //se puede hacer con un foreach()
             System.out.println(unHogar.nombre);
         }
+
     }
+    /*
+    List<Hogar> getListaHogares(){
+        return listaHogaresTemp;
+    }
+   */
+
 }
