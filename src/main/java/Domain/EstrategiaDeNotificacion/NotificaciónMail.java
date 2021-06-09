@@ -3,7 +3,7 @@ package Domain.EstrategiaDeNotificacion;
 import com.sendgrid.*;
 import java.io.IOException;
 
-public class NotificaciónMail implements Strategy {
+public class NotificacionMail implements Strategy {
 
     public static final String emailOrigen = "Rescastistas";
     public static final String authToken = "476ebdad8135ba4b1e7385c30a389e0f";
