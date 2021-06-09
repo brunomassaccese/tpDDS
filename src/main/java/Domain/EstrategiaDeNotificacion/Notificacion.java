@@ -5,7 +5,7 @@ public class Notificacion{
     // Valor por defecto (comportamiento por defecto): NotificacionSMS
     private Strategy strategy = new NotificacionSMS();
 
-    //PARA LA PRUEBA (ver)
+    //PARA LA PRUEBA
     private InfoContacto contacto = new InfoContacto("42323","ahisd@hotmail.com");
     private String mensaje = "Mensaje de prueba";
 
