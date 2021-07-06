@@ -18,6 +18,7 @@ public class Usuario extends Persona implements Strategy {
 }
 
 /*
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
