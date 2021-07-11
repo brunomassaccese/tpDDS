@@ -10,7 +10,7 @@ public class Notificacion{
     public String mensaje = "Mensaje de prueba";
 
     public void ejecutarAviso() {// ME DA UN ERROR NO SE POR QUE? PERO CUANDO LO CAMBIO A Strategy.enviarAviso(this.contacto, this.mensaje); ME DA BIEN
-        this.strategy.enviarAviso(this.contacto, this.mensaje);
+        Strategy.enviarAviso(this.contacto, this.mensaje);
     }
     public void setStrategy(Strategy newStrategy) {
         this.strategy = newStrategy;
