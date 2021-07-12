@@ -1,90 +1,95 @@
 package Domain.Organizacion;
 
 import Domain.EstrategiaDeNotificacion.Notificacion;
+import Domain.Mascota.Mascota;
+import Domain.Persona.Contacto;
+import Domain.Persona.TipoDeDocumento;
 import Domain.Persona.Usuario;
-import Domain.Publicacion.Publicacion;
-import Domain.Publicacion.PublicacionDeAdopcion;
+import Domain.Publicacion.PublicacionAdoptante;
+import Domain.Publicacion.PublicacionMascotaEnAdopcion;
 import Domain.Publicacion.PublicacionMascotaPerdida;
-import java.util.ArrayList;
-import java.util.Scanner;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class Organizacion {
-    public ArrayList<String> caracteristicas;
-    public String nombre;
-    public String ubicacion;
-    public ArrayList<String> preguntas;
-    public ArrayList<Publicacion> publicacionesDeAdopcionPendientes;
-    public ArrayList<Publicacion> publicacionesDeAdopcionAceptadas;
-    public ArrayList<Publicacion> publicacionMascotasPerdidas;
-    // PARA INICIALIZAR Y QUE NO DE NULL
-    public Organizacion(){
-        this.caracteristicas = new ArrayList<>();
-        this.preguntas = new ArrayList<>();
-        this.publicacionesDeAdopcionPendientes = new ArrayList<>();
-        this.publicacionesDeAdopcionAceptadas = new ArrayList<>();
-        this.publicacionMascotasPerdidas = new ArrayList<>();
+    private List<String> caracteristicas = null;
+    private List<Usuario> voluntarios = null;
+    private List<String> preguntasAdoptantes = null;
+    private List<PublicacionMascotaPerdida> publicacionesMascotaPerdidas = null;
+    private List<PublicacionMascotaEnAdopcion> publicacionesMascotaEnAdopcion = null;
+    private List<PublicacionAdoptante> publicacionesAdoptantes = null;
+
+    //E2.P3
+    public void generarVoluntario(String nombre, String apellido,
+                                  LocalDateTime fechaNacimiento, String direccion,
+                                  TipoDeDocumento dni, List <Contacto> contactos,
+                                  String nombreUsuario, String password){
+        Usuario nuevoVoluntario = new Usuario(nombre, apellido, fechaNacimiento, direccion, dni, contactos, nombreUsuario, password, "VOLUNTARIO");     //Agregar organización?
+
+        this.voluntarios.add(nuevoVoluntario);
     }
 
     public void agregarCaracteristica(String nuevaCaracteristica){
         caracteristicas.add(nuevaCaracteristica);
     }
-    //ENTREGA 2 PUNTO 5
-    public void verPublicaciones(ArrayList<Publicacion> publicaciones){ // SE PUEDEN VER LAS PUBLICACIONES DE LA MASCOTAS PERDIDAS
-        for (Publicacion publicacion : publicaciones) {
-            publicacion.verPublicacion();
-        }
-    }
-    //ENTREGA 2 PUNTO 5
-    public void elegirPublicacionDeMascotaPerdida(){ //SI ENCUENTRA LA MASCOTA PUEDE VER LOS DATOS SENSIBLES
-        Scanner indicar = new Scanner(System.in);
-        Scanner indicarLugar = new Scanner(System.in);
-        int opcion;
 
-        do{
-            System.out.println("\n Opciones");
-            System.out.println("[1] Encontre a mi mascota ");
-            System.out.println("[2] No encontre a mi mascota");
-            opcion = indicar.nextInt();
-
-            switch (opcion){
-                case 1:
-                    System.out.println("Indicar el lugar de la publicacion ");
-                    this.publicacionMascotasPerdidas.get(indicarLugar.nextInt()).accederADatosSensibles(); // VER LOS DATOS SENSIBLES DE LA PUBLICACION
-                    break;
-                case  2:
-                    System.out.println("Lo lamentamos :( ");
-                    break;
-            }
-        }while (opcion!=1 || opcion!=2);
-    }
-    //ENTREGA 3 PUNTO 1
-    public int cantidad(ArrayList<String> lista){ return lista.size(); }
-    public String verPregunta(int lugar){ return preguntas.get(lugar); } //ENVIA LA PREGUNTA NO LA MUESTRA POR PANTALLA
-    public void agregarPublicacion(ArrayList<Publicacion> publicaciones, Publicacion publicacion){ publicaciones.add(publicacion); } //AGREGA A UNA DE LAS LISTAS
-
-    //ENTREGA 3 PUNTO 1 /////////PREGUNTAR QUIEN TIENE QUE ACEPTAR O RECHAZAR, ACA SOLO SE VISUALIZA FALTA UN MENU PARA ACEPTAR/////////////////
-    public void verPublicacionesParaAprobar(){
-        for (Publicacion publicacion : publicacionesDeAdopcionPendientes) { //SE VISUALIZA TODA LA INFORMACION DE LA PUBLICACION (INFORMACION, PREGUNTAS Y RESPUESTAS)
-            publicacion.verPublicacion();
-            for(int i=0;i<publicacion.cantidad(publicacion.preguntas) ;i++){
-                System.out.println(i+1 + ")" + publicacion.preguntas.get(i));
-                System.out.println(publicacion.respuestas.get(i));
-            }
-        }
-    }
-    //ENTREGA 3 PUNTO 2  ///////// FALTA UN MENU PARA APROBAR O RECHAZAR
-    public void agregarPregunta(String pregunta) { preguntas.add(pregunta); } //LA ORGANIZACION PUEDE AGREGAR SUS PREGUNTAS
-    public void verTodasLasPreguntas(){ for (String pregunta : preguntas) System.out.println(pregunta); }
-    public void modificarPregunta(int lugar,String nuevaPregunta){ preguntas.set(lugar,nuevaPregunta); } //LA ORGANIZACION PUEDE MODIFICAR LA PREGUNTA PERO NO LA PUBLICACION OSEA LA PUBLICACION SE GUARDA CON LAS RESPUESTAS Y PREGUNTAS ANTERIORES NO VA MODIFICAR A LAS PREGUNTAS DE LAS PUBLICACIONES QUE FUERON CONTESTADAS ANTES
-    //ENTREGA 3 PUNTO 3
-    //ACA HAY Q SEGUIR CON LA PARTE DE NOTIFICAR A LA PERSONA YO QUERIA MANDAR ESTE MENSAJE AL USUARIO
-    public void notificar (Publicacion publicacion, Usuario usuarioInteresado){
-        Notificacion notificacion = new Notificacion();
-        notificacion.mensaje = "Nos comunicamos con usted para decirle que el usuario "+ usuarioInteresado.nombre + "esta interesado en adoptar a " + publicacion.mascota.nombre;
-        notificacion.contacto = publicacion.usuario
-                                           .contactos.get(0)
-                                           .InformacionDeContacto;
-        notificacion.ejecutarAviso();
+    public void agregarPreguntaAdoptantes(String nuevaPregunta){
+        this.preguntasAdoptantes.add(nuevaPregunta);
     }
 
+    public void eliminarPreguntaAdoptantes(String preguntaAEliminar){
+        this.preguntasAdoptantes = (List<String>) this.preguntasAdoptantes.stream().filter(
+                pregunta -> pregunta != preguntaAEliminar);
+    }
+
+    public List<PublicacionMascotaPerdida> buscarMascota(){
+        return this.publicacionesMascotaPerdidas;
+    }
+
+    public void agregarPublicacionMascotaPerdida(PublicacionMascotaPerdida nuevaPublicacion){
+        publicacionesMascotaPerdidas.add(nuevaPublicacion);
+    }
+
+    public void agregarPublicacionMascotaEnAdopcion(PublicacionMascotaEnAdopcion nuevaPublicacion){
+        publicacionesMascotaEnAdopcion.add(nuevaPublicacion);
+    }
+
+    //E3.P3
+    public void notificarInteresadoEnAdopcion(Mascota mascota){
+        String mensaje = "Hay un interesado en adoptar a " + mascota.getNombre();
+        Contacto contactoDuenioDeMascota = mascota.getDuenio().obtenerContactoPorDefecto();
+        Notificacion nuevaNotificacion = new Notificacion(contactoDuenioDeMascota.getFormaDeContacto());
+
+        nuevaNotificacion.ejecutarAviso(contactoDuenioDeMascota, mensaje);
+    }
+
+    public void agregarPublicacionAdoptante(PublicacionAdoptante nuevaPublicacion){
+        publicacionesAdoptantes.add(nuevaPublicacion);
+    }
+
+    public void aprobarAdoptante(PublicacionAdoptante publicacionAdoptante) {
+        //TODO
+    }
+
+    public void solicitarPublicacionEnAdopcion(Mascota mascota, Usuario duenio, List<String> preguntas, List<String> respuestas) {
+        Integer id = this.publicacionesMascotaPerdidas.size() + 1;
+        PublicacionMascotaEnAdopcion nuevaPublicacion = new PublicacionMascotaEnAdopcion(duenio, mascota, id, preguntas, respuestas);
+        this.agregarPublicacionMascotaEnAdopcion(nuevaPublicacion);
+    }
+
+    public void aprobarPublicacionMascotaEnAdopcion(Integer idPublicacion) {
+        //this.publicacionesMascotaEnAdopcion = (List<PublicacionMascotaEnAdopcion>) this.publicacionesMascotaEnAdopcion.stream().map(publicacion -> publicacion.aprobar(idPublicacion));
+
+        PublicacionMascotaEnAdopcion nuevaPublicacion = (PublicacionMascotaEnAdopcion) this.publicacionesMascotaEnAdopcion.stream().filter(publicacion -> publicacion.getId() == idPublicacion);
+        this.publicacionesMascotaEnAdopcion.remove(nuevaPublicacion);
+        nuevaPublicacion.aprobar();
+        this.publicacionesMascotaEnAdopcion.add(nuevaPublicacion);
+        //VER FORMA DE REFACTORIZAR ESTO
+    }
+
+    public void modificarPreguntaAdoptantes(String viejaPregunta, String nuevaPregunta) {
+        this.eliminarPreguntaAdoptantes(viejaPregunta);
+        this.agregarPreguntaAdoptantes(nuevaPregunta);
+    }
 }

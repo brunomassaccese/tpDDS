@@ -5,7 +5,7 @@ import Domain.Mascota.Mascota;
 import Domain.Persona.Rescatista;
 
 public class ConChapaQR implements Chapa { //FALTARIA MOSTRAR LOS DATOS DEL RESCATISTA ASI LA PERSONA SE PUEDE COMUNICAR CON EL
-
+/*
     @Override
     public void notificar(Mascota mascota, Rescatista rescatista){ //TAMBIEN SE PODRIAN PONER EL ESTADO DE LA MASCOTA
         Notificacion notificacion = new Notificacion();
@@ -16,4 +16,6 @@ public class ConChapaQR implements Chapa { //FALTARIA MOSTRAR LOS DATOS DEL RESC
                                 .InformacionDeContacto;
         notificacion.ejecutarAviso();
     }
+
+ */
 }

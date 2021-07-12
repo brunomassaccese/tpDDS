@@ -1,11 +1,7 @@
 package Domain.Mascota.Chapa;
 
-import Domain.Mascota.Mascota;
-import Domain.Persona.Rescatista;
-import Domain.Publicacion.PublicacionMascotaPerdida;
-
 public class SinChapa implements Chapa {
-
+/*
     @Override
     public void notificar(Mascota mascota, Rescatista rescatista) {
         this.generarPublicacion(mascota,rescatista); //GENERA UNA PUBLICACION DE MASCOTA PERDIDA
@@ -18,4 +14,6 @@ public class SinChapa implements Chapa {
         publicacion.mascota = mascota;
         publicacion.rescatista = rescatista;
     }
+
+ */
 }

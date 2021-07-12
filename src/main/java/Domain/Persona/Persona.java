@@ -1,34 +1,37 @@
 package Domain.Persona;
 
 import Domain.Organizacion.Organizacion;
+import Domain.Publicacion.PublicacionMascotaPerdida;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Persona {
-   public String nombre;
-    public String apellido;
-    public LocalDateTime fechaNacimiento;       //FALTA ASIGNAR
+    public String nombre;
+    public  String apellido;
+    //Lista de mascotas
+    public LocalDateTime fechaNacimiento;
     public String direccion;
-    public TipoDeDocumento dni;                 //FALTA ASIGNAR
-    public ArrayList<Contacto> contactos;
+    public TipoDeDocumento dni;
+    public List <Contacto> contactos;
 
-    public Persona(){
-     this.contactos = new ArrayList<>();
+    public Persona(String nombre, String apellido, LocalDateTime fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.direccion = direccion;
+        this.dni = dni;
+        this.contactos = contactos;
     }
 
-    public void agregarContacto(Contacto contacto){
-        contactos.add(contacto);
+    public Contacto obtenerContactoPorDefecto(){
+        return (Contacto) this.contactos.stream().filter(contacto -> contacto.isContactoPorDefecto());
+        //VER CASTEO
     }
 
-    // ENTREGA 2 PUNTO 5
-    public void buscarMascota(Organizacion organizacion){ // BUSCA A LA MASCOTA EN LA ORGANIZACION
-        organizacion.verPublicaciones(organizacion.publicacionMascotasPerdidas);
-        organizacion.elegirPublicacionDeMascotaPerdida();
+    //E2.P5
+    public List<PublicacionMascotaPerdida> buscarMascotaPerdida(Organizacion organizacion){
+        return organizacion.buscarMascota();
     }
-    //ENTREGA 2 PUNTO 5
-    public void verContactos(){
-        for(Contacto contacto : contactos){
-            contacto.verContacto();
-        }
-    }
+
 }

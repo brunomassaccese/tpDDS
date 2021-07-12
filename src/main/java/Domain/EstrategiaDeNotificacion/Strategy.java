@@ -1,8 +1,10 @@
 package Domain.EstrategiaDeNotificacion;
 
+import Domain.Persona.Contacto;
+
 public interface Strategy {
 
-    public static void enviarAviso(InfoContacto contacto, String mensaje) {
+    public static void enviarAviso(Contacto contacto, String mensaje) {
 
     }
 }
