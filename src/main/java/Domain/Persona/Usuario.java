@@ -2,17 +2,59 @@ package Domain.Persona;
 
 import Domain.EstrategiaDeNotificacion.Strategy;
 import Domain.Mascota.Mascota;
+import Domain.Mascota.Publicacion;
+import Domain.Organizacion.Organizacion;
+import Domain.Publicacion.PublicacionAdoptante;
+import Domain.Publicacion.PublicacionMascotaEnAdopcion;
+import Domain.Publicacion.PublicacionMascotaPerdida;
+import Domain.EstrategiaDeNotificacion.Notificacion;
 
+import java.nio.MappedByteBuffer;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Usuario extends Persona implements Strategy {
-    public String nombre;
-    //Lista con permisos
-
+    private String nombreUsuario;
+    private String password;
     private List<Mascota> mascotas = null;
+    private String perfil = null;
+
+    public Usuario(String nombre, String apellido, LocalDateTime fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
+        super(nombre, apellido, fechaNacimiento, direccion, dni, contactos);
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.perfil = perfil;
+    }
+
 
     public void registrarMascota(Mascota mascota){
         this.mascotas.add(mascota);
+    }
+
+    //E2.P3
+    public void aprobarPublicacion(PublicacionMascotaPerdida publicacion, Organizacion organizacion){
+        if(this.perfil=="VOLUNTARIO")
+            organizacion.agregarPublicacionMascotaPerdida(publicacion);
+    }
+
+    public void contactarRescatista(PublicacionMascotaPerdida publicacion){
+        Contacto contactoDestino = publicacion.rescatista.obtenerContactoPorDefecto();
+        String mensaje = "Se encontró la mascota " + publicacion.mascotaPerdida.getChapa();
+        Notificacion nuevaNotificacion = new Notificacion(contactoDestino.getFormaDeContacto());
+
+        nuevaNotificacion.ejecutarAviso(contactoDestino, mensaje);
+
+    }
+
+    //E3.P1
+    public void darEnAdopcion(Mascota miMascota, Organizacion organizacion, List<String> preguntas, List<String> respuestas){
+        organizacion.solicitarPublicacionEnAdopcion(miMascota, this, preguntas, respuestas);
+    }
+
+    //E3.P4
+    public void quieroAdoptar(List<String> preferencias, Organizacion organizacion){
+        PublicacionAdoptante nuevaPublicacion = new PublicacionAdoptante(preferencias);
+        organizacion.agregarPublicacionAdoptante(nuevaPublicacion);
     }
 
 }

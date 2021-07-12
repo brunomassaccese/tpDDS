@@ -1,5 +1,6 @@
 package Domain.EstrategiaDeNotificacion;
 
+import Domain.Persona.Contacto;
 import com.sendgrid.*;
 import java.io.IOException;
 
@@ -8,10 +9,10 @@ public class NotificacionMail implements Strategy {
     public static final String emailOrigen = "Rescastistas";
     public static final String authToken = "476ebdad8135ba4b1e7385c30a389e0f";
 
-    public static void enviarAviso(InfoContacto contacto, String mensaje){
+    public static void enviarAviso(Contacto destinatario, String mensaje){
         Email from = new Email(emailOrigen);
         String subject = "Sending with SendGrid is Fun";
-        Email to = new Email(contacto.email);
+        Email to = new Email(destinatario.getEmail());
         Content content = new Content("text/plain", mensaje);
         Mail mail = new Mail(from, subject, to, content);
 
