@@ -1,22 +1,11 @@
 package Domain.Mascota;
 
-import Domain.Mascota.Foto;
+import Domain.Mascota.Chapa.Chapa;
 import Domain.Persona.Usuario;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Mascota implements Estado {
-
-    private String tipo;
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getChapa() {
-        return chapa;
-    }
 
     private String nombre;
     private String apodo;
@@ -26,15 +15,11 @@ public class Mascota implements Estado {
     private String descripcion;
     private List<Foto> fotos = null;
     private List<String> caracteristicas = null;
-    private String chapa;
-
-    public Usuario getDuenio() {
-        return duenio;
-    }
-
+    private Chapa chapa;
     private Usuario duenio = null;
+    private String tipo;
 
-    public Mascota(String tipo, String nombre, String apodo, Integer edad, String sexo, Estado estado, String descripcion, List<Foto> fotos, List<String> caracteristicas, String chapa, Usuario duenio) {
+    public Mascota(String tipo, String nombre, String apodo, Integer edad, String sexo, Estado estado, String descripcion, List<Foto> fotos, List<String> caracteristicas, Chapa chapa, Usuario duenio) {
         this.tipo = tipo;
         this.nombre = nombre;
         this.apodo = apodo;
@@ -48,5 +33,15 @@ public class Mascota implements Estado {
         this.duenio = duenio;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 
+    public Chapa getChapa() {
+        return chapa;
+    }
+
+    public Usuario getDuenio() {
+        return duenio;
+    }
 }

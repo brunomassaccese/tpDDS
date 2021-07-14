@@ -1,15 +1,17 @@
 package Domain.Persona;
 
+import Domain.Mascota.Chapa.Formulario;
+import Domain.Mascota.Mascota;
 import Domain.Organizacion.Organizacion;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Scanner;
 
 public class Persona {
     public String nombre;
     public  String apellido;
-    //Lista de mascotas
     public LocalDateTime fechaNacimiento;
     public String direccion;
     public TipoDeDocumento dni;
@@ -34,4 +36,29 @@ public class Persona {
         return organizacion.buscarMascota();
     }
 
+    public String getNombre() { return this.nombre; }
+
+    public void notificarMascotaEncontrada(Mascota mascota){
+        Formulario nuevoFormulario = this.llenarFormulario();
+        mascota.getChapa().notificar(mascota, nuevoFormulario);
+    }
+
+    public Formulario llenarFormulario(){ // SE PUEDE LLENAR AUTOMATICAMENTE O SE PUEDE LLENAR CON UN SCANNER
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Ingresar nombre : ");
+        String nombre = entrada.nextLine();
+        System.out.println("Ingresar apellido : ");
+        String apellido = entrada.nextLine();
+        System.out.println("Ingresar direccion : ");
+        String direccion = entrada.nextLine();
+        System.out.println("Ingresar estado de la mascota : ");
+        String estadoDeLaMascota = entrada.nextLine();
+        System.out.println("Ingresar el lugar en donde encontro a la mascota : ");
+        String lugarDondeSeEncontro = entrada.nextLine();
+        Formulario formulario = new Formulario(nombre,apellido,direccion,estadoDeLaMascota,lugarDondeSeEncontro);
+        System.out.println("Ingresar un foto de la mascota : ");//FALTA COMO INGRESAR LA FOTO
+        System.out.println("Ingresar un contacto para comunicarse con usted: "); // FALTA COMO INGRESAR EL CONTACTO EN ESTE CASO SOLO INGRESA EL CONTACTO POR DEFECTO
+        formulario.setContacto(this.obtenerContactoPorDefecto());
+        return formulario;
+    }
 }

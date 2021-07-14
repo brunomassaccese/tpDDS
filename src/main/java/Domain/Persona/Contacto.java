@@ -8,7 +8,7 @@ public class Contacto {
     private String apellido = null;
     private String telefono = null;
     private String email = null;
-    private  boolean contactoPorDefecto;
+    private boolean contactoPorDefecto;
 
     public Contacto(Strategy formaDeContacto, String nombre, String apellido, String telefono, String email, boolean contactoPorDefecto) {
         this.formaDeContacto = formaDeContacto;

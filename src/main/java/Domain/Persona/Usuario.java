@@ -23,24 +23,25 @@ public class Usuario extends Persona implements Strategy {
         this.perfil = perfil;
     }
 
-
     public void registrarMascota(Mascota mascota){
         this.mascotas.add(mascota);
     }
 
     //E2.P3
     public void aprobarPublicacion(PublicacionMascotaPerdida publicacion, Organizacion organizacion){
-        if(this.perfil=="VOLUNTARIO")
+        if(this.perfil.equals("VOLUNTARIO"))
             organizacion.agregarPublicacionMascotaPerdida(publicacion);
     }
 
     public void contactarRescatista(PublicacionMascotaPerdida publicacion){
-        Contacto contactoDestino = publicacion.rescatista.obtenerContactoPorDefecto();
-        String mensaje = "Se encontró la mascota " + publicacion.mascotaPerdida.getChapa();
+        Contacto contactoDestino = publicacion.getFormulario()
+                                              .getContacto();
+        //Contacto contactoDestino = publicacion.rescatista.obtenerContactoPorDefecto();
+        String mensaje = "Se encontró la mascota " + publicacion.getMascotaPerdida()
+                                                                .getChapa();
         Notificacion nuevaNotificacion = new Notificacion(contactoDestino.getFormaDeContacto());
 
         nuevaNotificacion.ejecutarAviso(contactoDestino, mensaje);
-
     }
 
     //E3.P1
