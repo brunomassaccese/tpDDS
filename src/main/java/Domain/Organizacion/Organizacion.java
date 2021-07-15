@@ -9,6 +9,7 @@ import Domain.Publicacion.PublicacionAdoptante;
 import Domain.Publicacion.PublicacionMascotaEnAdopcion;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -73,15 +74,23 @@ public class Organizacion {
     }
 
     public void solicitarPublicacionEnAdopcion(Mascota mascota, Usuario duenio, List<String> preguntas, List<String> respuestas) {
-        Integer id = this.publicacionesMascotaPerdidas.size() + 1;
-        PublicacionMascotaEnAdopcion nuevaPublicacion = new PublicacionMascotaEnAdopcion(duenio, mascota, id, preguntas, respuestas);
+        Timestamp newTimestamp = new Timestamp(System.currentTimeMillis());
+        PublicacionMascotaEnAdopcion nuevaPublicacion = new PublicacionMascotaEnAdopcion(duenio, mascota, newTimestamp, preguntas, respuestas);
         this.agregarPublicacionMascotaEnAdopcion(nuevaPublicacion);
     }
 
-    public void aprobarPublicacionMascotaEnAdopcion(Integer idPublicacion) {
-        //this.publicacionesMascotaEnAdopcion = (List<PublicacionMascotaEnAdopcion>) this.publicacionesMascotaEnAdopcion.stream().map(publicacion -> publicacion.aprobar(idPublicacion));
+    public void aprobarPublicacionMascotaEnAdopcion(Timestamp timestamp) {
 
-        PublicacionMascotaEnAdopcion nuevaPublicacion = (PublicacionMascotaEnAdopcion) this.publicacionesMascotaEnAdopcion.stream().filter(publicacion -> publicacion.getId() == idPublicacion);
+        for(int i = 0; i < publicacionesMascotaEnAdopcion.size(); i++){
+            PublicacionMascotaEnAdopcion publi = publicacionesMascotaEnAdopcion.get(i);
+            if(publicacionesMascotaEnAdopcion.get(i).estado() == false && publi.getTimestamp() == timestamp) {
+                publi.aprobar();
+                publicacionesMascotaEnAdopcion.remove(i);
+                publicacionesMascotaEnAdopcion.add(i, publi);
+            }
+        }
+
+        PublicacionMascotaEnAdopcion nuevaPublicacion = (PublicacionMascotaEnAdopcion) this.publicacionesMascotaEnAdopcion.stream().filter(publicacion -> publicacion.getTimestamp() == timestamp);
         this.publicacionesMascotaEnAdopcion.remove(nuevaPublicacion);
         nuevaPublicacion.aprobar();
         this.publicacionesMascotaEnAdopcion.add(nuevaPublicacion);

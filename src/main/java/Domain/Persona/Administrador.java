@@ -2,6 +2,8 @@ package Domain.Persona;
 
 import Domain.Organizacion.Organizacion;
 import Domain.Publicacion.PublicacionAdoptante;
+
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class Administrador extends Usuario {
         organizacion.aprobarAdoptante(publicacionAdoptante);
     }
 
-    public void aprobarPublicacionMascotaEnAdopcion(Organizacion organizacion, Integer idPublicacion){
-        organizacion.aprobarPublicacionMascotaEnAdopcion(idPublicacion);
+    public void aprobarPublicacionMascotaEnAdopcion(Organizacion organizacion, Timestamp timestamp){
+        organizacion.aprobarPublicacionMascotaEnAdopcion(timestamp);
     }
 }
