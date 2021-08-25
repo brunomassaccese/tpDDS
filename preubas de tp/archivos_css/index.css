@@ -31,7 +31,7 @@ body {
     width: 100vw;
 }
 
-form {
+form, .form-registro-mascota, .form-login, .form-registro-usuario {
     position: relative;
     width: 1000px;
     height: 1200px;
@@ -44,7 +44,21 @@ form {
     padding: 20px;
 }
 
-.datos-personales, .forma-de-contacto, .preferencia-de-contacto {
+.form-registro-mascota{
+    height: 700px;
+}
+
+.form-login{
+    height: 400px;
+    width: 500px;
+}
+
+.form-registro-usuario{
+    width: 1000px;
+    height: 950px;
+}
+
+.datos-personales, .forma-de-contacto, .preferencia-de-contacto, .datos-registro-usuario {
     display: grid;
     grid-gap: 30px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -56,5 +70,9 @@ form {
     grid-gap: 30px;
     grid-template-columns: 1fr 1fr;
     padding: 45px;
+}
+
+.titulo-pagina{
+    text-align: center;
 }
 

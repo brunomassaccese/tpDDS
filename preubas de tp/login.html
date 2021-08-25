@@ -2,30 +2,20 @@
 
 <html lang="es">
     <head>
-        <title>Poner en adopción</title>
+        <title>Rescate de Patitas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
         <link rel="stylesheet" href="archivos_css/index.css">
         <link rel="stylesheet" href="archivos_css/fontello.css">
-        <link rel="stylesheet" href="archivos_css/darEnAdopcion.css">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-        <script>      
-            function showAlert() {
-                Swal.fire({
-                    title: '¿Estás seguro de poner a tu mascota en adopción?',
-                    showDenyButton: true,
-                    confirmButtonText: `Poner en adopción`,
-                    denyButtonText: `No adoptar`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        Swal.fire('Mascota en adopción', '', 'success')
-                    } else if (result.isDenied) {
-                        Swal.fire('No publicado', '', 'info')
-                    }
-                    })
+
+        <script type="text/javascript">
+            function validacion()
+            {
+                //window.location.href = "index.html";
+                alert("Agregar comportamiento a validacion()");
             }
         </script>
+            
     </head>
 
     <body>
@@ -51,34 +41,33 @@
 
         </header>
 
+
         <div class="main-container">
 
-            <form  > 
-                <!-- action="" method="post"         -->
-                <h3>Seleccione mascota para dar en adopción</h3>
+            <form class="form-login" method="GET">
+                
+                <h2 class="titulo-pagina">INGRESAR</h2>
 
-                <div class="select-mascotas">
-                    <label>
-                        <input type="radio" name="test" value="small" checked>
-                        <img src="Imagenes de prueba/descarga (1).jpg" alt="Los Tejos" />
-                      </label>
-                      <label>
-                        <input type="radio" name="test" value="small" checked>
-                        <img src="Imagenes de prueba/descarga (2).jpg" alt="Los Tejos" />
-                      </label> <label>
-                        <input type="radio" name="test" value="small" checked>
-                        <img src="Imagenes de prueba/descarga.jpg" alt="Los Tejos" />
-                      </label>
-                     
-                </div>
-                <div style="text-align:end">
-                    <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Dar en adopción</button>
-                   
+                <div class="datos-login">
+
+                    <div class= "grid-item">
+                        <label for="">Usuario</label>
+                        <input type="text" name="" value="" class="text-input">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="Tipo">Contraseña</label>
+                        <input type="text" name="" value="" class="text-input">
+                    </div>
+
+                <div style="text-align: end">
+                    <button class="boton-siguiente" onclick="validacion();">Ingresar</button>
                 </div>
 
             </form>
         
         </div>
+
         
         <footer>
 
