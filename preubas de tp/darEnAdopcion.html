@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <title>Poner en adopción</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
+        <link rel="stylesheet" href="archivos_css/index.css">
+        <link rel="stylesheet" href="archivos_css/fontello.css">
+        <link rel="stylesheet" href="archivos_css/darEnAdopcion.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+        <script>      
+            function showAlert() {
+                Swal.fire({
+                    title: '¿Estás seguro de poner a tu mascota en adopción?',
+                    showDenyButton: true,
+                    confirmButtonText: `Poner en adopción`,
+                    denyButtonText: `No adoptar`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire('Mascota en adopción', '', 'success')
+                    } else if (result.isDenied) {
+                        Swal.fire('No publicado', '', 'info')
+                    }
+                    })
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <header>
+
+            <div class="contenedor">
+
+                <h1 class="icon-guidedog">Rescatando patitas</h1>
+                <input type="checkbox" id="menu-bar">
+                <label class="icon-menu" for="menu-bar"></label>
+
+                <nav class="menu">
+                    <a href="">Inicio</a>
+                    <a href="">Mascotas</a>
+                    <a href="">Ingresar</a>
+                    <a href="">Registrarse</a>
+                    <a href="">Contactos</a>
+                </nav>
+
+            </div>
+
+        </header>
+
+        <div class="main-container">
+
+            <form  > 
+                <!-- action="" method="post"         -->
+                <h3>Seleccione mascota para dar en adopción</h3>
+
+                <div class="select-mascotas">
+                    <label>
+                        <input type="radio" name="test" value="small" checked>
+                        <img src="Imagenes de prueba/descarga (1).jpg" alt="Los Tejos" />
+                      </label>
+                      <label>
+                        <input type="radio" name="test" value="small" checked>
+                        <img src="Imagenes de prueba/descarga (2).jpg" alt="Los Tejos" />
+                      </label> <label>
+                        <input type="radio" name="test" value="small" checked>
+                        <img src="Imagenes de prueba/descarga.jpg" alt="Los Tejos" />
+                      </label>
+                     
+                </div>
+                <div style="text-align:end">
+                    <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Dar en adopción</button>
+                   
+                </div>
+
+            </form>
+        
+        </div>
+        
+        <footer>
+
+            <div class="contenedor-footer">
+
+                <div style="text-align: start">
+                    <p class="nosotros">Rescatenemos patitas es una asociación<br>
+                                        sin fines de lucro abocada a difundir,<br> 
+                                        proteger y promover los derechos de<br>
+                                        los animales.</p>
+                </div>
+
+                <div style="text-align: center">
+                    <p>Mandanos un maill<br>patitas@gmail.com</p>
+                </div>
+
+                <div >
+
+                    <a href="#" class="button">
+                    <span class="icon-facebook"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-youtube"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-twitter"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-instagram"></span>
+                    </a>
+
+                </div>
+
+                <div></div>
+
+                <div>
+                    <p class="derechos">© 2021 - Todos los Derechos Reservados</p>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </body>
+
+</html>
