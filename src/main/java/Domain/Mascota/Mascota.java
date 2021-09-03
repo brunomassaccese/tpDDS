@@ -3,8 +3,13 @@ package Domain.Mascota;
 import Domain.Mascota.Chapa.Chapa;
 import Domain.Persona.Usuario;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 
+@Entity
+@Table
 public class Mascota implements Estado {
 
     private String nombre;
