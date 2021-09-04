@@ -5,19 +5,39 @@ import Domain.Mascota.Mascota;
 import Domain.Organizacion.Organizacion;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "persona")
 public class Persona {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Column(name = "nombre")
     public String nombre;
+
+    @Column(name = "nombre")
     public  String apellido;
-    public LocalDateTime fechaNacimiento;
+
+    @Column(name = "fechaDeNacimiento", columnDefinition = "DATE")
+    public LocalDate fechaNacimiento;
+
+    @Column(name = "nombre")
     public String direccion;
+
+    //ver
     public TipoDeDocumento dni;
+
+    //ver
     public List <Contacto> contactos;
 
-    public Persona(String nombre, String apellido, LocalDateTime fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos) {
+    public Persona(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;

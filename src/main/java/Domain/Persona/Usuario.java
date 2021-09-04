@@ -10,10 +10,19 @@ import Domain.Publicacion.PublicacionMascotaPerdida;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.*;
+
 public class Usuario extends Persona implements Strategy {
+
     private String nombreUsuario;
+
+
     private String password;
+
+    @OneToMany(mappedBy = "duenio", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Mascota> mascotas = null;
+
+
     private String perfil = null;
 
     public Usuario(String nombre, String apellido, LocalDateTime fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {

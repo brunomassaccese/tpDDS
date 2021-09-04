@@ -3,25 +3,52 @@ package Domain.Mascota;
 import Domain.Mascota.Chapa.Chapa;
 import Domain.Persona.Usuario;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.List;
 
+import javax.persistence.*;
+
 @Entity
-@Table
+@Table(name = "mascota")
 public class Mascota implements Estado {
 
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "apodo")
     private String apodo;
+
+    @Column(name = "edad")
     private Integer edad;
+
+    @Column(name = "sexo")
     private String sexo;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "estado_id")
     private Estado estado;
+
+    @Column(name = "descripcion")
     private String descripcion;
+
+    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Foto> fotos = null;
+
+    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<String> caracteristicas = null;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "chapa_id")
     private Chapa chapa;
+
+    @ManyToOne
+    @JoinColumn(name = "duenio_id", referencedColumnName = "id")
     private Usuario duenio = null;
+
+    @Column(name = "tipo")
     private String tipo;
 
     public Mascota(String tipo, String nombre, String apodo, Integer edad, String sexo, Estado estado, String descripcion, List<Foto> fotos, List<String> caracteristicas, Chapa chapa, Usuario duenio) {
