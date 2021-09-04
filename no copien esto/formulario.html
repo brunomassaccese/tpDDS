@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <title>Formulario</title>
+
+            <meta charset="UTF-8">
+
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
+            
+            <link rel="stylesheet" href="encabezado.css">
+            <link rel="stylesheet" href="pie_de_pagina.css">
+            <link rel="stylesheet" href="body_formulario.css">
+            <link rel="stylesheet" href="archivos_css/select.css">
+            <link rel="stylesheet" href="archivos_css/fontello.css">
+            <link rel="stylesheet" href="archivos_css/checkbox.css">
+
+    </head>
+    
+    <body>
+
+        <header>
+
+            <div class="contenedor">
+
+                <h1 class="icon-guidedog">Rescatando patitas</h1>
+                <input type="checkbox" id="menu-bar">
+                <label class="icon-menu" for="menu-bar"></label>
+
+                <nav class="menu">
+                    <a href="">Inicio</a>
+                    <a href="">Mascotas</a>
+                    <a href="">Ingresar</a>
+                    <a href="">Registrarse</a>
+                    <a href="">Contactos</a>
+                </nav>
+
+            </div>
+
+        </header>
+            
+        <div class="formulario-main">
+
+            <form action="" class="formulario">
+
+                <div class="d-personales">
+
+                    <h1 class="titulo" style="text-align:center;">Completar Formulario</h1>
+
+                    <h3 class="subtitulo">Datos personales</h3>
+
+                    <div class="datos-personales">
+
+                        <div class= "grid-item">
+                            <label>Nombre <br><input type="text" name="nombre" class="text-input"></label>
+                        </div>
+
+                        <div class= "grid-item">
+                            <label>Apellido <br><input type="text" name="apellido" class="text-input"></label>
+                        </div>
+
+                        <div class= "grid-item">
+                            <label>Fecha de nacimiento <br><input type="date" name="fecha-de-nacimiento" class="text-input"></label>
+                        </div>
+
+                        <div class= "grid-item">
+                            <label>Direccion <br><input type="number" name="direccion" class="text-input"></label>
+                        </div>
+
+                        <div class="grid-select">
+
+                            <label for="Tipo-de-documentacion">Tipo de documentacion</label>
+                            <select name="Tipo-de-documentacion">
+                                <option value="DNI">DNI</option>
+                                <option value="CUIL">CUIL</option>
+                                <option value="PASAPORTE">PASAPORTE</option>
+                            </select>
+
+                        </div>
+
+                        <div class= "grid-item">
+                            <label>Numero<input type="number" name="documentacion" class="text-input"></label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="f-contacto">
+
+                    <h3 class="subtitulo" >Forma de contacto</h3>
+
+                    <div class="forma-de-contacto" >
+
+                        <div class= "grid-item">
+                            <label>Nombre<input type="text" name="" class="text-input"></label>
+                        </div>
+
+                        <div class= "grid-item">
+                            <label>Telefono<input type="tel" name="telefono" class="text-input"></label>
+                        </div>
+
+                        <div class= "grid-item">
+                            <label>Email<input type="email" name="email" class="text-input"></label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="p-contacto">
+
+                    <h3 class="subtitulo">Preferencia de contacto</h3>
+
+                    <div class="preferencia-de-contacto">
+
+                        <div class="checkbox">
+                            <input id="WhatsApp" name="contacto" type="checkbox" value="WhatsApp">
+                            <label for="WhatsApp">WhatsApp</label>
+                        </div>
+
+                        <div class="checkbox">
+                            <input id="SMS" name="contacto" type="checkbox" value="SMS">
+                            <label for="SMS">SMS</label>
+                        </div>
+
+                        <div class="checkbox">
+                            <input id="Email" name="contacto" type="checkbox" value="Email">
+                            <label for="Email">Email</label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="info-animal">
+
+                    <h3 class="subtitulo">Informacion del animal</h3>
+
+                    <div class="informacion-del-animal">
+
+                        <div class="grid-item">
+                            <label>Lugar donde la encontro<input type="textarea" name="lugar" class="text-input"></label>
+                        </div>
+
+                        <div class="grid-item">
+                            <label>Estado de la mascota<input type="textarea" name="estado" class="text-input"></label>
+                        </div>
+
+                        <div class="grid-item">
+                            <label>Direccion donde se hospedara la mascota<input type="text" name="direccion-de-mascota" class="text-input"></label>
+                        </div>
+
+                        <div class="boton">
+
+                            <nav class="boton-de-busqueda" style="margin-top: 29px;">  
+                                <a href="">BUSCAR HOGAR DE TRANSITO</a>
+                            </nav>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="s-imagen">
+
+                    <h3 class="subtitulo">Subir imagenes</h3>
+
+                    <div class=contenedor-imagen >
+
+                    <div></div>
+
+                    <div class="subir-imagen">
+                        <label>ELIGE UN ARCHIVO<input type="file" name="archivo" id="archivo" class="subir"></label>
+                    </div>
+
+                    </div>
+
+                    <div class="divisor">
+                        <div></div>
+                        <div></div>
+                        <input class="button" type="submit" value="ENVIAR EL FORMULARIO" style="text-align:end;">
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <footer>
+
+            <div class="contenedor-footer">
+
+                <p class="nosotros" style="text-align: start">Rescatenemos patitas es una asociación<br> sin fines de lucro abocada a difundir,<br> proteger y promover los derechos de<br> los animales.</p>
+
+                <p style="text-align: center">Mandanos un maill<br>patitas@gmail.com</p>
+              
+
+                <div class="redes-sociales" style="text-align: end">
+
+                    <a href="" class="button">
+                    <span class="icon-facebook"></span>
+                    </a>
+
+                    <a href="" class="button">
+                    <span class="icon-youtube"></span>
+                    </a>
+
+                    <a href="" class="button">
+                    <span class="icon-twitter"></span>
+                    </a>
+
+                    <a href="" class="button">
+                    <span class="icon-instagram"></span>
+                    </a>
+
+                </div>
+
+                <div></div>
+                
+                <p class="derechos" style="text-align: center">© 2021 - Todos los Derechos Reservados</p>
+
+            </div>
+
+        </footer>
+
+    </body>
+
+</html>

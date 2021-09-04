@@ -1,0 +1,46 @@
+.grid-select{
+    max-width: 250px;
+	position:relative;
+}
+
+.grid-select select::-ms-expand {
+    display: none;
+}
+ 
+.grid-select select{
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 10px;
+  	height: 42px;
+  	outline: 0; 
+  	border: none;
+	border-radius: 20px;
+	background-color: #ededed;
+	color: #333;
+	font-size: 14px;
+	font-family: 'Montserrat';
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.grid-select select:hover{
+	background: #ededed;
+}
+
+.grid-select i{
+	position: absolute;
+	right: 20px;
+	top: calc(50% - 13px);
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	border-left:4px solid #333;
+	border-bottom:4px solid #333;
+	transform: rotate(-45deg);
+	transition: all 0.25s ease;
+}
+ 
+.grid-select:hover i{
+	margin-top: 5px;
+}

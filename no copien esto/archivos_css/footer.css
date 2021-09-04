@@ -1,0 +1,27 @@
+footer{
+    width: 100%;
+    height: 210px;
+    background: #EECD15;
+    margin-top: 0px;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.contenedor-footer{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 45px;
+}
+
+.nosotros{
+    font-size: 13px;
+    text-justify: auto;
+}
+
+.derechos{
+    border-top: 1px solid #fff;
+    font-size: 10px;
+}
+

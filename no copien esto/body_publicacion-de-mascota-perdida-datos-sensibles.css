@@ -1,0 +1,57 @@
+@import url(casillas.css);
+
+.formulario-main{
+    background-image: url("archivos_css/fondo_claro.png");
+    background-size: 30%;
+    height: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario-mascota-perdida-con-chapita{
+    background: #fff;
+    height: 900px;
+    border-radius: 20px;
+}
+
+.datos-visibles{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr;
+    padding: 20px;
+}
+
+.grip-item, .text-input{
+    width: 100%;
+    background-color: #ededed;
+    border: none;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.grip-item label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.generar-publicacion{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+}
+
+.generar-publicacion a{
+    width: 200px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-style: solid;
+    border-color: #EECD15;
+    padding: 10px;
+    background: #EECD15;
+    cursor: pointer;
+}
