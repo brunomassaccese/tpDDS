@@ -9,21 +9,34 @@ import Domain.Publicacion.PublicacionAdoptante;
 import Domain.Publicacion.PublicacionMascotaEnAdopcion;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
-
+@Entity
+@Table
 public class Organizacion {
+    @Id
+    @GeneratedValue
+    private int id;
+    @Column
+    private String nombre;
+    @Transient
     private List<String> caracteristicas = null;
+    @Transient
     private List<Usuario> voluntarios = null;
+    @Transient
     private List<String> preguntasAdoptantes = null;
+    @Transient
     private List<PublicacionMascotaPerdida> publicacionesMascotaPerdidas = null;
+    @Transient
     private List<PublicacionMascotaEnAdopcion> publicacionesMascotaEnAdopcion = null;
+    @Transient
     private List<PublicacionAdoptante> publicacionesAdoptantes = null;
 
     //E2.P3
     public void generarVoluntario(String nombre, String apellido,
-                                  LocalDateTime fechaNacimiento, String direccion,
+                                  LocalDate fechaNacimiento, String direccion,
                                   TipoDeDocumento dni, List <Contacto> contactos,
                                   String nombreUsuario, String password){
         Usuario nuevoVoluntario = new Usuario(nombre, apellido, fechaNacimiento, direccion, dni, contactos, nombreUsuario, password, "VOLUNTARIO");     //Agregar organización?

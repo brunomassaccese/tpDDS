@@ -2,18 +2,18 @@ package Domain.Mascota;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "foto")
+//@Entity
+//@Table(name = "foto")
 public class Foto  {
-    @Id
-    @GeneratedValue
+ //   @Id
+  //  @GeneratedValue
     private int id;
 
-    @Column(name = "path")
+   // @Column(name = "path")
     private String path;
 
-    @ManyToOne
-    @JoinColumn(name = "mascota_id", referencedColumnName = "id")
+    //@ManyToOne
+    //@JoinColumn(name = "mascota_id", referencedColumnName = "id")
     private Mascota mascota;
 
     public Foto(String path) {

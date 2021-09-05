@@ -26,30 +26,31 @@ public class Mascota implements Estado {
 
     @Column(name = "sexo")
     private String sexo;
-
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "estado_id")
+    @Transient
+//    @OneToOne(cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "estado_id")
     private Estado estado;
 
     @Column(name = "descripcion")
     private String descripcion;
-
-    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @Transient
+    //   @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Foto> fotos = null;
-
-    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @Transient
+//    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<String> caracteristicas = null;
-
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "chapa_id")
+    @Transient
+//    @OneToOne(cascade = {CascadeType.ALL})
+    //   @JoinColumn(name = "chapa_id")
     private Chapa chapa;
-
-    @ManyToOne
-    @JoinColumn(name = "duenio_id", referencedColumnName = "id")
+    @Transient
+    //  @ManyToOne
+    // @JoinColumn(name = "duenio_id", referencedColumnName = "id")
     private Usuario duenio = null;
 
     @Column(name = "tipo")
     private String tipo;
+
 
     public Mascota(String tipo, String nombre, String apodo, Integer edad, String sexo, Estado estado, String descripcion, List<Foto> fotos, List<String> caracteristicas, Chapa chapa, Usuario duenio) {
         this.tipo = tipo;
@@ -64,6 +65,7 @@ public class Mascota implements Estado {
         this.chapa = chapa;
         this.duenio = duenio;
     }
+
 
     public String getNombre() {
         return nombre;

@@ -4,13 +4,13 @@ import Domain.Organizacion.Organizacion;
 import Domain.Publicacion.PublicacionAdoptante;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Administrador extends Usuario {
 
 
-    public Administrador(String nombre, String apellido, LocalDateTime fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
+    public Administrador(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
         super(nombre, apellido, fechaNacimiento, direccion, dni, contactos, nombreUsuario, password, perfil);
     }
 

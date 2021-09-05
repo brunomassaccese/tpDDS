@@ -7,7 +7,7 @@ import Domain.Organizacion.Organizacion;
 import Domain.Publicacion.PublicacionAdoptante;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.*;
@@ -25,7 +25,7 @@ public class Usuario extends Persona implements Strategy {
 
     private String perfil = null;
 
-    public Usuario(String nombre, String apellido, LocalDateTime fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
+    public Usuario(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
         super(nombre, apellido, fechaNacimiento, direccion, dni, contactos);
         this.nombreUsuario = nombreUsuario;
         this.password = password;

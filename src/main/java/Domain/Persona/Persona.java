@@ -22,19 +22,19 @@ public class Persona {
     @Column(name = "nombre")
     public String nombre;
 
-    @Column(name = "nombre")
+    @Column(name = "apellido")
     public  String apellido;
 
     @Column(name = "fechaDeNacimiento", columnDefinition = "DATE")
     public LocalDate fechaNacimiento;
 
-    @Column(name = "nombre")
+    @Column(name = "direccion")
     public String direccion;
 
     //ver
     public TipoDeDocumento dni;
-
-    //ver
+@Transient
+    //ver@
     public List <Contacto> contactos;
 
     public Persona(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos) {
