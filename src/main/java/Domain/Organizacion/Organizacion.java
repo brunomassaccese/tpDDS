@@ -22,9 +22,10 @@ public class Organizacion {
     @Column
     private String nombre;
     @OneToMany
-    @JoinColumn(name = "caracteristica_id", referencedColumnName = "id")
+    @JoinColumn(name = "caracteristica_id")
     private List<Caracteristica> caracteristicas = null;
-    @Transient
+    @Transient //ver aca el modelado, si no serían personas o que hacer
+    //TODO
     //@OneToMany
     //@JoinColumn(name = "organizacion_id", referencedColumnName = "id")
     private List<Usuario> voluntarios = null;

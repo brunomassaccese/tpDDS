@@ -1,20 +1,22 @@
 package Domain.Publicacion;
 
+import Domain.Organizacion.Caracteristica;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "publicacion_adoptante")
 public class PublicacionAdoptante {
     @Id
     @GeneratedValue
     private int id;
     @Transient
-    private List<Preferencia> preferecnias = null;
-    @Transient
+    private List<Caracteristica> preferecnias = null;
+    @Column
     private Boolean estadoDePublicacion = null;
 
-    public PublicacionAdoptante(List<Preferencia> preferecnias) {
+    public PublicacionAdoptante(List<Caracteristica> preferecnias) {
         this.preferecnias = preferecnias;
         this.estadoDePublicacion = false;
     }
@@ -28,11 +30,11 @@ public class PublicacionAdoptante {
 
     }
 
-    public List<Preferencia> getPreferecnias() {
+    public List<Caracteristica> getPreferecnias() {
         return preferecnias;
     }
 
-    public void setPreferecnias(List<Preferencia> preferecnias) {
+    public void setPreferecnias(List<Caracteristica> preferecnias) {
         this.preferecnias = preferecnias;
     }
 }

@@ -3,17 +3,16 @@ package Domain.Persona;
 import Domain.EstrategiaDeNotificacion.Notificacion;
 import Domain.EstrategiaDeNotificacion.Strategy;
 import Domain.Mascota.Mascota;
+import Domain.Organizacion.Caracteristica;
 import Domain.Organizacion.Organizacion;
 import Domain.Organizacion.Pregunta;
 import Domain.Organizacion.Respuesta;
-import Domain.Publicacion.Preferencia;
 import Domain.Publicacion.PublicacionAdoptante;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.*;
 //@Entity
 //@Table
 public class Usuario extends Persona implements Strategy {
@@ -22,7 +21,7 @@ public class Usuario extends Persona implements Strategy {
     private int id;
     //@Transient
     private String nombreUsuario;
-
+    private Rol rol;
     //@Transient
     private String password;
 
@@ -67,7 +66,7 @@ public class Usuario extends Persona implements Strategy {
     }
 
     //E3.P4
-    public void quieroAdoptar(List<Preferencia> preferencias, Organizacion organizacion){
+    public void quieroAdoptar(List<Caracteristica> preferencias, Organizacion organizacion){
         PublicacionAdoptante nuevaPublicacion = new PublicacionAdoptante(preferencias);
         organizacion.agregarPublicacionAdoptante(nuevaPublicacion);
     }
