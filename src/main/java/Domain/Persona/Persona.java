@@ -12,7 +12,8 @@ import java.util.Scanner;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "persona")
+@Table
+
 public class Persona {
 
     @Id

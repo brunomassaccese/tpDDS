@@ -1,6 +1,7 @@
 package Domain.Mascota;
 
 import Domain.Mascota.Chapa.Chapa;
+import Domain.Organizacion.Caracteristica;
 import Domain.Persona.Usuario;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public class Mascota implements Estado {
     private List<Foto> fotos = null;
     @Transient
 //    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    private List<String> caracteristicas = null;
+    private List<Caracteristica> caracteristicas = null;
     @Transient
 //    @OneToOne(cascade = {CascadeType.ALL})
     //   @JoinColumn(name = "chapa_id")
@@ -52,7 +53,7 @@ public class Mascota implements Estado {
     private String tipo;
 
 
-    public Mascota(String tipo, String nombre, String apodo, Integer edad, String sexo, Estado estado, String descripcion, List<Foto> fotos, List<String> caracteristicas, Chapa chapa, Usuario duenio) {
+    public Mascota(String tipo, String nombre, String apodo, Integer edad, String sexo, Estado estado, String descripcion, List<Foto> fotos, List<Caracteristica> caracteristicas, Chapa chapa, Usuario duenio) {
         this.tipo = tipo;
         this.nombre = nombre;
         this.apodo = apodo;

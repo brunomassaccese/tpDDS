@@ -3,10 +3,20 @@ package Domain.Publicacion;
 import Domain.Mascota.Chapa.Formulario;
 import Domain.Mascota.Mascota;
 
-public class PublicacionMascotaPerdida {
+import javax.persistence.*;
 
+@Entity
+@Table
+public class PublicacionMascotaPerdida {
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Transient
     private Mascota mascotaPerdida;
+    @Transient
     private Formulario formulario;
+    @Transient
     private Boolean estadoDePublicacion;
 
     public PublicacionMascotaPerdida(Mascota mascotaPerdida, Formulario formulario) {

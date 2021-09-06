@@ -1,6 +1,8 @@
 package Domain.Persona;
 
+import Domain.Organizacion.Caracteristica;
 import Domain.Organizacion.Organizacion;
+import Domain.Organizacion.Pregunta;
 import Domain.Publicacion.PublicacionAdoptante;
 
 import java.sql.Timestamp;
@@ -14,22 +16,22 @@ public class Administrador extends Usuario {
         super(nombre, apellido, fechaNacimiento, direccion, dni, contactos, nombreUsuario, password, perfil);
     }
 
-    public void agregarCarcateristicas(Organizacion organizacion, String nuevaCaracteristica) {
+    public void agregarCarcateristicas(Organizacion organizacion, Caracteristica nuevaCaracteristica) {
         organizacion.agregarCaracteristica(nuevaCaracteristica);
     }
 
     //E3.P2
-    public void agregarPregunta(Organizacion organizacion, String nuevaPregunta){
+    public void agregarPregunta(Organizacion organizacion, Pregunta nuevaPregunta){
         organizacion.agregarPreguntaAdoptantes(nuevaPregunta);
     }
 
     //E3.P2
-    public void EliminarPregunta(Organizacion organizacion, String preguntaAEliminar){
+    public void EliminarPregunta(Organizacion organizacion, Pregunta preguntaAEliminar){
         organizacion.eliminarPreguntaAdoptantes(preguntaAEliminar);
     }
 
     //E3.P2
-    public void modificarPregunta(Organizacion organizacion, String viejaPregunta, String nuevaPregunta){
+    public void modificarPregunta(Organizacion organizacion, Pregunta viejaPregunta, Pregunta nuevaPregunta){
         organizacion.modificarPreguntaAdoptantes(viejaPregunta, nuevaPregunta);
     }
 

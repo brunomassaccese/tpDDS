@@ -4,6 +4,9 @@ import Domain.EstrategiaDeNotificacion.Notificacion;
 import Domain.EstrategiaDeNotificacion.Strategy;
 import Domain.Mascota.Mascota;
 import Domain.Organizacion.Organizacion;
+import Domain.Organizacion.Pregunta;
+import Domain.Organizacion.Respuesta;
+import Domain.Publicacion.Preferencia;
 import Domain.Publicacion.PublicacionAdoptante;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
@@ -11,18 +14,23 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.*;
-
+//@Entity
+//@Table
 public class Usuario extends Persona implements Strategy {
-
+    //@Id
+    //@GeneratedValue
+    private int id;
+    //@Transient
     private String nombreUsuario;
 
-
+    //@Transient
     private String password;
 
-    @OneToMany(mappedBy = "duenio", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    //@Transient
+    //@OneToMany(mappedBy = "duenio", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Mascota> mascotas = null;
 
-
+    //@Transient
     private String perfil = null;
 
     public Usuario(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
@@ -54,12 +62,12 @@ public class Usuario extends Persona implements Strategy {
     }
 
     //E3.P1
-    public void darEnAdopcion(Mascota miMascota, Organizacion organizacion, List<String> preguntas, List<String> respuestas){
+    public void darEnAdopcion(Mascota miMascota, Organizacion organizacion, List<Pregunta> preguntas, List<Respuesta> respuestas){
         organizacion.solicitarPublicacionEnAdopcion(miMascota, this, preguntas, respuestas);
     }
 
     //E3.P4
-    public void quieroAdoptar(List<String> preferencias, Organizacion organizacion){
+    public void quieroAdoptar(List<Preferencia> preferencias, Organizacion organizacion){
         PublicacionAdoptante nuevaPublicacion = new PublicacionAdoptante(preferencias);
         organizacion.agregarPublicacionAdoptante(nuevaPublicacion);
     }

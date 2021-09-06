@@ -21,17 +21,24 @@ public class Organizacion {
     private int id;
     @Column
     private String nombre;
+    @OneToMany
+    @JoinColumn(name = "caracteristica_id", referencedColumnName = "id")
+    private List<Caracteristica> caracteristicas = null;
     @Transient
-    private List<String> caracteristicas = null;
-    @Transient
+    //@OneToMany
+    //@JoinColumn(name = "organizacion_id", referencedColumnName = "id")
     private List<Usuario> voluntarios = null;
-    @Transient
-    private List<String> preguntasAdoptantes = null;
-    @Transient
+    @OneToMany
+    @JoinColumn(name = "pregunta_id", referencedColumnName = "id")
+    private List<Pregunta> preguntasAdoptantes = null;
+    @OneToMany
+    @JoinColumn(name = "publicacionMascotaPerdida_id", referencedColumnName = "id")
     private List<PublicacionMascotaPerdida> publicacionesMascotaPerdidas = null;
-    @Transient
+    @OneToMany
+    @JoinColumn(name = "publicacionMascotaAdopcion_id", referencedColumnName = "id")
     private List<PublicacionMascotaEnAdopcion> publicacionesMascotaEnAdopcion = null;
-    @Transient
+    @OneToMany
+    @JoinColumn(name = "publicacionAdoptante_id", referencedColumnName = "id")
     private List<PublicacionAdoptante> publicacionesAdoptantes = null;
 
     //E2.P3
@@ -44,17 +51,16 @@ public class Organizacion {
         this.voluntarios.add(nuevoVoluntario);
     }
 
-    public void agregarCaracteristica(String nuevaCaracteristica){
+    public void agregarCaracteristica(Caracteristica nuevaCaracteristica){
         caracteristicas.add(nuevaCaracteristica);
     }
 
-    public void agregarPreguntaAdoptantes(String nuevaPregunta){
+    public void agregarPreguntaAdoptantes(Pregunta nuevaPregunta){
         this.preguntasAdoptantes.add(nuevaPregunta);
     }
 
-    public void eliminarPreguntaAdoptantes(String preguntaAEliminar){
-        this.preguntasAdoptantes = (List<String>) this.preguntasAdoptantes.stream().filter(
-                pregunta -> pregunta != preguntaAEliminar);
+    public void eliminarPreguntaAdoptantes(Pregunta preguntaAEliminar){
+        this.preguntasAdoptantes.remove(preguntaAEliminar);
     }
 
     public List<PublicacionMascotaPerdida> buscarMascota(){
@@ -86,7 +92,7 @@ public class Organizacion {
         //TODO
     }
 
-    public void solicitarPublicacionEnAdopcion(Mascota mascota, Usuario duenio, List<String> preguntas, List<String> respuestas) {
+    public void solicitarPublicacionEnAdopcion(Mascota mascota, Usuario duenio, List<Pregunta> preguntas, List<Respuesta> respuestas) {
         Timestamp newTimestamp = new Timestamp(System.currentTimeMillis());
         PublicacionMascotaEnAdopcion nuevaPublicacion = new PublicacionMascotaEnAdopcion(duenio, mascota, newTimestamp, preguntas, respuestas);
         this.agregarPublicacionMascotaEnAdopcion(nuevaPublicacion);
@@ -110,7 +116,7 @@ public class Organizacion {
         //VER FORMA DE REFACTORIZAR ESTO
     }
 
-    public void modificarPreguntaAdoptantes(String viejaPregunta, String nuevaPregunta) {
+    public void modificarPreguntaAdoptantes(Pregunta viejaPregunta, Pregunta nuevaPregunta) {
         this.eliminarPreguntaAdoptantes(viejaPregunta);
         this.agregarPreguntaAdoptantes(nuevaPregunta);
     }
