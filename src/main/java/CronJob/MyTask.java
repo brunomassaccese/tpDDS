@@ -12,21 +12,21 @@ import org.quartz.impl.StdSchedulerFactory;
 public class MyTask {
     public static void main(String[] args) {
         try {
-            JobDetail job1 = JobBuilder.newJob(Job1.class)
-                    .withIdentity("job1", "group1").build();
+            JobDetail jobRecomendacionSemanal = JobBuilder.newJob(RecomendacionSemanal.class)
+                    .withIdentity("RecomendacionSemanal", "group1").build();
 
-            Trigger trigger1 = TriggerBuilder.newTrigger()
+            Trigger triggerRecomendacionSemanal = TriggerBuilder.newTrigger()
                     .withIdentity("cronTrigger1", "group1")
                     .withSchedule(CronScheduleBuilder.weeklyOnDayAndHourAndMinute(1, 13, 00))   //se ejecuta semanalmente
                     .build();
 
-            Scheduler scheduler1 = new StdSchedulerFactory().getScheduler();
-            scheduler1.start();
-            scheduler1.scheduleJob(job1, trigger1);
+            Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+            scheduler.start();
+            scheduler.scheduleJob(jobRecomendacionSemanal, triggerRecomendacionSemanal);
 
             Thread.sleep(100000);
 
-            scheduler1.shutdown();
+            scheduler.shutdown();
 
         } catch (Exception e) {
             e.printStackTrace();
