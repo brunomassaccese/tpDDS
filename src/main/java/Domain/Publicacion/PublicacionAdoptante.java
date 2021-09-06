@@ -15,9 +15,6 @@ public class PublicacionAdoptante {
 
     @Transient
     private List<Caracteristica> preferencias = null;
-
-    @Transient
-    private List<Caracteristica> preferecnias = null;
     @Transient
     private List<Comodidad> comodidades = null;
 
@@ -44,11 +41,16 @@ public class PublicacionAdoptante {
     }
 
     public List<Caracteristica> getPreferecnias() {
-        return preferecnias;
+        return preferencias;
     }
 
     public void setPreferecnias(List<Caracteristica> preferecnias) {
-        this.preferecnias = preferecnias;
+        this.preferencias = preferecnias;
+    }
+
+    public List<Caracteristica> getPreferencias() {
+        return preferencias;
+    }
 
     public Usuario getAdoptante() {
         return adoptante;
