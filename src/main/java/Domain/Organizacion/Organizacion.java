@@ -13,6 +13,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
+
 @Entity
 @Table
 public class Organizacion {
@@ -120,4 +121,33 @@ public class Organizacion {
         this.eliminarPreguntaAdoptantes(viejaPregunta);
         this.agregarPreguntaAdoptantes(nuevaPregunta);
     }
+
+    public void recomendar(){
+        this.publicacionesAdoptantes.forEach(publicacion -> this.enviarRecomendaciones(publicacion));
+    }
+
+    public void enviarRecomendaciones(PublicacionAdoptante publicacionAdoptante){
+        List<PublicacionMascotaPerdida> publicacionesMascotas = null;
+        publicacionesMascotas = (List<PublicacionMascotaPerdida>) this.publicacionesMascotaPerdidas.stream().filter(publicacionMascota -> matcheo(publicacionMascota, publicacionAdoptante));
+
+        if (publicacionesMascotas != null){
+            String posiblesMascotas = null;
+
+            for(int i = 0; i < publicacionesMascotas.stream().count(); i++){
+                posiblesMascotas = posiblesMascotas + ", " + publicacionesMascotas.get(i).getMascotaPerdida().getNombre();
+            }
+            String mensaje = "Mascotas recomendadas de la semana:" + posiblesMascotas;
+            Contacto contactoDuenioDeMascota = publicacionAdoptante.getAdoptante().obtenerContactoPorDefecto();
+            Notificacion nuevaNotificacion = new Notificacion(contactoDuenioDeMascota.getFormaDeContacto());
+        }
+    }
+
+    // si el adoptante tiene al menos 3 preferencias que coinciden con las características de la mascota y
+    // al menos 3 comodidades que necesita la mascota, hacen match
+    public boolean matcheo(PublicacionMascotaPerdida publicacionMascota, PublicacionAdoptante publicacionAdoptante){
+        return publicacionAdoptante.getPreferencias().stream().filter(preferencia -> publicacionMascota.getMascotaPerdida().getCaracteristicas().contains(preferencia)).count() >= 3
+                && publicacionAdoptante.getComodidades().stream().filter(comodidad -> publicacionMascota.getMascotaPerdida().getNecesidades().contains(comodidad)).count() >= 3;
+    }
+
+
 }
