@@ -1,7 +1,8 @@
 package Domain.Publicacion;
 
 import Domain.Organizacion.Caracteristica;
-
+import Domain.Persona.Persona;
+import Domain.Persona.Usuario;
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,13 +12,25 @@ public class PublicacionAdoptante {
     @Id
     @GeneratedValue
     private int id;
+
+    @Transient
+    private List<Caracteristica> preferencias = null;
+
     @Transient
     private List<Caracteristica> preferecnias = null;
-    @Column
+    @Transient
+    private List<Comodidad> comodidades = null;
+
+    @Transient
+    private Usuario adoptante = null;
+
+    @Transient
     private Boolean estadoDePublicacion = null;
 
-    public PublicacionAdoptante(List<Caracteristica> preferecnias) {
-        this.preferecnias = preferecnias;
+    public PublicacionAdoptante(Usuario adoptante, List<Caracteristica> preferecnias, List<Comodidad> comodidades) {
+        this.adoptante = adoptante;
+        this.preferencias.addAll(preferecnias);
+        this.comodidades.addAll(comodidades);
         this.estadoDePublicacion = false;
     }
 
@@ -36,5 +49,12 @@ public class PublicacionAdoptante {
 
     public void setPreferecnias(List<Caracteristica> preferecnias) {
         this.preferecnias = preferecnias;
+
+    public Usuario getAdoptante() {
+        return adoptante;
+    }
+
+    public List<Comodidad> getComodidades() {
+        return comodidades;
     }
 }
