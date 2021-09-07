@@ -2,13 +2,36 @@ package Domain.Persona;
 
 import Domain.EstrategiaDeNotificacion.Strategy;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "contacto")
 public class Contacto {
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Column(name = "formaDeContacto")
     private Strategy formaDeContacto = null;
+
+    @Column(name = "nombre")
     private String nombre = null;
+
+    @Column(name = "apellido")
     private String apellido = null;
+
+    @Column(name = "telefono")
     private String telefono = null;
+
+    @Column(name = "email")
     private String email = null;
+
+    @Column(name = "contactoPorDefecto")
     private boolean contactoPorDefecto;
+
+    @ManyToOne
+    @JoinColumn(name="persona_id", referencedColumnName = "id")
+    private Integer idPersona;
 
     public Contacto(Strategy formaDeContacto, String nombre, String apellido, String telefono, String email, boolean contactoPorDefecto) {
         this.formaDeContacto = formaDeContacto;

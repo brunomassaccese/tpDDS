@@ -35,8 +35,8 @@ public class Usuario extends Persona implements Strategy {
     @Column(name = "perfil")
     private String perfil = null;
 
-    public Usuario(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
-        super(nombre, apellido, fechaNacimiento, direccion, dni, contactos);
+    public Usuario(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento tipoDeDocumento, String documento, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
+        super(nombre, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos);
         this.nombre = nombreUsuario;
         this.password = password;
         this.perfil = perfil;

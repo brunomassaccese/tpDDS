@@ -33,19 +33,25 @@ public class Persona {
     @Column(name = "direccion")
     public String direccion;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "documento_id")
-    public TipoDeDocumento dni;
+    //@OneToOne(cascade = {CascadeType.ALL})
+    //@JoinColumn(name = "documento_id")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoDocumento")
+    public TipoDeDocumento tipoDeDocumento;
 
-    @OneToMany(mappedBy = "persona", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @Column(name = "documento")
+    public String documento;
+
+    @OneToMany(mappedBy = "idUsuario", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     public List <Contacto> contactos;
 
-    public Persona(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos) {
+    public Persona(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento tipoDocumento, String documento, List<Contacto> contactos) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
-        this.dni = dni;
+        this.tipoDeDocumento = tipoDocumento;
+        this.documento = documento;
         this.contactos = contactos;
     }
 

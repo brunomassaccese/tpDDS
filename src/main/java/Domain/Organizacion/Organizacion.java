@@ -46,9 +46,9 @@ public class Organizacion {
     //E2.P3
     public void generarVoluntario(String nombre, String apellido,
                                   LocalDate fechaNacimiento, String direccion,
-                                  TipoDeDocumento dni, List <Contacto> contactos,
+                                  TipoDeDocumento tipoDeDocumento, String documento, List <Contacto> contactos,
                                   String nombreUsuario, String password){
-        Usuario nuevoVoluntario = new Usuario(nombre, apellido, fechaNacimiento, direccion, dni, contactos, nombreUsuario, password, "VOLUNTARIO");     //Agregar organización?
+        Usuario nuevoVoluntario = new Usuario(nombre, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos, nombreUsuario, password, "VOLUNTARIO");     //Agregar organización?
 
         this.voluntarios.add(nuevoVoluntario);
     }
