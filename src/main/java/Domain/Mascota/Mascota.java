@@ -48,7 +48,7 @@ public class Mascota implements Estado {
 
     @ManyToOne
     @JoinColumn(name = "duenio_id", referencedColumnName = "id")
-    private Usuario duenio = null; //ESTOY ACA PERSISTIENDO
+    private Usuario duenio = null;
 
     @Column(name = "tipo")
     private String tipo;
