@@ -28,9 +28,9 @@ public class Mascota implements Estado {
 
     @Column(name = "sexo")
     private String sexo;
-
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "estado_id")
+    @Transient
+//    @OneToOne(cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "estado_id")
     private Estado estado;
 
     @Column(name = "descripcion")
@@ -42,8 +42,9 @@ public class Mascota implements Estado {
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Caracteristica> caracteristicas = null;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "chapa_id")
+    @Transient
+    //@OneToOne(cascade = {CascadeType.ALL})
+    //@JoinColumn(name = "chapa_id")
     private Chapa chapa;
 
     @ManyToOne
@@ -52,8 +53,8 @@ public class Mascota implements Estado {
 
     @Column(name = "tipo")
     private String tipo;
-
-    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @Transient
+//    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Comodidad> necesidades = null;
 
 
