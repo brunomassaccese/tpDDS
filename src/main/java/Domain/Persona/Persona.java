@@ -12,8 +12,9 @@ import java.util.Scanner;
 import javax.persistence.*;
 
 @Entity
-@Table
-
+@Table(name = "persona")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo")
 public class Persona {
 
     @Id
@@ -32,10 +33,11 @@ public class Persona {
     @Column(name = "direccion")
     public String direccion;
 
-    //ver
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "documento_id")
     public TipoDeDocumento dni;
-@Transient
-    //ver@
+
+    @OneToMany(mappedBy = "persona", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     public List <Contacto> contactos;
 
     public Persona(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos) {

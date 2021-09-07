@@ -5,10 +5,14 @@ import Domain.Organizacion.Organizacion;
 import Domain.Organizacion.Pregunta;
 import Domain.Publicacion.PublicacionAdoptante;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
+@DiscriminatorValue("administrador")
 public class Administrador extends Usuario {
 
 

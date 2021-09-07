@@ -9,8 +9,10 @@ public class Rol {
     @Id
     @GeneratedValue
     private int id;
-    @Column
+
+    @Column(name = "nombre")
     private String nombre;
+
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Permiso> permisos;
 

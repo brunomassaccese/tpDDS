@@ -14,28 +14,30 @@ import Domain.Publicacion.PublicacionMascotaPerdida;
 import java.time.LocalDate;
 import java.util.List;
 
-//@Entity
-//@Table
+import javax.persistence.*;
+
+@Entity
+@DiscriminatorValue("usuario")
 public class Usuario extends Persona implements Strategy {
-    //@Id
-    //@GeneratedValue
+    @Id
+    @GeneratedValue
     private int id;
-    //@Transient
-    private String nombreUsuario;
+
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private Rol rol;
-    //@Transient
+
+    @Column(name = "password")
     private String password;
 
-    //@Transient
-    //@OneToMany(mappedBy = "duenio", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "duenio", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Mascota> mascotas = null;
 
-    //@Transient
+    @Column(name = "perfil")
     private String perfil = null;
 
     public Usuario(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
         super(nombre, apellido, fechaNacimiento, direccion, dni, contactos);
-        this.nombreUsuario = nombreUsuario;
+        this.nombre = nombreUsuario;
         this.password = password;
         this.perfil = perfil;
     }

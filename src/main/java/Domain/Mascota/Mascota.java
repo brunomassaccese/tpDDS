@@ -28,32 +28,32 @@ public class Mascota implements Estado {
 
     @Column(name = "sexo")
     private String sexo;
-    @Transient
-//    @OneToOne(cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "estado_id")
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "estado_id")
     private Estado estado;
 
     @Column(name = "descripcion")
     private String descripcion;
-    @Transient
-    //   @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Foto> fotos = null;
 
-    @Transient
-//    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Caracteristica> caracteristicas = null;
-    @Transient
-//    @OneToOne(cascade = {CascadeType.ALL})
-    //   @JoinColumn(name = "chapa_id")
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "chapa_id")
     private Chapa chapa;
-    @Transient
-    //  @ManyToOne
-    // @JoinColumn(name = "duenio_id", referencedColumnName = "id")
-    private Usuario duenio = null;
+
+    @ManyToOne
+    @JoinColumn(name = "duenio_id", referencedColumnName = "id")
+    private Usuario duenio = null; //ESTOY ACA PERSISTIENDO
 
     @Column(name = "tipo")
     private String tipo;
 
+    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Comodidad> necesidades = null;
 
 

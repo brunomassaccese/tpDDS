@@ -10,17 +10,8 @@ import java.time.LocalDate;
 public class EmTest{
 
     @Test
-    public void persistir1UsuarioTest(){
+    public void persistir1Mascota(){
 
     }
 
-    @Test
-    public void recuperandoAEze(){
-
-    }
-
-    @Test
-    public void persistir2Aporte(){
-
-    }
 }

@@ -8,7 +8,8 @@ public class Caracteristica {
     @Id
     @GeneratedValue
     private int id;
-    @Column
+
+    @Column(name = "nombre")
     private String nombre;
 
     public String getNombre() {
