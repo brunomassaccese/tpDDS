@@ -11,7 +11,7 @@ public class Contacto {
     @GeneratedValue
     private int id;
 
-    @Column(name = "formaDeContacto")
+    @Transient
     private Strategy formaDeContacto = null;
 
     @Column(name = "nombre")
@@ -31,7 +31,7 @@ public class Contacto {
 
     @ManyToOne
     @JoinColumn(name="persona_id", referencedColumnName = "id")
-    private Integer idPersona;
+    private Persona idPersona;
 
     public Contacto(Strategy formaDeContacto, String nombre, String apellido, String telefono, String email, boolean contactoPorDefecto) {
         this.formaDeContacto = formaDeContacto;

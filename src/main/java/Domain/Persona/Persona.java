@@ -30,8 +30,8 @@ public class Persona {
     @Column(name = "fechaDeNacimiento", columnDefinition = "DATE")
     public LocalDate fechaNacimiento;
 
-    @Column(name = "direccion")
-    public String direccion;
+    @OneToOne
+    public Direccion direccion;
 
     //@OneToOne(cascade = {CascadeType.ALL})
     //@JoinColumn(name = "documento_id")
@@ -42,10 +42,10 @@ public class Persona {
     @Column(name = "documento")
     public String documento;
 
-    @OneToMany(mappedBy = "idUsuario", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    public List <Contacto> contactos;
+    @OneToMany(mappedBy = "idPersona", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    public List<Contacto> contactos;
 
-    public Persona(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento tipoDocumento, String documento, List<Contacto> contactos) {
+    public Persona(String nombre, String apellido, LocalDate fechaNacimiento, Direccion direccion, TipoDeDocumento tipoDocumento, String documento, List<Contacto> contactos) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;

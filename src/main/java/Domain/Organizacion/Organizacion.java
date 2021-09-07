@@ -3,6 +3,7 @@ package Domain.Organizacion;
 import Domain.EstrategiaDeNotificacion.Notificacion;
 import Domain.Mascota.Mascota;
 import Domain.Persona.Contacto;
+import Domain.Persona.Direccion;
 import Domain.Persona.TipoDeDocumento;
 import Domain.Persona.Usuario;
 import Domain.Publicacion.PublicacionAdoptante;
@@ -25,10 +26,8 @@ public class Organizacion {
     @OneToMany
     @JoinColumn(name = "caracteristica_id")
     private List<Caracteristica> caracteristicas = null;
-    @Transient //ver aca el modelado, si no serían personas o que hacer
-    //TODO
-    //@OneToMany
-    //@JoinColumn(name = "organizacion_id", referencedColumnName = "id")
+    @OneToMany
+    @JoinColumn(name = "organizacion_id", referencedColumnName = "id")
     private List<Usuario> voluntarios = null;
     @OneToMany
     @JoinColumn(name = "pregunta_id", referencedColumnName = "id")
@@ -45,7 +44,7 @@ public class Organizacion {
 
     //E2.P3
     public void generarVoluntario(String nombre, String apellido,
-                                  LocalDate fechaNacimiento, String direccion,
+                                  LocalDate fechaNacimiento, Direccion direccion,
                                   TipoDeDocumento tipoDeDocumento, String documento, List <Contacto> contactos,
                                   String nombreUsuario, String password){
         Usuario nuevoVoluntario = new Usuario(nombre, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos, nombreUsuario, password, "VOLUNTARIO");     //Agregar organización?

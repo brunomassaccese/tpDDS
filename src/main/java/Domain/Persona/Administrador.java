@@ -16,7 +16,7 @@ import java.util.List;
 public class Administrador extends Usuario {
 
 
-    public Administrador(String nombre, String apellido, LocalDate fechaNacimiento, String direccion, TipoDeDocumento dni, String documento, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
+    public Administrador(String nombre, String apellido, LocalDate fechaNacimiento, Direccion direccion, TipoDeDocumento dni, String documento, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
         super(nombre, apellido, fechaNacimiento, direccion, dni, documento, contactos, nombreUsuario, password, perfil);
     }
 
