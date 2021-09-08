@@ -18,7 +18,7 @@ public class PublicacionAdoptante {
     @OneToMany
     private List<Comodidad> comodidades = null;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "adoptante_id")
     private Usuario adoptante = null;
 

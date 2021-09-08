@@ -18,7 +18,7 @@ public class PublicacionMascotaEnAdopcion {
     public Timestamp timestamp;
     @Column
     private Boolean estadoDePublicacion;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "duenio_id")
     private Usuario duenio = null;
     @OneToOne
