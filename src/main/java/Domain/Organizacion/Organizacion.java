@@ -23,8 +23,7 @@ public class Organizacion {
     private int id;
     @Column
     private String nombre;
-    @OneToMany
-    @JoinColumn(name = "caracteristica_id")
+    @ManyToMany
     private List<Caracteristica> caracteristicas = null;
     @OneToMany
     @JoinColumn(name = "organizacion_id", referencedColumnName = "id")
@@ -33,7 +32,7 @@ public class Organizacion {
     @JoinColumn(name = "pregunta_id", referencedColumnName = "id")
     private List<Pregunta> preguntasAdoptantes = null;
     @OneToMany
-    @JoinColumn(name = "publicacionMascotaPerdida_id", referencedColumnName = "id")
+   // @JoinColumn(name = "publicacionMascotaPerdida_id", referencedColumnName = "id")
     private List<PublicacionMascotaPerdida> publicacionesMascotaPerdidas = null;
     @OneToMany
     @JoinColumn(name = "publicacionMascotaAdopcion_id", referencedColumnName = "id")
@@ -103,7 +102,7 @@ public class Organizacion {
 
         for(int i = 0; i < publicacionesMascotaEnAdopcion.size(); i++){
             PublicacionMascotaEnAdopcion publi = publicacionesMascotaEnAdopcion.get(i);
-            if(publicacionesMascotaEnAdopcion.get(i).estado() == false && publi.getTimestamp() == timestamp) {
+            if(publicacionesMascotaEnAdopcion.get(i).estado()  && publi.getTimestamp() == timestamp) {
                 publi.aprobar();
                 publicacionesMascotaEnAdopcion.remove(i);
                 publicacionesMascotaEnAdopcion.add(i, publi);
@@ -148,6 +147,5 @@ public class Organizacion {
         return publicacionAdoptante.getPreferencias().stream().filter(preferencia -> publicacionMascota.getMascotaPerdida().getCaracteristicas().contains(preferencia)).count() >= 3
                 && publicacionAdoptante.getComodidades().stream().filter(comodidad -> publicacionMascota.getMascotaPerdida().getNecesidades().contains(comodidad)).count() >= 3;
     }
-
 
 }

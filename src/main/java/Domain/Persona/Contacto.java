@@ -11,7 +11,7 @@ public class Contacto {
     @GeneratedValue
     private int id;
 
-    @Transient
+    @Transient //VER VIDEO DE REPUTACION TODO
     private Strategy formaDeContacto = null;
 
     @Column(name = "nombre")

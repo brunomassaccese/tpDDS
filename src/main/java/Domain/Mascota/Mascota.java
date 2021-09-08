@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "mascota")
-public class Mascota implements Estado {
+public class Mascota {
 
     @Id
     @GeneratedValue
@@ -28,13 +28,13 @@ public class Mascota implements Estado {
 
     @Column(name = "sexo")
     private String sexo;
-    @Transient
-//    @OneToOne(cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "estado_id")
+    @Enumerated
     private Estado estado;
 
     @Column(name = "descripcion")
     private String descripcion;
+    @Column
+    private String chapita;
 
     @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Foto> fotos = null;
@@ -43,8 +43,6 @@ public class Mascota implements Estado {
     private List<Caracteristica> caracteristicas = null;
 
     @Transient
-    //@OneToOne(cascade = {CascadeType.ALL})
-    //@JoinColumn(name = "chapa_id")
     private Chapa chapa;
 
     @ManyToOne

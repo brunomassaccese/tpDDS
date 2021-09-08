@@ -33,8 +33,6 @@ public class Persona {
     @OneToOne
     public Direccion direccion;
 
-    //@OneToOne(cascade = {CascadeType.ALL})
-    //@JoinColumn(name = "documento_id")
     @Enumerated(EnumType.STRING)
     @Column(name = "tipoDocumento")
     public TipoDeDocumento tipoDeDocumento;
