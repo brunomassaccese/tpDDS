@@ -20,8 +20,8 @@ public class Administrador extends Usuario {
         super(nombre, apellido, fechaNacimiento, direccion, dni, documento, contactos, nombreUsuario, password, perfil);
     }
 
-    public void agregarCarcateristicas(Organizacion organizacion, Caracteristica nuevaCaracteristica) {
-        organizacion.agregarCaracteristica(nuevaCaracteristica);
+    public void agregarCarcateristicas(String nuevaCaracteristica) {
+        new Caracteristica(nuevaCaracteristica);
     }
 
     //E3.P2

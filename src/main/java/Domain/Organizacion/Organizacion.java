@@ -24,8 +24,6 @@ public class Organizacion {
     private int id;
     @Column
     private String nombre;
-    @ManyToMany
-    private List<Caracteristica> caracteristicas = null;
     @OneToMany
     @JoinColumn(name = "organizacion_id", referencedColumnName = "id")
     private List<Usuario> voluntarios = null;
@@ -50,10 +48,6 @@ public class Organizacion {
         Usuario nuevoVoluntario = new Usuario(nombre, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos, nombreUsuario, password, "VOLUNTARIO");     //Agregar organización?
 
         this.voluntarios.add(nuevoVoluntario);
-    }
-
-    public void agregarCaracteristica(Caracteristica nuevaCaracteristica){
-        caracteristicas.add(nuevaCaracteristica);
     }
 
     public void agregarPreguntaAdoptantes(Pregunta nuevaPregunta){

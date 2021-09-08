@@ -12,6 +12,10 @@ public class Caracteristica {
     @Column(name = "nombre")
     private String nombre;
 
+    public Caracteristica(String nuevaCaracteristica) {
+        this.nombre = nuevaCaracteristica;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -19,4 +23,5 @@ public class Caracteristica {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
 }
