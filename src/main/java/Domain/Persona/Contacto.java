@@ -11,7 +11,8 @@ public class Contacto {
     @GeneratedValue
     private int id;
 
-    @Transient //VER VIDEO DE REPUTACION TODO
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "forma_de_contacto_id")
     private Strategy formaDeContacto = null;
 
     @Column(name = "nombre")

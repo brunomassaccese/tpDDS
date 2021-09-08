@@ -5,6 +5,7 @@ import Domain.Mascota.Mascota;
 import Domain.Organizacion.Organizacion;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -65,7 +66,7 @@ public class Persona {
 
     public String getNombre() { return this.nombre; }
 
-    public void notificarMascotaEncontrada(Mascota mascota){
+    public void notificarMascotaEncontrada(Mascota mascota) throws IOException {
         Formulario nuevoFormulario = this.llenarFormulario();
         mascota.getChapa().notificar(mascota, nuevoFormulario);
     }

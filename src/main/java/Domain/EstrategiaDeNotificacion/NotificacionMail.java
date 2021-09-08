@@ -6,9 +6,13 @@ import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.io.IOException;
 
-public class NotificacionMail implements Strategy {
+@Entity
+@DiscriminatorValue("mail")
+public class NotificacionMail extends Strategy {
 
     public static final String emailOrigen = "Rescastistas";
     public static final String authToken = "476ebdad8135ba4b1e7385c30a389e0f";

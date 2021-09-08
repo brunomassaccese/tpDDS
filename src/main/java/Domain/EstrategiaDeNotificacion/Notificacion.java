@@ -3,6 +3,8 @@ package Domain.EstrategiaDeNotificacion;
 import Domain.Persona.Contacto;
 import Domain.Persona.Persona;
 
+import java.io.IOException;
+
 public class Notificacion{
 
     // Valor por defecto (comportamiento por defecto): NotificacionSMS
@@ -16,7 +18,7 @@ public class Notificacion{
         strategy = formaDeContacto;
     }
 
-    public void ejecutarAviso(Contacto destinatario, String mensaje) {
+    public void ejecutarAviso(Contacto destinatario, String mensaje) throws IOException {
         Strategy.enviarAviso(destinatario, mensaje);
     }
 

@@ -11,6 +11,7 @@ import Domain.Publicacion.PublicacionMascotaEnAdopcion;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
 import javax.persistence.*;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
@@ -76,7 +77,7 @@ public class Organizacion {
     }
 
     //E3.P3
-    public void notificarInteresadoEnAdopcion(Mascota mascota){
+    public void notificarInteresadoEnAdopcion(Mascota mascota) throws IOException {
         String mensaje = "Hay un interesado en adoptar a " + mascota.getNombre();
         Contacto contactoDuenioDeMascota = mascota.getDuenio().obtenerContactoPorDefecto();
         Notificacion nuevaNotificacion = new Notificacion(contactoDuenioDeMascota.getFormaDeContacto());

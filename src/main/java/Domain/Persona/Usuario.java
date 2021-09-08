@@ -11,6 +11,7 @@ import Domain.Publicacion.Comodidad;
 import Domain.Publicacion.PublicacionAdoptante;
 import Domain.Publicacion.PublicacionMascotaPerdida;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue("usuario")
-public class Usuario extends Persona implements Strategy {
+public class Usuario extends Persona {
 //    @Id
 //    @GeneratedValue
 //    private int id;
@@ -52,7 +53,7 @@ public class Usuario extends Persona implements Strategy {
             organizacion.agregarPublicacionMascotaPerdida(publicacion);
     }
 
-    public void contactarRescatista(PublicacionMascotaPerdida publicacion){
+    public void contactarRescatista(PublicacionMascotaPerdida publicacion) throws IOException {
         Contacto contactoDestino = publicacion.getFormulario()
                                               .getContacto();
         //Contacto contactoDestino = publicacion.rescatista.obtenerContactoPorDefecto();
