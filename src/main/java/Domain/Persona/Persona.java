@@ -32,6 +32,7 @@ public class Persona {
     public LocalDate fechaNacimiento;
 
     @OneToOne
+    @JoinColumn(name = "direccion_id", referencedColumnName = "id")
     public Direccion direccion;
 
     @Enumerated(EnumType.STRING)
