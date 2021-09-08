@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <title>Adoptar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
+        <link rel="stylesheet" href="archivos_css/index.css">
+        <link rel="stylesheet" href="archivos_css/fontello.css">
+        <link rel="stylesheet" href="archivos_css/adoptar.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+        <script>      
+            function showAlert() {
+                Swal.fire({
+                    title: '¿Está seguro de adoptar esta mascota?',
+                    showDenyButton: true,
+                    confirmButtonText: `Adoptar`,
+                    denyButtonText: `Cancelar`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire('Mascota en proceso de ser adoptada!', '', 'success')
+                    } else if (result.isDenied) {
+                        Swal.fire('Adopción cancelada', '', 'info')
+                    }
+                    })
+            }
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <div class="contenedor">
+
+                <h1 class="icon-guidedog">Rescatando patitas</h1>
+                <input type="checkbox" id="menu-bar">
+                <label class="icon-menu" for="menu-bar"></label>
+
+                <nav class="menu">
+                    <a href="index.html">Inicio</a>
+                    <a href="login.html">Ingresar</a>
+                    <a href="registrarUsuario.html">Registrarse</a>
+                    <a href="registrarMascota.html">Registrar Mascota</a>
+                    <a href="adoptar.html">Adoptar Mascota</a>
+                    <a href="">Mis Mascotas</a>
+                    <a href="">Agregar Contacto</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <form  > 
+                <!-- action="" method="post"         -->
+                <h3>Seleccione la mascota que desee adoptar</h3>
+                <div class="select-mascotas">
+                        <input type="radio" name="test" value="small" checked>
+                        <img src="Imagenes de prueba/descarga.jpg" alt="Los Tejos">
+                        <div>
+                            <b>
+                                Nombre Mascota
+                            </b><br>
+                            Historia mascota
+
+                            <div style="text-align:middle">
+                                <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Adoptar</button>
+                            </div>
+                        </div>
+                 </div>
+                 <div class="select-mascotas">
+                        <input type="radio" name="test" value="small" checked>
+                        <img src="Imagenes de prueba/descarga (1).jpg" alt="Los Tejos">
+                        <div><b>
+                                Nombre Mascota
+                            </b><br>
+                            Historia mascota
+                            <div style="text-align:left">
+                                <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Adoptar</button>
+                            </div>
+                        </div>
+                 </div>
+                 <div style="text-align:left">
+                    <br>¿No encontraste la mascota que buscabas? 
+                                <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="location.href='busquedaPersonalizada.html';">Búsqueda personalizada</button>
+                </div>
+                
+            </form>
+        
+        </div>
+        
+        <footer>
+
+            <div class="contenedor-footer">
+
+                <div style="text-align: start">
+                    <p class="nosotros">Rescatenemos patitas es una asociación<br>
+                                        sin fines de lucro abocada a difundir,<br> 
+                                        proteger y promover los derechos de<br>
+                                        los animales.</p>
+                </div>
+
+                <div style="text-align: center">
+                    <p>Mandanos un maill<br>patitas@gmail.com</p>
+                </div>
+
+                <div >
+
+                    <a href="#" class="button">
+                    <span class="icon-facebook"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-youtube"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-twitter"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-instagram"></span>
+                    </a>
+
+                </div>
+
+                <div></div>
+
+                <div>
+                    <p class="derechos">© 2021 - Todos los Derechos Reservados</p>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </body>
+
+</html>
