@@ -12,11 +12,11 @@ public class PublicacionMascotaPerdida {
     @GeneratedValue
     private int id;
 
-    @Transient
+    @OneToOne
     private Mascota mascotaPerdida;
     @Transient
     private Formulario formulario;
-    @Transient
+    @Column
     private Boolean estadoDePublicacion;
 
     public PublicacionMascotaPerdida(Mascota mascotaPerdida, Formulario formulario) {

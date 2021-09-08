@@ -16,17 +16,21 @@ public class PublicacionMascotaEnAdopcion {
     private int id;
     @Transient
     public Timestamp timestamp;
-    @Transient
-    private Boolean estadoDePublicacion = null;
-    @Transient
+    @Column
+    private Boolean estadoDePublicacion;
+    @OneToOne
+    @JoinColumn(name = "duenio_id")
     private Usuario duenio = null;
-    @Transient
+    @OneToOne
+    @JoinColumn(name = "mascota_id")
     private Mascota mascota = null;
-    @Transient
+    @OneToMany
+    @JoinColumn(name = "publicacion_adopcion_id")
     private List<Pregunta> preguntas = null;
-    @Transient
+    @OneToMany
+    @JoinColumn(name = "publicacion_adopcion_id")
     private List<Respuesta> respuestas = null;
-    @Transient
+
     public Timestamp getTimestamp() {
         return this.timestamp;
     }
@@ -46,5 +50,4 @@ public class PublicacionMascotaEnAdopcion {
     public void aprobar() {
         this.estadoDePublicacion = true;
     }
-
 }

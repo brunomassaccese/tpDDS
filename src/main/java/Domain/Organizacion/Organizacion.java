@@ -29,16 +29,16 @@ public class Organizacion {
     @JoinColumn(name = "organizacion_id", referencedColumnName = "id")
     private List<Usuario> voluntarios = null;
     @OneToMany
-    @JoinColumn(name = "pregunta_id", referencedColumnName = "id")
+    @JoinColumn(name = "organzacion_id", referencedColumnName = "id")
     private List<Pregunta> preguntasAdoptantes = null;
     @OneToMany
-   // @JoinColumn(name = "publicacionMascotaPerdida_id", referencedColumnName = "id")
+    @JoinColumn(name = "organzacion_id", referencedColumnName = "id")
     private List<PublicacionMascotaPerdida> publicacionesMascotaPerdidas = null;
     @OneToMany
-    @JoinColumn(name = "publicacionMascotaAdopcion_id", referencedColumnName = "id")
+    @JoinColumn(name = "organzacion_id", referencedColumnName = "id")
     private List<PublicacionMascotaEnAdopcion> publicacionesMascotaEnAdopcion = null;
     @OneToMany
-    @JoinColumn(name = "publicacionAdoptante_id", referencedColumnName = "id")
+    @JoinColumn(name = "organzacion_id", referencedColumnName = "id")
     private List<PublicacionAdoptante> publicacionesAdoptantes = null;
 
     //E2.P3

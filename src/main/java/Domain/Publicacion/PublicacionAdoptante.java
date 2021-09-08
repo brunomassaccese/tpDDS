@@ -13,15 +13,16 @@ public class PublicacionAdoptante {
     @GeneratedValue
     private int id;
 
-    @Transient
+    @OneToMany
     private List<Caracteristica> preferencias = null;
-    @Transient
+    @OneToMany
     private List<Comodidad> comodidades = null;
 
-    @Transient
+    @OneToOne
+    @JoinColumn(name = "adoptante_id")
     private Usuario adoptante = null;
 
-    @Transient
+    @Column
     private Boolean estadoDePublicacion = null;
 
     public PublicacionAdoptante(Usuario adoptante, List<Caracteristica> preferecnias, List<Comodidad> comodidades) {
