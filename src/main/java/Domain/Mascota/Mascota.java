@@ -53,8 +53,8 @@ public class Mascota implements Estado {
 
     @Column(name = "tipo")
     private String tipo;
-    @Transient
-//    @OneToMany(mappedBy = "mascota", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "id", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY) //encontrame como "id" en la Clase Comodidad
     private List<Comodidad> necesidades = null;
 
 

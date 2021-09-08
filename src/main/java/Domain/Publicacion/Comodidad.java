@@ -1,6 +1,15 @@
 package Domain.Publicacion;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "comodidad")
 public class Comodidad {
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Column
     private String comodidad;
 
     public String getComodidad() {
