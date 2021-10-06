@@ -1,4 +1,4 @@
-import Validador.ValidadorDePass;
+import Domain.entities.Validador.ValidadorDePass;
 import org.junit.Assert;
 import org.junit.Test;
 
