@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <title>Rescate de Patitas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/fontello.css">
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div class="contenedor">
+
+                <h1 class="icon-guidedog">Rescatando patitas</h1>
+                <input type="checkbox" id="menu-bar">
+                <label class="icon-menu" for="menu-bar"></label>
+
+                <nav class="menu">
+                    <a href="index.html">Inicio</a>
+                    <a href="login.html">Ingresar</a>
+                    <a href="registrarUsuario.html">Registrarse</a>
+                    <a href="registrarMascota.html">Registrar Mascota</a>
+                    <a href="">Mis Mascotas</a>
+                    <a href="">Agregar Contacto</a>
+                </nav>
+
+            </div>
+
+        </header>
+
+
+
+
+        <div class="main-container">
+
+            <form class="form-registro-mascota" id="formulario-mascota" action="index.html" method="post">
+
+                <h2 class="titulo-pagina">Datos Mascota</h2>
+                <br>
+
+
+                <div class="Modificar caracteristicas" >
+
+                    <div class= "grid-item">
+                        <label for="">Tipo de mascota</label>
+                        <select name="Tipo" class="text-input">
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option selected="true" disabled="Tipo"></option>
+                        </select>
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Nombre</label>
+                        <input type="text" name="" class="text-input">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Apodo</label>
+                        <input type="text" name="" class="text-input">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Edad aproximada</label>
+                        <input type="text" name="" class="text-input">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Sexo</label>
+                        <select name="Tipo" class="text-input">
+                            <option value="M">Macho</option>
+                            <option value="H">Hembra</option>
+                            <option selected="true" disabled="Tipo"></option>
+                        </select>
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Descripción física</label>
+                        <input type="text" name="" class="text-input" maxlength="100">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Fotos de la mascota</label>
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Características</label>
+                        <select multiple name="caracteristicas" id="caracteristicas" class="text-input">
+                            <option>Pequeño</option>
+                            <option>Mediano</option>
+                            <option>Grande</option>
+                            <option>Flaco</option>
+                            <option>Gordo</option>
+                            <option>De raza</option>
+                            <option>Callejero</option>
+                          </select>
+                    </div>
+
+                </div>
+
+                <button type="button">Quitar</button>
+                <br>
+
+                <input type="text" name="">
+
+                <button type="button">Agregar</button>
+
+
+                <div style="text-align:end">
+                    <button class="boton-siguiente" id="boton-adopcion" type="button">OK</button>
+
+                </div>
+            </form>
+
+        </div>
+
+        <footer>
+
+            <div class="contenedor-footer">
+
+                <div style="text-align: start">
+                    <p class="nosotros">Rescatenemos patitas es una asociación<br>
+                                        sin fines de lucro abocada a difundir,<br>
+                                        proteger y promover los derechos de<br>
+                                        los animales.</p>
+                </div>
+
+                <div style="text-align: center">
+                    <p>Mandanos un mail<br>patitas@gmail.com</p>
+                </div>
+
+                <div >
+
+                    <a href="#" class="button">
+                    <span class="icon-facebook"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-youtube"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-twitter"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-instagram"></span>
+                    </a>
+
+                </div>
+
+                <div></div>
+
+                <div>
+                    <p class="derechos">© 2021 - Todos los Derechos Reservados</p>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </body>
+
+</html>

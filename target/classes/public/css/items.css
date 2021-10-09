@@ -1,0 +1,66 @@
+.boton-de-busqueda{
+    width: 50%;
+    height: 40px;
+    font-weight: 600px;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-style: solid;
+    font-family: 'Montserrat';
+    padding: 10px;
+    background: #ededed;
+    border-radius: 20px;
+    transition: all 300ms;
+    text-align: center;
+}
+
+.boton-siguiente{
+    width: 18%;
+    height: 40px;
+    font-weight: 600px;
+    font-size: 15px;
+    margin-top: 80px;
+    margin-bottom: 0px;
+    border-style: solid;
+    font-family: 'Montserrat';
+    padding: 10px;
+    background: #ededed;
+    border-radius: 20px;
+    transition: all 300ms;
+    text-align: center;
+    position: end;
+}
+
+.boton-de-busqueda:hover, .boton-siguiente:hover{
+    color: #ededed;
+    background: #333;
+    transition: all 300ms;
+    cursor: pointer;
+    border-style: solid;
+}
+
+.grip-item, .text-input{
+    width: 100%;
+    background-color: #ededed;
+    border: none;
+    font-size: 14px;
+    font-family: 'Montserrat';
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.grip-item label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.button{
+    background:none;
+	color:#fff;
+	font-size:1.5em;
+	text-decoration:none;
+}
+
+.button span{
+    margin-right: 10px;
+}

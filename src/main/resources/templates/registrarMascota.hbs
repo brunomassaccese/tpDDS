@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <title>Rescate de Patitas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/fontello.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+        <script>
+            function showAlert() {
+                Swal.fire({
+                    title: '¿Estás seguro que querés registrar a tu mascota?',
+                    showDenyButton: true,
+                    confirmButtonText: `Registrar`,
+                    denyButtonText: `Cancelar`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire('Mascota registrada', '', 'success')
+                        document.getElementById('formulario-mascota').reset();
+                    } else if (result.isDenied) {
+                        // Swal.fire('No publicado', '', 'info')
+                    }
+                })
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <header>
+
+            <div class="contenedor">
+
+                <h1 class="icon-guidedog">Rescatando patitas</h1>
+                <input type="checkbox" id="menu-bar">
+                <label class="icon-menu" for="menu-bar"></label>
+
+                <nav class="menu">
+                    <a href="index.html">Inicio</a>
+                    <a href="login.html">Ingresar</a>
+                    <a href="registrarUsuario.html">Registrarse</a>
+                    <a href="registrarMascota.html">Registrar Mascota</a>
+                    <a href="">Mis Mascotas</a>
+                    <a href="">Agregar Contacto</a>
+                </nav>
+
+            </div>
+
+        </header>
+
+
+
+
+        <div class="main-container">
+
+            <form class="form-registro-mascota" id="formulario-mascota" action="index.html" method="post">
+
+                <h2 class="titulo-pagina">REGISTRO DE MASCOTA</h2>
+                <br>
+
+                <h3>Información de Mascota</h3>
+
+                <div class="informacion-del-animal" >
+
+                    <div class= "grid-item">
+                        <label for="">Tipo</label>
+                        <select name="Tipo" class="text-input">
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option selected="true" disabled="Tipo"></option>
+                        </select>
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Nombre</label>
+                        <input type="text" name="" class="text-input">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Apodo</label>
+                        <input type="text" name="" class="text-input">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Edad aproximada</label>
+                        <input type="text" name="" class="text-input">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Sexo</label>
+                        <select name="Tipo" class="text-input">
+                            <option value="M">Macho</option>
+                            <option value="H">Hembra</option>
+                            <option selected="true" disabled="Tipo"></option>
+                        </select>
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Descripción física</label>
+                        <input type="text" name="" class="text-input" maxlength="100">
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="archivo">Seleccionar fotos</label>
+                        <input type="file" id="archivo" name="archivo" multiple><br><br>
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Características</label>
+                        <select multiple name="caracteristicas" id="caracteristicas" class="text-input">
+                            <option>Pequeño</option>
+                            <option>Mediano</option>
+                            <option>Grande</option>
+                            <option>Flaco</option>
+                            <option>Gordo</option>
+                            <option>De raza</option>
+                            <option>Callejero</option>
+                          </select>
+                    </div>
+
+                </div>
+
+                <div style="text-align:end">
+                    <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Registrar</button>
+
+                </div>
+            </form>
+
+        </div>
+
+        <footer>
+
+            <div class="contenedor-footer">
+
+                <div style="text-align: start">
+                    <p class="nosotros">Rescatenemos patitas es una asociación<br>
+                                        sin fines de lucro abocada a difundir,<br>
+                                        proteger y promover los derechos de<br>
+                                        los animales.</p>
+                </div>
+
+                <div style="text-align: center">
+                    <p>Mandanos un maill<br>patitas@gmail.com</p>
+                </div>
+
+                <div >
+
+                    <a href="#" class="button">
+                    <span class="icon-facebook"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-youtube"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-twitter"></span>
+                    </a>
+
+                    <a href="#" class="button">
+                    <span class="icon-instagram"></span>
+                    </a>
+
+                </div>
+
+                <div></div>
+
+                <div>
+                    <p class="derechos">© 2021 - Todos los Derechos Reservados</p>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </body>
+
+</html>

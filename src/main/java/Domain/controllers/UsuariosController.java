@@ -1,5 +1,6 @@
 package Domain.controllers;
 
+import Domain.entities.Mascota.Mascota;
 import Domain.entities.Persona.Rol;
 import Domain.entities.Persona.Usuario;
 import Domain.repositories.Repositorio;
@@ -8,6 +9,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import javax.jws.WebParam;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,10 +17,12 @@ import java.util.Map;
 public class UsuariosController {
     private Repositorio<Usuario> repositorio;
     private Repositorio<Rol> repositorioDeRoles;
+    private Repositorio<Mascota> repositorioDeMascotas;
 
     public UsuariosController(){
         this.repositorio = FactoryRepositorio.get(Usuario.class); //esto me devuelve un repositorio
         this.repositorioDeRoles = FactoryRepositorio.get(Rol.class);
+        this.repositorioDeMascotas = FactoryRepositorio.get(Mascota.class);
     }
 
     public ModelAndView mostrarTodos(Request request, Response response) {
@@ -67,8 +71,20 @@ public class UsuariosController {
         return response;
     }
 
-    public String saludar(Request request, Response response) {
-        return "hola";
+    public ModelAndView saludar(Request request, Response response) {
+        return new ModelAndView(new HashMap<>(), "busquedaPersonalizada.hbs");
+    }
+
+    public ModelAndView darEnAdopcion(Request request, Response response) {
+        //buscar mascotas de este usuario
+        //si tiene mascotas cargar los datos y las fotos
+        //si no tiene mostrar mensaje indicandolo
+
+        /*Mascota mascota = this.repositorioDeMascotas.buscar(Integer.valueOf(request.params("id")));
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("mascotas", mascota);
+        return new ModelAndView(parametros, "darEnAdopcion.hbs");*/
+        return new ModelAndView(new HashMap<>(), "darEnAdopcion.hbs");
     }
 
 }
