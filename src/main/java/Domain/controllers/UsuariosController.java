@@ -66,4 +66,9 @@ public class UsuariosController {
         response.redirect("/usuarios");
         return response;
     }
+
+    public String saludar(Request request, Response response) {
+        return "hola";
+    }
+
 }

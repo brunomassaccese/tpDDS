@@ -1,8 +1,8 @@
 package Domain.repositories.testMemoData;
 
-import domain.entities.EntidadPersistente;
-import domain.entities.Rol;
-import domain.entities.Usuario;
+import Domain.repositories.testMemoData.EntidadPersistente;
+import Domain.entities.Persona.Rol;
+import Domain.entities.Persona.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

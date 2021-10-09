@@ -1,7 +1,6 @@
 package Domain.controllers;
 
-import Domain.entities.Persona.Rol;
-import Domain.entities.Persona.Usuario;
+import Domain.entities.Mascota.Mascota;
 import Domain.repositories.Repositorio;
 import Domain.repositories.factories.FactoryRepositorio;
 import spark.ModelAndView;
@@ -12,26 +11,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MascotasController {
-    private Repositorio<Usuario> repositorio;
-
-
+public class MascotasControllers {
+    private Repositorio<Mascota> repositorio;
+/*
     public MascotasController(){
-        this.repositorio = FactoryRepositorio.get(Usuario.class); //esto me devuelve un repositorio
+        this.repositorio = FactoryRepositorio.get(Mascota.class);
     }
 
     public ModelAndView mostrarTodos(Request request, Response response) {
 
-        return new ModelAndView(parametros, "usuarios.hbs");
+        Map<String, Object> parametros = new HashMap<>();
+        List<Mascota> mascotas = this.repositorio.buscarTodos();
+        parametros.put("mascotas", mascotas);
+        return new ModelAndView(parametros, "mascotas.hbs");
     }
 
     public ModelAndView mostrar(Request request, Response response) {
-
-        return new ModelAndView(parametros, "usuario.hbs");
+        Mascota mascota = this.repositorio.buscar(Integer.valueOf(request.params("id")));
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("mascotas", mascota);
+        return new ModelAndView(parametros, "mascota.hbs");
     }
 
     public Response modificar(Request request, Response response) {
-
+        Mascota mascota = this.repositorio.buscar(Integer.valueOf(request.params("id")));
+        String nuevoNombre = request.queryParams("nombre");
+        //cambiar el estado de perdido a encontrado
+        response.redirect("/usuarios");
         return response;
     }
 

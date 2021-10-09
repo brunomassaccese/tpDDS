@@ -1,7 +1,7 @@
 package Domain.repositories.testMemoData;
 
-import domain.entities.EntidadPersistente;
-import domain.entities.Rol;
+import Domain.repositories.testMemoData.EntidadPersistente;
+import Domain.entities.Persona.Rol;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,15 +14,15 @@ public class DataRol {
         if(roles.size() == 0){
             Rol admin = new Rol();
             admin.setNombre("Adminsitrador");
-            admin.setId(1);
+            //admin.setId(1);
 
             Rol docente = new Rol();
             docente.setNombre("Docente");
-            docente.setId(2);
+            //docente.setId(2);
 
             Rol alumno = new Rol();
             alumno.setNombre("Alumno");
-            alumno.setId(3);
+            //alumno.setId(3);
 
             addAll(admin, alumno, docente);
         }

@@ -1,6 +1,6 @@
 package Domain.repositories.daos;
 
-import domain.entities.EntidadPersistente;
+import Domain.repositories.testMemoData.EntidadPersistente;
 
 import java.util.List;
 
