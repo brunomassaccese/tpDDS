@@ -71,10 +71,6 @@ public class UsuariosController {
         return response;
     }
 
-    public ModelAndView saludar(Request request, Response response) {
-        return new ModelAndView(new HashMap<>(), "busquedaPersonalizada.hbs");
-    }
-
     public ModelAndView darEnAdopcion(Request request, Response response) {
         //buscar mascotas de este usuario
         //si tiene mascotas cargar los datos y las fotos

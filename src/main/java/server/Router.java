@@ -35,8 +35,6 @@ public class Router {
 
         Spark.delete("/usuario/:id", usuariosController::eliminar);
 
-        Spark.get("/saludar", usuariosController::saludar, Router.engine);
-
         Spark.get("/darEnAdopcion", usuariosController::darEnAdopcion, Router.engine); //devuelve un simple String
 
     }
