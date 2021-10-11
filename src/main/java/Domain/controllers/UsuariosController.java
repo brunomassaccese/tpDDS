@@ -25,6 +25,14 @@ public class UsuariosController {
         this.repositorioDeMascotas = FactoryRepositorio.get(Mascota.class);
     }
 
+    public ModelAndView inicio(Request request, Response response){
+        return new ModelAndView(new HashMap<>(), "index.hbs");
+    }
+
+    public ModelAndView login(Request request, Response response){
+        return new ModelAndView(new HashMap<>(), "login.hbs");
+    }
+
     public ModelAndView mostrarTodos(Request request, Response response) {
         /*
          Lo siguiente es para recuperar usuarios que están cargados en memoria y devolverlos en una vista.
@@ -87,9 +95,12 @@ public class UsuariosController {
         return new ModelAndView(new HashMap<>(), "darEnAdopcion.hbs");
     }
 
-    public Boolean tieneMascota(Usuario usuario){
-        Boolean tieneAlgunaMascota = false;
-        return tieneAlgunaMascota;
+    public ModelAndView registrarUsuario(Request request, Response response) {
+        return new ModelAndView(new HashMap<>(), "registrarUsuario.hbs");
+    }
+
+    public ModelAndView registrarMascota(Request request, Response response){
+        return new ModelAndView(new HashMap<>(), "registrarMascota.hbs");
     }
 
 }

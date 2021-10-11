@@ -34,8 +34,9 @@ public class Router {
 
         Spark.before("/", authMiddleware::verificarSesion);
 
-        Spark.get("/usuarios", usuariosController::mostrarTodos, Router.engine); //devuelve una vista
-        //Router.engine es la instancia que hice más arriba.
+        Spark.get("/login", usuariosController::login, Router.engine);
+
+        Spark.get("/usuarios", usuariosController::mostrarTodos, Router.engine);
 
         Spark.get("/usuario/:id", usuariosController::mostrar, Router.engine);
 
@@ -44,6 +45,12 @@ public class Router {
         Spark.delete("/usuario/:id", usuariosController::eliminar);
 
         Spark.get("/darEnAdopcion", usuariosController::darEnAdopcion, Router.engine); //devuelve un simple String
+
+        Spark.get("/registrarUsuario", usuariosController::registrarUsuario, Router.engine);
+
+        Spark.get("/registrarMascota", usuariosController::registrarMascota, Router.engine);
+
+        Spark.get("/index", usuariosController::inicio, Router.engine);
 
     }
 }
