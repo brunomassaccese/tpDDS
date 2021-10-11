@@ -1,7 +1,9 @@
 package Domain.repositories;
 
 import Domain.repositories.daos.DAO;
+import db.EntityManagerHelper;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public class Repositorio<T> {
@@ -33,5 +35,9 @@ public class Repositorio<T> {
 
     public T buscar(int id){
         return this.dao.buscar(id);
+    }
+
+    public CriteriaBuilder criteriaBuilder(){
+        return EntityManagerHelper.getEntityManager().getCriteriaBuilder();
     }
 }

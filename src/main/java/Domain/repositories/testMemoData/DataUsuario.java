@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class DataUsuario {
-    private static List<Usuario> usuarios = new ArrayList<>();
+    public static List<Usuario> usuarios = new ArrayList<>();
 
     public static List<EntidadPersistente> getList(){
 

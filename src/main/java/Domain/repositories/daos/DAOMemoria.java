@@ -1,5 +1,6 @@
 package Domain.repositories.daos;
 
+import Domain.repositories.BusquedaCondicional;
 import Domain.repositories.testMemoData.EntidadPersistente;
 
 import java.util.List;
@@ -21,6 +22,15 @@ public class DAOMemoria<T> implements DAO<T> {
         return (T) this.entidades
                 .stream()
                 .filter(e -> e.getId() == id)
+                .findFirst()
+                .get();
+    }
+
+    @Override
+    public T buscar(BusquedaCondicional condicional) {
+        return (T) this.entidades
+                .stream()
+                .filter(condicional.getCondicionPredicado())
                 .findFirst()
                 .get();
     }

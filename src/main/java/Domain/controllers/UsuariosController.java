@@ -72,15 +72,24 @@ public class UsuariosController {
     }
 
     public ModelAndView darEnAdopcion(Request request, Response response) {
-        //buscar mascotas de este usuario
-        //si tiene mascotas cargar los datos y las fotos
-        //si no tiene mostrar mensaje indicandolo
+/*
+        if (tieneMascota(Usuario usuario)){
+            //cargar los datos y las fotos
+        }else{
+            //mostrar mensaje indicandolo
+        }
+*/
 
         /*Mascota mascota = this.repositorioDeMascotas.buscar(Integer.valueOf(request.params("id")));
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("mascotas", mascota);
         return new ModelAndView(parametros, "darEnAdopcion.hbs");*/
         return new ModelAndView(new HashMap<>(), "darEnAdopcion.hbs");
+    }
+
+    public Boolean tieneMascota(Usuario usuario){
+        Boolean tieneAlgunaMascota = false;
+        return tieneAlgunaMascota;
     }
 
 }
