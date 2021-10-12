@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -7,14 +8,6 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
         <link rel="stylesheet" href="/css/index.css">
         <link rel="stylesheet" href="/css/fontello.css">
-
-        <script type="text/javascript">
-            function validacion()
-            {
-                //window.location.href = "index.html";
-                alert("Agregar comportamiento a validacion()");
-            }
-        </script>
 
     </head>
 
@@ -30,7 +23,7 @@
 
                 <nav class="menu">
                     <a href="/index">Inicio</a>
-                    <a href="/login">Ingresar</a>
+                    <a href="/loginA">Ingresar</a>
                     <a href="/registrarUsuario">Registrarse</a>
                     <a href="/registrarMascota">Registrar Mascota</a>
                     <a href="">Mis Mascotas</a>
@@ -41,7 +34,23 @@
 
         </header>
 
+        <div class="main_container">
+            <br><br>
+            <div align="center">
+                <form action="/login" method="post" class="form-">
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input class="form-control" name="nombreDeUsuario">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input class="form-control" name="contrasenia" type="password">
+                    </div>
+                    <button type="submit">Ingresar</button>
+                </form>
+            </div>
 
+        <!--
         <div class="main-container">
 
             <form class="form-login" method="GET">
@@ -52,22 +61,22 @@
 
                     <div class= "grid-item">
                         <label for="">Usuario</label>
-                        <input type="text" name="" value="" class="text-input">
+                        <input type="text" name="nombreDeUsuario" class="text-input">
                     </div>
 
                     <div class= "grid-item">
                         <label for="Tipo">Contraseña</label>
-                        <input type="text" name="" value="" class="text-input">
+                        <input type="text" name="contrasenia" class="text-input">
                     </div>
 
                 <div style="text-align: end">
-                    <button class="boton-siguiente" onclick="validacion();">Ingresar</button>
+                     <button class="boton-siguiente">Ingresar</button>
                 </div>
 
             </form>
 
         </div>
-
+        -->
 
         <footer>
 
@@ -117,3 +126,51 @@
     </body>
 
 </html>
+
+
+
+<!--
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/js/generales.js"></script>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="icon" href="/img/logosolo.png">
+    <link rel="stylesheet" href="/css/usuarios.estilos.css">
+    <title>Login</title>
+</head>
+<body>
+<header>
+    <img src="/img/untlogo.png" alt="utn logo" class="utnLogo">
+    <div class="diseniologo">
+        <img src="/img/logosolo.png" alt="diseniologo" style="">
+        <p>Diseño de Sistemas</p>
+    </div>
+</header>
+<div class="main_container">
+    <br><br>
+    <div align="center">
+        <form action="/login" method="post" class="form-">
+            <div class="form-group">
+                <label>Nombre de usuario</label>
+                <input class="form-control" name="nombreDeUsuario">
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input class="form-control" name="contrasenia" type="password">
+            </div>
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
+
+-->

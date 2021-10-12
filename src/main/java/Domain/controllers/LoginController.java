@@ -3,6 +3,7 @@ package Domain.controllers;
 import Domain.entities.Persona.Usuario;
 import Domain.repositories.RepositorioDeUsuarios;
 import Domain.repositories.factories.FactoryRepositorioUsuarios;
+import Domain.repositories.testMemoData.DataUsuario;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -18,27 +19,30 @@ public class LoginController {
     }
 
     public Response login(Request request, Response response){
+        String nombreDeUsuario = request.queryParams("nombreDeUsuario");
+        String contrasenia     = request.queryParams("contrasenia");
         try{
             RepositorioDeUsuarios repoUsuarios = FactoryRepositorioUsuarios.get();
 
-            String nombreDeUsuario = request.queryParams("nombreDeUsuario");
-            String contrasenia     = request.queryParams("contrasenia");
-
-            if(repoUsuarios.existe(nombreDeUsuario, contrasenia)){
+            if(repoUsuarios.existe(nombreDeUsuario, contrasenia)){ //ACA FALLA si no hay Base de Datos
                 Usuario usuario = repoUsuarios.buscarUsuario(nombreDeUsuario, contrasenia);
 
                 request.session(true);
-                //request.session().attribute("id", usuario.getId());
+                request.session().attribute("userName", usuario.getNombre());
 
-                response.redirect("/usuarios");
+                response.redirect("/registrarMascota"); //o cualquier otro
             }
             else{
                 response.redirect("/");
             }
         }
         catch (Exception e){
-            //Funcionalidad disponible solo con persistencia en Base de Datos
-            response.redirect("/usuarios");
+            //Funcionalidad del Try sólo disponible solo con persistencia en Base de Datos
+            if(estaRegistrado(nombreDeUsuario, contrasenia)) {
+                response.redirect("/registrarMascota");
+            }else{
+                response.redirect("/registrarUsuario");
+            }
         }
         finally {
             return response;
@@ -50,4 +54,10 @@ public class LoginController {
         response.redirect("/");
         return response;
     }
+
+    public Boolean estaRegistrado(String nombreDeUsuario, String contrasenia){
+        return ((DataUsuario.mapUsuariosClaves.containsKey(nombreDeUsuario) == true) &
+                        (DataUsuario.mapUsuariosClaves.get(nombreDeUsuario).equals(contrasenia)));
+    }
+
 }

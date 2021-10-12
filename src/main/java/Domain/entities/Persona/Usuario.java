@@ -35,9 +35,8 @@ public class Usuario extends Persona {
     @Column(name = "perfil")
     private String perfil = null;
 
-    public Usuario(String nombre, String apellido, LocalDate fechaNacimiento, Direccion direccion, TipoDeDocumento tipoDeDocumento, String documento, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
-        super(nombre, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos);
-        this.nombre = nombreUsuario;
+    public Usuario(String nombreUsuario, String apellido, LocalDate fechaNacimiento, Direccion direccion, TipoDeDocumento tipoDeDocumento, String documento, List<Contacto> contactos, String password, String perfil) {
+        super(nombreUsuario, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos);
         this.password = password;
         this.perfil = perfil;
     }
@@ -75,4 +74,7 @@ public class Usuario extends Persona {
         organizacion.agregarPublicacionAdoptante(nuevaPublicacion);
     }
 
+    public String getPassword(){ //Mala seguridad :(
+        return this.password;
+    }
 }

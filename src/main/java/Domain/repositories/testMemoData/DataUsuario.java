@@ -6,12 +6,11 @@ import Domain.repositories.Repositorio;
 import Domain.repositories.factories.FactoryRepositorio;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class DataUsuario {
     public static List<Usuario> usuarios = new ArrayList<>();
+    public static Map<String, String> mapUsuariosClaves = new HashMap<String, String>();
 
     public static List<EntidadPersistente> getList(){
 
@@ -27,19 +26,18 @@ public class DataUsuario {
         Contacto contacto2 = new Contacto(noti1, "claudio", "leal", "4352-7421", "claudio@hotmail.com", true);
         listaContactos2.add(contacto2);
 
+        Usuario mario = new Usuario("Mario", "Lorenzo", LocalDate.of(1990, 11, 13),
+                dire1, TipoDeDocumento.DNI, "30120670",
+                listaContactos1, "ab1", "PDR");
+
+
+        Usuario claudio = new Usuario("Claudio", "Leal", LocalDate.of(1980, 03, 30),
+                dire2, TipoDeDocumento.DNI, "40320020", listaContactos2, "ab2", "CLeal");
+
         if(usuarios.size() == 0) {
-            Repositorio<Rol> repoRol = FactoryRepositorio.get(Rol.class);
-
-            Usuario paul = new Usuario("Mario", "Lorenzo", LocalDate.of(1990, 11, 13),
-            dire1, TipoDeDocumento.DNI, "30120670",
-                    listaContactos1, "PDelRio", "AB12452c", "PDR");
-
-
-            Usuario claudio = new Usuario("Claudio", "Leal", LocalDate.of(1980, 03, 30),
-            dire2, TipoDeDocumento.DNI, "40320020", listaContactos2, "Claudio", "xC124Z52", "CLeal");
-
-
-            addAll(paul, claudio);
+            addAll(mario, claudio);
+            mapUsuariosClaves.put(mario.getNombre(), mario.getPassword());
+            mapUsuariosClaves.put(claudio.getNombre(), claudio.getPassword());
         }
         return (List<EntidadPersistente>)(List<?>) usuarios;
     }

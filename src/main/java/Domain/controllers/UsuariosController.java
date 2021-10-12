@@ -29,10 +29,6 @@ public class UsuariosController {
         return new ModelAndView(new HashMap<>(), "index.hbs");
     }
 
-    public ModelAndView login(Request request, Response response){
-        return new ModelAndView(new HashMap<>(), "login.hbs");
-    }
-
     public ModelAndView mostrarTodos(Request request, Response response) {
         /*
          Lo siguiente es para recuperar usuarios que están cargados en memoria y devolverlos en una vista.

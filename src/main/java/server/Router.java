@@ -32,17 +32,19 @@ public class Router {
 
         Spark.get("/", loginController::inicio, Router.engine);
 
-        Spark.before("/", authMiddleware::verificarSesion);
+        Spark.get("/login", loginController::inicio, Router.engine); //cuando toco el botón desde la vista
 
-        Spark.get("/login", usuariosController::login, Router.engine);
+        Spark.before("/", authMiddleware::verificarSesion); //si ya tenes iniciada sesion te redirecciona
 
-        Spark.get("/usuarios", usuariosController::mostrarTodos, Router.engine);
+        Spark.post("/login", loginController::login);
 
-        Spark.get("/usuario/:id", usuariosController::mostrar, Router.engine);
+        //Spark.get("/usuarios", usuariosController::mostrarTodos, Router.engine);
 
-        Spark.post("/usuario/:id", usuariosController::modificar);
+        //Spark.get("/usuario/:id", usuariosController::mostrar, Router.engine);
 
-        Spark.delete("/usuario/:id", usuariosController::eliminar);
+        //Spark.post("/usuario/:id", usuariosController::modificar);
+
+        //Spark.delete("/usuario/:id", usuariosController::eliminar);
 
         Spark.get("/darEnAdopcion", usuariosController::darEnAdopcion, Router.engine); //devuelve un simple String
 
