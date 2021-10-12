@@ -56,8 +56,15 @@ public class LoginController {
     }
 
     public Boolean estaRegistrado(String nombreDeUsuario, String contrasenia){
-        return ((DataUsuario.mapUsuariosClaves.containsKey(nombreDeUsuario) == true) &
-                        (DataUsuario.mapUsuariosClaves.get(nombreDeUsuario).equals(contrasenia)));
+        return usuarioRegistrado(nombreDeUsuario) & coincideContraseña(nombreDeUsuario, contrasenia);
+    }
+
+    public Boolean usuarioRegistrado(String nombreDeUsuario){
+        return (DataUsuario.mapUsuariosClaves.containsKey(nombreDeUsuario));
+    }
+
+    public Boolean coincideContraseña(String nombreDeUsuario, String contrasenia){
+        return (DataUsuario.mapUsuariosClaves.get(nombreDeUsuario).equals(contrasenia));
     }
 
 }
