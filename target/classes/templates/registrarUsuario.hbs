@@ -73,16 +73,16 @@
 
                         <div class= "grid-item">
                             <label for="Fecha de nacimiento">Fecha de nacimiento</label>
-                            <input type="date" name="nacimiento" class="text-input">
+                            <input type="date" name="fechaDeNacimiento" class="text-input">
                         </div>
 
                         <div class="grid-select">
                             <label for="">Tipo de documento</label>
-                            <select name="tipodocumento">
+                            <select name="tipoDocumento">
                                 <option value="DNI">DNI</option>
                                 <option value="CUIL">CUIL</option>
                                 <option value="PASAPORTE">PASAPORTE</option>
-                                <option selected="true" disabled="tipodocumento"></option>
+                                <option selected="true" disabled="tipoDocumento"></option>
                             </select>
                         </div>
 
@@ -100,6 +100,11 @@
                             </select>
                         </div>
 
+                        <div class= "grid-item">
+                            <label for="">Contraseña</label>
+                            <input type="text" name="password" value="" class="text-input">
+                        </div>
+
                     </div>
 
                     <h3>Dirección</h3>
@@ -108,12 +113,12 @@
 
                         <div class= "grid-item">
                             <label for="">Calle</label>
-                            <input type="text" name="calle" class="text-input">
+                            <input type="text" name="calleDireccion" class="text-input">
                         </div>
 
                         <div class= "grid-item">
                             <label for="">Altura</label>
-                            <input type="text" name="altura" class="text-input">
+                            <input type="text" name="alturaDireccion" class="text-input">
                         </div>
                     </div>
 
@@ -133,12 +138,12 @@
 
                         <div class= "grid-item">
                             <label for="">Teléfono</label>
-                            <input type="tel" name="telefono" class="text-input">
+                            <input type="tel" name="telefonoContacto" class="text-input">
                         </div>
 
                         <div class= "grid-item">
                             <label for="">Email</label>
-                            <input type="email" name="email" class="text-input">
+                            <input type="email" name="emailContacto" class="text-input">
                         </div>
 
                     </div>
@@ -148,25 +153,27 @@
                     <div class="preferencia-de-contacto">
 
                         <div class="checkbox">
-                            <input id="WhatsApp" name="preferenciacontacto" type="radio" value="WhatsApp">
+                            <input id="WhatsApp" name="formaDeContacto" type="radio" value="WhatsApp">
                             <label for="WhatsApp">WhatsApp</label>
                         </div>
 
                         <div class="checkbox">
-                            <input id="SMS" name="preferenciacontacto" type="radio" value="SMS">
+                            <input id="SMS" name="formaDeContacto" type="radio" value="SMS">
                             <label for="SMS">SMS</label>
                         </div>
 
                         <div class="checkbox">
-                            <input id="Email" name="preferenciacontacto" type="radio" value="Email">
+                            <input id="Email" name="formaDeContacto" type="radio" value="Email">
                             <label for="Email">Email</label>
                         </div>
 
                     </div>
 
-                    <div style="text-align:end">
-                        <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Registrar</button>
+                    <button class="boton-siguiente" type="submit" onclick="showAlert()">Registrarse</button>
+                    {{!--<div style="text-align:end">
+                       <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Registrar</button>
                     </div>
+                    --}}
 
                 </form>
 

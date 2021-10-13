@@ -42,6 +42,10 @@ public class DataUsuario {
         return (List<EntidadPersistente>)(List<?>) usuarios;
     }
 
+    public static void agregarUsuarioALista(Usuario usuario){
+        usuarios.add(usuario);
+    }
+
     private static void addAll(Usuario ... usuarios){
         Collections.addAll(DataUsuario.usuarios, usuarios);
     }

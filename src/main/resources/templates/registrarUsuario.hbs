@@ -46,117 +46,138 @@
                     <a href="">Mis Mascotas</a>
                     <a href="">Agregar Contacto</a>
                 </nav>
-
             </div>
-
         </header>
 
+            <div class="main-container">
+
+                <form class="form-registro-usuario" id="formulario-registro-usuario" action="index.html" method="post">
+
+                    <h2 class="titulo-pagina">REGISTRO DE USUARIO</h2>
+                    <br>
+
+                    <h3>Información de usuario</h3>
 
 
+                    <div class="datos-registro-usuario">
 
-        <div class="main-container">
+                        <div class= "grid-item">
+                            <label for="">Nombre</label>
+                            <input type="text" name="nombre" value="" class="text-input">
+                        </div>
 
-            <form class="form-registro-usuario" id="formulario-registro-usuario" action="index.html" method="post">
+                        <div class= "grid-item">
+                            <label for="Tipo">Apellido</label>
+                            <input type="text" name="apellido" value="" class="text-input">
+                        </div>
 
-                <h2 class="titulo-pagina">REGISTRO DE USUARIO</h2>
-                <br>
+                        <div class= "grid-item">
+                            <label for="Fecha de nacimiento">Fecha de nacimiento</label>
+                            <input type="date" name="fechaDeNacimiento" class="text-input">
+                        </div>
 
-                <h3>Información de usuario</h3>
+                        <div class="grid-select">
+                            <label for="">Tipo de documento</label>
+                            <select name="tipoDocumento">
+                                <option value="DNI">DNI</option>
+                                <option value="CUIL">CUIL</option>
+                                <option value="PASAPORTE">PASAPORTE</option>
+                                <option selected="true" disabled="tipoDocumento"></option>
+                            </select>
+                        </div>
 
+                        <div class="grid-item">
+                            <label for="Tipo">Número de documento</label>
+                            <input type="number" name="documento" class="text-input">
+                        </div>
 
-                <div class="datos-registro-usuario">
+                        <div class="grid-select">
+                            <label for="">Perfil</label>
+                            <select name="perfil">
+                                <option value="ADMINISTRADOR">Administrador</option>
+                                <option value="USUARIO">Usuario común</option>
+                                <option selected="true" disabled="perfil"></option>
+                            </select>
+                        </div>
 
-                    <div class= "grid-item">
-                        <label for="">Nombre</label>
-                        <input type="text" name="" value="" class="text-input">
+                        <div class= "grid-item">
+                            <label for="">Contraseña</label>
+                            <input type="text" name="password" value="" class="text-input">
+                        </div>
+
                     </div>
 
-                    <div class= "grid-item">
-                        <label for="Tipo">Apellido</label>
-                        <input type="text" name="" value="" class="text-input">
+                    <h3>Dirección</h3>
+
+                    <div class="datos-registro-usuario">
+
+                        <div class= "grid-item">
+                            <label for="">Calle</label>
+                            <input type="text" name="calleDireccion" class="text-input">
+                        </div>
+
+                        <div class= "grid-item">
+                            <label for="">Altura</label>
+                            <input type="text" name="alturaDireccion" class="text-input">
+                        </div>
                     </div>
 
-                    <div class= "grid-item">
-                        <label for="Fecha de nacimiento">Fecha de nacimiento</label>
-                        <input type="date" name="" class="text-input">
+                    <h3>Forma de contacto</h3>
+
+                    <div class="datos-registro-usuario">
+
+                        <div class= "grid-item">
+                            <label for="">Nombre de contacto</label>
+                            <input type="text" name="nombreContacto" class="text-input">
+                        </div>
+
+                        <div class= "grid-item">
+                            <label for="">Apellido de contacto</label>
+                            <input type="text" name="apellidoContacto" class="text-input">
+                        </div>
+
+                        <div class= "grid-item">
+                            <label for="">Teléfono</label>
+                            <input type="tel" name="telefonoContacto" class="text-input">
+                        </div>
+
+                        <div class= "grid-item">
+                            <label for="">Email</label>
+                            <input type="email" name="emailContacto" class="text-input">
+                        </div>
+
                     </div>
 
-                    <div class= "grid-item">
-                        <label for="">Dirección</label>
-                        <input type="text" name="" class="text-input">
+                    <h3>Preferencia de contacto</h3>
+
+                    <div class="preferencia-de-contacto">
+
+                        <div class="checkbox">
+                            <input id="WhatsApp" name="formaDeContacto" type="radio" value="WhatsApp">
+                            <label for="WhatsApp">WhatsApp</label>
+                        </div>
+
+                        <div class="checkbox">
+                            <input id="SMS" name="formaDeContacto" type="radio" value="SMS">
+                            <label for="SMS">SMS</label>
+                        </div>
+
+                        <div class="checkbox">
+                            <input id="Email" name="formaDeContacto" type="radio" value="Email">
+                            <label for="Email">Email</label>
+                        </div>
+
                     </div>
 
-                    <div class="grid-select">
-                        <label for="">Tipo de documento</label>
-                        <select name="Tipo">
-                            <option value="DNI">DNI</option>
-                            <option value="CUIL">CUIL</option>
-                            <option value="PASAPORTE">PASAPORTE</option>
-                            <option selected="true" disabled="Tipo"></option>
-                        </select>
+                    <button class="boton-siguiente" type="submit" onclick="showAlert()">Registrarse</button>
+                    {{!--<div style="text-align:end">
+                       <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Registrar</button>
                     </div>
+                    --}}
 
-                    <div class="grid-item">
-                        <label for="Tipo">Número de documento</label>
-                        <input type="number" name="" class="text-input">
-                    </div>
+                </form>
 
-                </div>
-
-                <h3>Forma de contacto</h3>
-
-                <div class="datos-registro-usuario">
-
-                    <div class= "grid-item">
-                        <label for="">Nombre de contacto</label>
-                        <input type="text" name="" class="text-input">
-                    </div>
-
-                    <div class= "grid-item">
-                        <label for="">Apellido de contacto</label>
-                        <input type="text" name="" class="text-input">
-                    </div>
-
-                    <div class= "grid-item">
-                        <label for="">Teléfono</label>
-                        <input type="tel" name="" class="text-input">
-                    </div>
-
-                    <div class= "grid-item">
-                        <label for="">Email</label>
-                        <input type="email" name="" class="text-input">
-                    </div>
-
-                </div>
-
-                <h3>Preferencia de contacto</h3>
-
-                <div class="preferencia-de-contacto">
-
-                    <div class="checkbox">
-                        <input id="WhatsApp" name="contacto" type="radio" value="WhatsApp">
-                        <label for="WhatsApp">WhatsApp</label>
-                    </div>
-
-                    <div class="checkbox">
-                        <input id="SMS" name="contacto" type="radio" value="SMS">
-                        <label for="SMS">SMS</label>
-                    </div>
-
-                    <div class="checkbox">
-                        <input id="Email" name="contacto" type="radio" value="Email">
-                        <label for="Email">Email</label>
-                    </div>
-
-                </div>
-
-                <div style="text-align:end">
-                    <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Registrar</button>
-                </div>
-
-            </form>
-
-        </div>
+            </div>
 
         <footer>
 
