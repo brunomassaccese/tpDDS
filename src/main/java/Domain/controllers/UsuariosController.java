@@ -13,6 +13,8 @@ import Domain.repositories.Repositorio;
 import Domain.repositories.factories.FactoryRepositorio;
 import Domain.repositories.testMemoData.DataUsuario;
 import Domain.repositories.testMemoData.EntidadPersistente;
+import Domain.controllers.LoginController;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -29,6 +31,7 @@ public class UsuariosController {
     private Repositorio<Rol> repositorioDeRoles;
     private Repositorio<Mascota> repositorioDeMascotas;
     private Repositorio<Caracteristica> repositorioCaracteristicas;
+    private LoginController loginController;
 
     public UsuariosController(){
         this.repositorio = FactoryRepositorio.get(Usuario.class); //esto me devuelve un repositorio
@@ -115,9 +118,13 @@ public class UsuariosController {
 
     public ModelAndView mostrarCaracteristicas(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
-        List<Caracteristica> caracteristicas = this.repositorioCaracteristicas.buscarTodos();
-        parametros.put("caracteristicas", caracteristicas);
-        return new ModelAndView(parametros, "registrarMascota.hbs");
+        if((loginController.idUsuariosConectados.contains(request.session().id())) == true){
+            List<Caracteristica> caracteristicas = this.repositorioCaracteristicas.buscarTodos();
+            parametros.put("caracteristicas", caracteristicas);
+            return new ModelAndView(parametros, "registrarMascota.hbs");
+        }else{
+         return new ModelAndView(parametros, "login.hbs");
+        }
     }
 
     public Response guardarUsuario(Request request, Response response){

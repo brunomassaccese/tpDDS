@@ -8,10 +8,13 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LoginController {
+    public static List<String> idUsuariosConectados = new ArrayList<>();
 
     public ModelAndView inicio(Request request, Response response){
         Map<String, Object> parametros = new HashMap<>();
@@ -28,17 +31,18 @@ public class LoginController {
                 Usuario usuario = repoUsuarios.buscarUsuario(nombreDeUsuario, contrasenia);
 
                 request.session(true);
-                request.session().attribute("userName", usuario.getNombre());
+                //idUsuariosConectados.add(request.session().id());
 
                 response.redirect("/registrarMascota"); //o cualquier otro
             }
             else{
-                response.redirect("/");
+                response.redirect("/login");
             }
         }
         catch (Exception e){
             //Funcionalidad del Try sólo disponible solo con persistencia en Base de Datos
             if(estaRegistrado(nombreDeUsuario, contrasenia)) {
+                idUsuariosConectados.add(request.session().id());
                 response.redirect("/registrarMascota");
             }else{
                 response.redirect("/login");
@@ -56,7 +60,7 @@ public class LoginController {
     }
 
     public Boolean estaRegistrado(String nombreDeUsuario, String contrasenia){
-        return (usuarioRegistrado(nombreDeUsuario)) && (coincideContraseña(nombreDeUsuario, contrasenia));
+        return ((usuarioRegistrado(nombreDeUsuario)) && (coincideContraseña(nombreDeUsuario, contrasenia)));
     }
 
     public Boolean usuarioRegistrado(String nombreDeUsuario){
