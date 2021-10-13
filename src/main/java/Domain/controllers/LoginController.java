@@ -41,7 +41,7 @@ public class LoginController {
             if(estaRegistrado(nombreDeUsuario, contrasenia)) {
                 response.redirect("/registrarMascota");
             }else{
-                response.redirect("/registrarUsuario");
+                response.redirect("/login");
             }
         }
         finally {

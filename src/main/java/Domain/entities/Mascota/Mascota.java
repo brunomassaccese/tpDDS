@@ -4,6 +4,7 @@ import Domain.entities.Mascota.Chapa.Chapa;
 import Domain.entities.Organizacion.Caracteristica;
 import Domain.entities.Persona.Usuario;
 import Domain.entities.Publicacion.Comodidad;
+import Domain.repositories.testMemoData.EntidadPersistente;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "mascota")
-public class Mascota {
+public class Mascota extends EntidadPersistente {
 
     @Id
     @GeneratedValue

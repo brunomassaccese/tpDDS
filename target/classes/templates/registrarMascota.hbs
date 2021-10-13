@@ -19,7 +19,7 @@
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
                         Swal.fire('Mascota registrada', '', 'success')
-                        document.getElementById('formulario-mascota').reset();
+                        document.getElementById('formulario-mascota').reset()
                     } else if (result.isDenied) {
                         // Swal.fire('No publicado', '', 'info')
                     }
@@ -56,7 +56,7 @@
 
         <div class="main-container">
 
-            <form class="form-registro-mascota" id="formulario-mascota" action="index.html" method="post">
+            <form class="form-registro-mascota" id="formulario-mascota" action="/guardarMascota" method="post">
 
                 <h2 class="titulo-pagina">REGISTRO DE MASCOTA</h2>
                 <br>
@@ -121,7 +121,8 @@
                 </div>
 
                 <div style="text-align:end">
-                    <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Registrar</button>
+                <!-- <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Registrar</button> -->
+                <button class="boton-siguiente" type="submit" onclick="showAlert()">Registrar</button>
 
                 </div>
             </form>

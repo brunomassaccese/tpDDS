@@ -1,6 +1,7 @@
 package server;
 
 import Domain.controllers.LoginController;
+import Domain.controllers.MascotasController;
 import Domain.controllers.UsuariosController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -29,6 +30,7 @@ public class Router {
         UsuariosController usuariosController = new UsuariosController();
         LoginController loginController     = new LoginController();
         AuthMiddleware authMiddleware       = new AuthMiddleware();
+        MascotasController mascotasController = new MascotasController();
 
         Spark.get("/", loginController::inicio, Router.engine);
 
@@ -54,9 +56,9 @@ public class Router {
 
         Spark.get("/registrarMascota", usuariosController::mostrarCaracteristicas, Router.engine);
 
-        //Spark.get("/registrarMascota", usuariosController::registrarMascota, Router.engine);
-
         Spark.get("/index", usuariosController::inicio, Router.engine);
+
+        Spark.post("/guardarMascota", mascotasController::guardarMascota);
 
     }
 }
