@@ -1,6 +1,7 @@
 package Domain.controllers;
 
 import Domain.entities.Mascota.Mascota;
+import Domain.entities.Organizacion.Caracteristica;
 import Domain.entities.Persona.Rol;
 import Domain.entities.Persona.Usuario;
 import Domain.repositories.Repositorio;
@@ -18,11 +19,13 @@ public class UsuariosController {
     private Repositorio<Usuario> repositorio;
     private Repositorio<Rol> repositorioDeRoles;
     private Repositorio<Mascota> repositorioDeMascotas;
+    private Repositorio<Caracteristica> repositorioCaracteristicas;
 
     public UsuariosController(){
         this.repositorio = FactoryRepositorio.get(Usuario.class); //esto me devuelve un repositorio
         this.repositorioDeRoles = FactoryRepositorio.get(Rol.class);
         this.repositorioDeMascotas = FactoryRepositorio.get(Mascota.class);
+        this.repositorioCaracteristicas = FactoryRepositorio.get(Caracteristica.class);
     }
 
     public ModelAndView inicio(Request request, Response response){
@@ -98,5 +101,16 @@ public class UsuariosController {
     public ModelAndView registrarMascota(Request request, Response response){
         return new ModelAndView(new HashMap<>(), "registrarMascota.hbs");
     }
+
+
+    public ModelAndView mostrarCaracteristicas(Request request, Response response) {
+        Map<String, Object> parametros = new HashMap<>();
+        List<Caracteristica> caracteristicas = this.repositorioCaracteristicas.buscarTodos();
+        parametros.put("caracteristicas", caracteristicas);
+        return new ModelAndView(parametros, "registrarMascota.hbs");
+    }
+
+
+
 
 }

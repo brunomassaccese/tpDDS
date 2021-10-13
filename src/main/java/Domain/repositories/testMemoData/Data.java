@@ -1,5 +1,6 @@
 package Domain.repositories.testMemoData;
 
+import Domain.entities.Organizacion.Caracteristica;
 import Domain.repositories.testMemoData.EntidadPersistente;
 import Domain.entities.Persona.Rol;
 import Domain.entities.Persona.Usuario;
@@ -17,6 +18,11 @@ public class Data {
         else{
             if(type.getName().equals(Usuario.class.getName())){
                 entidades = DataUsuario.getList();
+            }
+            else{
+                if(type.getName().equals(Caracteristica.class.getName())) {
+                    entidades = DataCaracteristicas.getList();
+                }
             }
         }
         return entidades;

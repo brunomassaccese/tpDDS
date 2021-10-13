@@ -111,14 +111,11 @@
                     <div class= "grid-item">
                         <label for="">Características</label>
                         <select multiple name="caracteristicas" id="caracteristicas" class="text-input">
-                            <option>Pequeño</option>
-                            <option>Mediano</option>
-                            <option>Grande</option>
-                            <option>Flaco</option>
-                            <option>Gordo</option>
-                            <option>De raza</option>
-                            <option>Callejero</option>
-                          </select>
+                        {{#each caracteristicas}}
+                            <option>{{nombre}}</option>
+                        {{/each}}
+
+                        </select>
                     </div>
 
                 </div>
