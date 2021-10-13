@@ -56,7 +56,7 @@ public class LoginController {
     }
 
     public Boolean estaRegistrado(String nombreDeUsuario, String contrasenia){
-        return usuarioRegistrado(nombreDeUsuario) & coincideContraseña(nombreDeUsuario, contrasenia);
+        return usuarioRegistrado(nombreDeUsuario) && coincideContraseña(nombreDeUsuario, contrasenia);
     }
 
     public Boolean usuarioRegistrado(String nombreDeUsuario){

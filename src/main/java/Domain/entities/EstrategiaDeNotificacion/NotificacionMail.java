@@ -17,10 +17,6 @@ public class NotificacionMail extends Strategy {
     public static final String emailOrigen = "Rescastistas";
     public static final String authToken = "476ebdad8135ba4b1e7385c30a389e0f";
 
-    public NotificacionMail() {
-
-    }
-
     public static void enviarAviso(Contacto destinatario, String mensaje) throws IOException {
         Email from = new Email(emailOrigen);
         String subject = "Sending with SendGrid is Fun";

@@ -1,9 +1,14 @@
 package Domain.controllers;
 
+import Domain.entities.EstrategiaDeNotificacion.NotificacionMail;
+import Domain.entities.EstrategiaDeNotificacion.NotificacionSMS;
+import Domain.entities.EstrategiaDeNotificacion.NotificacionWPP;
+import Domain.entities.EstrategiaDeNotificacion.Strategy;
 import Domain.entities.Mascota.Mascota;
 import Domain.entities.Organizacion.Caracteristica;
 import Domain.entities.Persona.Rol;
 import Domain.entities.Persona.Usuario;
+import Domain.entities.Persona.*;
 import Domain.repositories.Repositorio;
 import Domain.repositories.factories.FactoryRepositorio;
 import spark.ModelAndView;
@@ -11,6 +16,8 @@ import spark.Request;
 import spark.Response;
 
 import javax.jws.WebParam;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,6 +103,7 @@ public class UsuariosController {
 
     public ModelAndView registrarUsuario(Request request, Response response) {
         return new ModelAndView(new HashMap<>(), "registrarUsuario.hbs");
+
     }
 
     public ModelAndView registrarMascota(Request request, Response response){
@@ -110,7 +118,125 @@ public class UsuariosController {
         return new ModelAndView(parametros, "registrarMascota.hbs");
     }
 
+    public Response guardarUsuario(Request request, Response response){
+        asignarAtributos(request);
+        response.redirect("/login"); //POST
+        return response;
+    }
 
 
+    private void asignarAtributos(Request request){
+        int telefono;
+        String nombre = null;
+        String email = null;
+        //String nombreDeUsuario;
+        String apellido = null;
+        int legajo;
+        LocalDate fechaDeNacimiento = null;
+        Direccion direccion = null;
+        String calleDireccion = null;
+        int alturaDireccion;
+        TipoDeDocumento tipoDocumento = null;
+        String documento = null;
+        String password = null;
+        String perfil = null;
+        Contacto contacto = null;
+        List<Contacto> listaContactos = new ArrayList<>();
+        Strategy formaDecontacto = null;
+        String nombreContacto = null;
+        String apellidoContacto = null;
+        String telefonoContacto = null;
+        String emailContacto = null;
+        Boolean contactoPorDefecto = null;
 
+        if(request.queryParams("telefono") != null){
+            telefono = new Integer(request.queryParams("telefono"));
+        }
+
+        if(request.queryParams("nombre") != null){
+            nombre = request.queryParams("nombre");
+        }
+
+        if(request.queryParams("email") != null){
+            email = request.queryParams("email");
+        }
+
+        /*if(request.queryParams("nombreDeUsuario") != null){
+            nombreDeUsuario = request.queryParams("nombreDeUsuario");
+        }*/
+
+        if(request.queryParams("apellido") != null){
+            apellido = request.queryParams("apellido");
+        }
+
+        if(request.queryParams("legajo") != null){
+            legajo = new Integer(request.queryParams("legajo"));
+        }
+
+        if(request.queryParams("fechaDeNacimiento") != null && !request.queryParams("fechaDeNacimiento").isEmpty()){
+            fechaDeNacimiento = LocalDate.parse(request.queryParams("fechaDeNacimiento"));
+        }
+
+        if(request.queryParams("calleDireccion") != null && request.queryParams("alturaDireccion") != null){
+            calleDireccion = request.queryParams("calleDireccion");
+            alturaDireccion = new Integer(request.queryParams("alturaDireccion"));
+            direccion = new Direccion(calleDireccion, alturaDireccion);
+        }
+
+        if((request.queryParams("tipoDocumento") != null) && request.queryParams("documento") != null){
+            switch(request.queryParams("tipoDocumento")){
+                case "DNI":
+                    tipoDocumento = TipoDeDocumento.DNI;
+                    break;
+                case "CEDULA":
+                    tipoDocumento = TipoDeDocumento.CEDULA;
+                    break;
+                case "PASAPORTE":
+                    tipoDocumento = TipoDeDocumento.PASAPORTE;
+                    break;
+            }
+            documento = request.queryParams("documento");
+        }
+
+
+        if(request.queryParams("formaDeContacto") != null && request.queryParams("nombreContacto") != null &&
+           request.queryParams("apellidoContacto") != null && request.queryParams("telefonoContacto") != null &&
+           request.queryParams("emailContacto") != null && request.queryParams("contactoDefecto") != null){
+            nombreContacto =  request.queryParams("nombreContacto");
+            apellidoContacto = request.queryParams("apellidoContacto");
+            telefonoContacto = request.queryParams("telefonoContacto");
+            emailContacto = request.queryParams("emailContacto");
+            contactoPorDefecto = new Boolean(request.queryParams("contactoDefecto"));
+            switch(request.queryParams("formaDeContacto")){
+                case "sms":
+                    formaDecontacto = new NotificacionSMS();
+                    break;
+                case "mail":
+                    formaDecontacto = new NotificacionMail();
+                    break;
+                case "wpp":
+                    formaDecontacto = new NotificacionWPP();
+                    break;
+            }
+            contacto = new Contacto(formaDecontacto, nombreContacto, apellidoContacto,
+                    telefonoContacto, emailContacto, contactoPorDefecto);
+            listaContactos.add(contacto);
+
+        }
+
+
+        if(request.queryParams("password") != null){
+            password = request.queryParams("password");
+        }
+
+        if(request.queryParams("perfil") != null){
+            perfil = request.queryParams("perfil");
+        }
+
+        Usuario usuario = new Usuario(nombre, apellido, fechaDeNacimiento, direccion, tipoDocumento, documento,
+                listaContactos, "faltaEnLaVista", perfil);
+
+        this.repositorio.agregar(usuario); //ver de guardar en memoria tambien
+
+    }
 }
