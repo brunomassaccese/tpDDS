@@ -12,6 +12,7 @@ import Domain.entities.Persona.*;
 import Domain.repositories.Repositorio;
 import Domain.repositories.factories.FactoryRepositorio;
 import Domain.repositories.testMemoData.DataUsuario;
+import Domain.repositories.testMemoData.EntidadPersistente;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -214,9 +215,9 @@ public class UsuariosController {
         Usuario usuario = new Usuario(nombre, apellido, fechaDeNacimiento, direccion, tipoDocumento, documento,
                 listaContactos, password, perfil);
 
-        this.repositorio.agregar(usuario); //ver de guardar en memoria tambien
+        this.repositorio.agregar(usuario);
 
-        DataUsuario.agregarUsuarioALista(usuario);
+        DataUsuario.agregarUsuarioALista(usuario); //en memoria
 
     }
 }

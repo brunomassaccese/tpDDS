@@ -9,6 +9,7 @@ import Domain.entities.Organizacion.Caracteristica;
 import Domain.entities.Organizacion.Pregunta;
 import Domain.entities.Organizacion.Respuesta;
 import Domain.entities.Publicacion.PublicacionMascotaPerdida;
+import Domain.repositories.testMemoData.EntidadPersistente;
 
 import java.io.IOException;
 import java.time.LocalDate;

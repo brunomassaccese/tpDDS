@@ -4,6 +4,7 @@ import Domain.entities.Organizacion.Organizacion;
 import Domain.entities.Mascota.Chapa.Formulario;
 import Domain.entities.Mascota.Mascota;
 import Domain.entities.Publicacion.PublicacionMascotaPerdida;
+import Domain.repositories.testMemoData.EntidadPersistente;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -16,7 +17,7 @@ import javax.persistence.*;
 @Table(name = "persona")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo")
-public class Persona {
+public class Persona extends EntidadPersistente {
 
     @Id
     @GeneratedValue

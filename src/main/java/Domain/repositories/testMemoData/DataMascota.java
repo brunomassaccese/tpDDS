@@ -34,8 +34,8 @@ public class DataMascota {
             Chapa chapaMascota2 = new SinChapa();
             List<Comodidad> comodidadesMascota2 = new ArrayList<>();
 
-            Mascota mascota2 = new Mascota("perro", "Firulais", "Firu",
-                    4, "macho", Estado.ADOPTADO, "asadfa", fotosMascota2, caracteristicasMascota2,
+            Mascota mascota2 = new Mascota("gato", "Ramon", "Ramon",
+                    4, "macho", Estado.ENCONTRADO, "asadfa", fotosMascota2, caracteristicasMascota2,
                     chapaMascota2, DataUsuario.usuarios.get(1), comodidadesMascota2);
             DataUsuario.usuarios.get(1).registrarMascota(mascota2);
 

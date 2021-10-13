@@ -50,9 +50,9 @@ public class Router {
 
         Spark.get("/registrarUsuario", usuariosController::registrarUsuario, Router.engine);
 
-        Spark.get("/registrarMascota", usuariosController::mostrarCaracteristicas, Router.engine);
+        Spark.post("/registrarUsuario", usuariosController::guardarUsuario);
 
-         Spark.post("/registrarUsuario", usuariosController::guardarUsuario);
+        Spark.get("/registrarMascota", usuariosController::mostrarCaracteristicas, Router.engine);
 
         //Spark.get("/registrarMascota", usuariosController::registrarMascota, Router.engine);
 

@@ -42,8 +42,9 @@ public class DataUsuario {
         return (List<EntidadPersistente>)(List<?>) usuarios;
     }
 
-    public static void agregarUsuarioALista(Usuario usuario){
+    public static void agregarUsuarioALista(Usuario usuario){ //en memoria
         usuarios.add(usuario);
+        mapUsuariosClaves.put(usuario.getNombre(), usuario.getPassword());
     }
 
     private static void addAll(Usuario ... usuarios){
