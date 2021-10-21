@@ -7,25 +7,6 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
         <link rel="stylesheet" href="/css/index.css">
         <link rel="stylesheet" href="/css/fontello.css">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-        <script>
-            function showAlert() {
-                Swal.fire({
-                    title: '¿Estás seguro que querés registrar a tu mascota?',
-                    showDenyButton: true,
-                    confirmButtonText: `Registrar`,
-                    denyButtonText: `Cancelar`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        Swal.fire('Mascota registrada', '', 'success')
-                        document.getElementById('formulario-mascota').reset()
-                    } else if (result.isDenied) {
-                        // Swal.fire('No publicado', '', 'info')
-                    }
-                })
-            }
-        </script>
     </head>
 
     <body>
@@ -67,57 +48,84 @@
 
                     <div class= "grid-item">
                         <label for="">Tipo</label>
-                        <select name="Tipo" class="text-input">
+                        <select name="tipo" class="text-input">
                             <option value="Perro">Perro</option>
                             <option value="Gato">Gato</option>
-                            <option selected="true" disabled="Tipo"></option>
+                            <option selected="true" disabled="tipo"></option>
                         </select>
                     </div>
 
                     <div class= "grid-item">
                         <label for="">Nombre</label>
-                        <input type="text" name="" class="text-input">
+                        <input type="text" name="nombre" class="text-input">
                     </div>
 
                     <div class= "grid-item">
                         <label for="">Apodo</label>
-                        <input type="text" name="" class="text-input">
+                        <input type="text" name="apodo" class="text-input">
                     </div>
 
                     <div class= "grid-item">
-                        <label for="">Edad aproximada</label>
-                        <input type="text" name="" class="text-input">
+                        <label for="">Fecha de nacimiento aproximada</label>
+                        <input type="date" name="fechaDeNacimiento" class="text-input">
                     </div>
 
                     <div class= "grid-item">
                         <label for="">Sexo</label>
-                        <select name="Tipo" class="text-input">
+                        <select name="sexo" class="text-input">
                             <option value="M">Macho</option>
                             <option value="H">Hembra</option>
-                            <option selected="true" disabled="Tipo"></option>
+                            <option selected="true" disabled="sexo"></option>
                         </select>
                     </div>
 
                     <div class= "grid-item">
                         <label for="">Descripción física</label>
-                        <input type="text" name="" class="text-input" maxlength="100">
+                        <input type="text" name="descripcion" class="text-input" maxlength="100">
                     </div>
 
+                </div>
+
+                <h3>Foto de la mascota</h3>
+
+                <div class="informacion-del-animal" >
                     <div class= "grid-item">
-                        <label for="archivo">Seleccionar fotos</label>
-                        <input type="file" id="id-archivo" name="nombre-archivo" multiple><br><br>
+                        <input type="file" id="foto" name="foto"><br><br>
                     </div>
+                </div>
 
+                <h3>Características de la mascota</h3>
+
+                <div class="informacion-del-animal" >
                     <div class= "grid-item">
-                        <label for="">Características</label>
-                        <select multiple name="caracteristicas" id="caracteristicas" class="text-input">
-                        {{#each caracteristicas}}
-                            <option>{{nombre}}</option>
-                        {{/each}}
-
+                        <label for="">Característica 1</label>
+                        <select name="caracteristica1" id="caracteristica1" class="text-input">
+                            {{#each caracteristicas}}
+                                <option>{{nombre}}</option>
+                            {{/each}}
+                                <option selected="true" disabled="caracteristica1"></option>
                         </select>
                     </div>
 
+                    <div class= "grid-item">
+                        <label for="">Característica 2</label>
+                        <select name="caracteristica2" id="caracteristica2" class="text-input">
+                            {{#each caracteristicas}}
+                                <option>{{nombre}}</option>
+                            {{/each}}
+                                <option selected="true" disabled="caracteristica2"></option>
+                        </select>
+                    </div>
+
+                    <div class= "grid-item">
+                        <label for="">Característica 3</label>
+                        <select name="caracteristica2" id="caracteristica2" class="text-input">
+                            {{#each caracteristicas}}
+                                <option>{{nombre}}</option>
+                            {{/each}}
+                                <option selected="true" disabled="caracteristica3"></option>
+                        </select>
+                    </div>
                 </div>
 
                 <div style="text-align:end">
