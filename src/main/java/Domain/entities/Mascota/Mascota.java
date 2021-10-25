@@ -15,10 +15,6 @@ import javax.persistence.*;
 @Table(name = "mascota")
 public class Mascota extends EntidadPersistente {
 
-    @Id
-    @GeneratedValue
-    private int id;
-
     @Column(name = "nombre")
     private String nombre;              //hecho
 

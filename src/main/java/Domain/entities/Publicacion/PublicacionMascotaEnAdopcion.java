@@ -14,19 +14,25 @@ public class PublicacionMascotaEnAdopcion {
     @Id
     @GeneratedValue
     private int id;
+
     @Transient
     public Timestamp timestamp;
+
     @Column
     private Boolean estadoDePublicacion;
+
     @ManyToOne
-    @JoinColumn(name = "duenio_id")
+    @JoinColumn(name = "duenio_id", referencedColumnName = "id")
     private Usuario duenio = null;
+
     @OneToOne
-    @JoinColumn(name = "mascota_id")
+    @JoinColumn(name = "mascota_id", referencedColumnName = "id")
     private Mascota mascota = null;
+
     @OneToMany
     @JoinColumn(name = "publicacion_adopcion_id")
     private List<Pregunta> preguntas = null;
+
     @OneToMany
     @JoinColumn(name = "publicacion_adopcion_id")
     private List<Respuesta> respuestas = null;

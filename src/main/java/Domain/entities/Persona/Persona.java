@@ -19,10 +19,6 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "tipo")
 public class Persona extends EntidadPersistente {
 
-    @Id
-    @GeneratedValue
-    private int id;
-
     @Column(name = "nombre")
     public String nombre;
 

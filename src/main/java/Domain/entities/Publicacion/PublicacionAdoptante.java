@@ -18,15 +18,16 @@ public class PublicacionAdoptante {
     private List<Comodidad> comodidades = null;
 
     @ManyToOne
-    @JoinColumn(name = "adoptante_id")
+    @JoinColumn(name = "adoptante_id", referencedColumnName = "id")
+    //@JoinColumn(name = "adoptante_id")
     private Usuario adoptante = null;
 
     @Column
     private Boolean estadoDePublicacion = null;
 
-    public PublicacionAdoptante(Usuario adoptante, List<Caracteristica> preferecnias, List<Comodidad> comodidades) {
+    public PublicacionAdoptante(Usuario adoptante, List<Caracteristica> preferencias, List<Comodidad> comodidades) {
         this.adoptante = adoptante;
-        this.preferencias.addAll(preferecnias);
+        this.preferencias.addAll(preferencias);
         this.comodidades.addAll(comodidades);
         this.estadoDePublicacion = false;
     }
@@ -37,7 +38,6 @@ public class PublicacionAdoptante {
 
     public void setEstadoDePublicacion(Boolean estadoDePublicacion) {
         this.estadoDePublicacion = estadoDePublicacion;
-
     }
 
     public List<Caracteristica> getPreferecnias() {

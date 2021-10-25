@@ -20,9 +20,6 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue("usuario")
 public class Usuario extends Persona {
-//    @Id
-//    @GeneratedValue
-//    private int id;
 
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private Rol rol;
