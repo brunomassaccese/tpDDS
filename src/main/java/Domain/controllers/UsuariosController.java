@@ -9,6 +9,7 @@ import Domain.entities.Organizacion.Caracteristica;
 import Domain.entities.Persona.Rol;
 import Domain.entities.Persona.Usuario;
 import Domain.entities.Persona.*;
+import Domain.entities.Validador.ValidadorDePass;
 import Domain.repositories.Repositorio;
 import Domain.repositories.factories.FactoryRepositorio;
 import Domain.repositories.testMemoData.DataUsuario;
@@ -20,6 +21,7 @@ import spark.Request;
 import spark.Response;
 
 import javax.jws.WebParam;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,7 +120,7 @@ public class UsuariosController {
 
     public ModelAndView mostrarCaracteristicas(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
-        if((loginController.idUsuariosConectados.contains(request.session().id())) == true){
+        if((loginController.idUsuariosConectados.containsKey(request.session().id())) == true){
             List<Caracteristica> caracteristicas = this.repositorioCaracteristicas.buscarTodos();
             parametros.put("caracteristicas", caracteristicas);
             return new ModelAndView(parametros, "registrarMascota.hbs");
@@ -127,14 +129,17 @@ public class UsuariosController {
         }
     }
 
-    public Response guardarUsuario(Request request, Response response){
-        asignarAtributos(request);
-        response.redirect("/login"); //POST
+    public Response guardarUsuario(Request request, Response response) throws IOException {
+        if(asignarAtributos(request) == 1){
+            response.redirect("/login"); //POST
+        }else{
+            response.redirect("/registrarUsuario"); //POST
+        }
         return response;
     }
 
 
-    private void asignarAtributos(Request request){
+    private int asignarAtributos(Request request) throws IOException {
         String nombre = null;
         String apellido = null;
         LocalDate fechaDeNacimiento = null;
@@ -185,7 +190,13 @@ public class UsuariosController {
         }
 
         if(request.queryParams("password") != null){
-            password = request.queryParams("password");
+            ValidadorDePass validador = new ValidadorDePass();
+            if(validador.validar(request.queryParams("password"))) {
+                password = request.queryParams("password");
+            }else{
+                //System.out.println("Pasword mala");
+                return 0;
+            }
         }
 
         if(request.queryParams("calleDireccion") != null && request.queryParams("alturaDireccion") != null){
@@ -225,6 +236,6 @@ public class UsuariosController {
         this.repositorio.agregar(usuario);
 
         DataUsuario.agregarUsuarioALista(usuario); //en memoria
-
+        return 1;
     }
 }

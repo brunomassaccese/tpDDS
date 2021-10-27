@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LoginController {
-    public static List<String> idUsuariosConectados = new ArrayList<>();
+    public static Map<String, Integer> idUsuariosConectados = new HashMap<String, Integer>();
 
     public ModelAndView inicio(Request request, Response response){
         Map<String, Object> parametros = new HashMap<>();
@@ -31,7 +31,12 @@ public class LoginController {
                 Usuario usuario = repoUsuarios.buscarUsuario(nombreDeUsuario, contrasenia);
 
                 request.session(true);
-                //idUsuariosConectados.add(request.session().id());
+                /*if(estaRegistrado(nombreDeUsuario, contrasenia)) {
+                    idUsuariosConectados.put(request.session().id(), obtenerIdDB(nombreDeUsuario));
+                    response.redirect("/registrarMascota");
+                }else{
+                    response.redirect("/login");
+                }*/
 
                 response.redirect("/registrarMascota"); //o cualquier otro
             }
@@ -42,7 +47,7 @@ public class LoginController {
         catch (Exception e){
             //Funcionalidad del Try sólo disponible solo con persistencia en Base de Datos
             if(estaRegistrado(nombreDeUsuario, contrasenia)) {
-                idUsuariosConectados.add(request.session().id());
+                idUsuariosConectados.put(request.session().id(), obtenerIdDB(nombreDeUsuario));
                 response.redirect("/registrarMascota");
             }else{
                 response.redirect("/login");
@@ -70,5 +75,17 @@ public class LoginController {
     public Boolean coincideContraseña(String nombreDeUsuario, String contrasenia){
         return (DataUsuario.mapUsuariosClaves.get(nombreDeUsuario).equals(contrasenia));
     }
+
+    public Integer obtenerIdDB(String usuario){
+        int id = -1;
+        for(int i=0; i < DataUsuario.usuarios.size(); i++){
+            if(DataUsuario.usuarios.get(i).nombre.equals(usuario)){
+                id = DataUsuario.usuarios.get(i).getId();
+            }
+        }
+        if(id == -1){ System.out.println("No se encontro ID del usuario "+usuario); }
+        return id;
+    }
+
 
 }

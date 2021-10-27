@@ -40,14 +40,6 @@ public class Router {
 
         Spark.post("/login", loginController::login);
 
-        //Spark.get("/usuarios", usuariosController::mostrarTodos, Router.engine);
-
-        //Spark.get("/usuario/:id", usuariosController::mostrar, Router.engine);
-
-        //Spark.post("/usuario/:id", usuariosController::modificar);
-
-        //Spark.delete("/usuario/:id", usuariosController::eliminar);
-
         Spark.get("/darEnAdopcion", usuariosController::darEnAdopcion, Router.engine); //devuelve un simple String
 
         Spark.get("/registrarUsuario", usuariosController::registrarUsuario, Router.engine);

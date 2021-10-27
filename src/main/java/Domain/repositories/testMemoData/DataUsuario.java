@@ -29,10 +29,11 @@ public class DataUsuario {
         Usuario mario = new Usuario("Mario", "Lorenzo", LocalDate.of(1990, 11, 13),
                 dire1, TipoDeDocumento.DNI, "30120670",
                 listaContactos1, "ab1", "PDR");
-
+        mario.setId(1);
 
         Usuario claudio = new Usuario("Claudio", "Leal", LocalDate.of(1980, 03, 30),
                 dire2, TipoDeDocumento.DNI, "40320020", listaContactos2, "ab2", "CLeal");
+        claudio.setId(2);
 
         if(usuarios.size() == 0) {
             addAll(mario, claudio);

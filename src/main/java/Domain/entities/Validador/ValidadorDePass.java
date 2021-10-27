@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 public class ValidadorDePass {
 
     //Path para el archivo ordenado
-    private static final String pathSinModificar = "src/main/java/Domain.entities.Validador/10k-worst-passwords.txt";
-    private static final String pathModificado = "src/main/java/Domain.entities.Validador/sorted-10k-worst-passwords.txt";
+    private static final String pathSinModificar = "src/main/java/Domain/entities/Validador/10k-worst-passwords.txt";
+    private static final String pathModificado = "src/main/java/Domain/entities/Validador/sorted-10k-worst-passwords.txt";
     //Declaro y defino las variables que uso en el array
     private static final int LINES = 10000;
     public static String[] strArray = new String[LINES];
