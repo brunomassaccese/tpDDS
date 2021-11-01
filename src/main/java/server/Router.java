@@ -31,6 +31,8 @@ public class Router {
         LoginController loginController     = new LoginController();
         AuthMiddleware authMiddleware       = new AuthMiddleware();
         MascotasController mascotasController = new MascotasController();
+        AdminController adminController = new AdminController();
+
 
         Spark.get("/", loginController::inicio, Router.engine);
 
@@ -51,6 +53,14 @@ public class Router {
         Spark.get("/index", usuariosController::inicio, Router.engine);
 
         Spark.post("/guardarMascota", mascotasController::guardarMascota);
+
+        //
+
+        Spark.post("/guardarMascota", adminController::guardarMascota);
+
+        Spark.post("/buscarMascota", adminController::buscarMascota);
+
+
 
     }
 }
