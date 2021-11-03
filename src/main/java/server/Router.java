@@ -1,5 +1,6 @@
 package server;
 
+import Domain.controllers.AdminController;
 import Domain.controllers.LoginController;
 import Domain.controllers.MascotasController;
 import Domain.controllers.UsuariosController;
@@ -58,7 +59,7 @@ public class Router {
 
         Spark.post("/guardarMascota", adminController::guardarMascota);
 
-        Spark.post("/buscarMascota", adminController::buscarMascota);
+        //Spark.post("/buscarMascota", adminController::buscarMascota);
 
 
 
