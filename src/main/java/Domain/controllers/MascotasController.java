@@ -14,12 +14,10 @@ import Domain.entities.Persona.Direccion;
 import Domain.entities.Persona.TipoDeDocumento;
 import Domain.entities.Persona.Usuario;
 import Domain.entities.Publicacion.Comodidad;
-import Domain.middleware.URLConnectionReader;
 import Domain.repositories.Repositorio;
 import Domain.repositories.factories.FactoryRepositorio;
 import Domain.repositories.testMemoData.DataMascota;
 import Domain.repositories.testMemoData.DataUsuario;
-import org.eclipse.jetty.client.HttpClient;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -37,7 +35,7 @@ public class MascotasController {
         this.repositorio = FactoryRepositorio.get(Mascota.class);
     }
 
-    public Response guardarMascota(Request request, Response response) throws Exception {
+    public Response guardarMascota(Request request, Response response){
         asignarAtributos(request);
         response.redirect("/login"); //POST
         return response;
@@ -45,7 +43,7 @@ public class MascotasController {
 
 
 
-    private void asignarAtributos(Request request) throws Exception {
+    private void asignarAtributos(Request request){
 
         String tipo = null;
         String nombre = null;
