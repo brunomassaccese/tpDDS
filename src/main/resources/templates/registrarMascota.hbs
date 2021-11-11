@@ -37,7 +37,7 @@
 
         <div class="main-container">
 
-            <form class="form-registro-mascota" id="formulario-mascota" action="/guardarMascota" method="post">
+            <form class="form-registro-mascota" id="formulario-mascota" action="/guardarMascota" method="post" enctype="multipart/form-data">
 
                 <h2 class="titulo-pagina">REGISTRO DE MASCOTA</h2>
                 <br>
@@ -90,7 +90,9 @@
 
                 <div class="informacion-del-animal" >
                     <div class= "grid-item">
-                        <input type="file" id="foto" name="foto"><br><br>
+                        <input type="file" name="image_1"/>
+                        <input type="file" name="image_2"/>
+                        <input type="file" name="image_3"/>
                     </div>
                 </div>
 

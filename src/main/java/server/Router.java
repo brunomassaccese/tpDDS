@@ -55,9 +55,7 @@ public class Router {
 
         Spark.post("/guardarMascota", mascotasController::guardarMascota);
 
-        //
-
-        Spark.post("/guardarMascota", adminController::guardarMascota);
+        // Spark.post("/guardarMascota", adminController::guardarMascota); //por qué este?
 
         //Spark.post("/buscarMascota", adminController::buscarMascota);
 
