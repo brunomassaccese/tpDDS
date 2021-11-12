@@ -18,6 +18,11 @@
             <property name="hibernate.connection.username" value="admin" />
             <property name="hibernate.connection.password" value="admin" />
 
+            <property name="hibernate.connection.url2" value="jdbc:mysql://localhost:3306/patitas_image" />
+            <property name="hibernate.connection.username2" value="admin" />
+            <property name="hibernate.connection.password2" value="admin" />
+
+
             <property name="hibernate.show_sql" value="true" />
             <!-- Enable the logging of all the generated SQL statements to the console -->
 

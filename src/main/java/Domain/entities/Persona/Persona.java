@@ -28,7 +28,7 @@ public class Persona extends EntidadPersistente {
     @Column(name = "fechaDeNacimiento", columnDefinition = "DATE")
     public LocalDate fechaNacimiento;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "direccion_id", referencedColumnName = "id")
     public Direccion direccion;
 
