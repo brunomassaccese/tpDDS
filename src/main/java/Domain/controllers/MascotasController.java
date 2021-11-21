@@ -15,13 +15,18 @@ import Domain.entities.Persona.TipoDeDocumento;
 import Domain.entities.Persona.Usuario;
 import Domain.entities.Publicacion.Comodidad;
 import Domain.repositories.Repositorio;
+import Domain.repositories.RepositorioDeCaracteristicas;
+import Domain.repositories.RepositorioDeUsuarios;
 import Domain.repositories.factories.FactoryRepositorio;
+import Domain.repositories.factories.FactoryRepositorioCaracteristicas;
+import Domain.repositories.factories.FactoryRepositorioUsuarios;
 import Domain.repositories.testMemoData.DataMascota;
 import Domain.repositories.testMemoData.DataUsuario;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,20 +36,20 @@ import java.util.Map;
 public class MascotasController {
     private Repositorio<Mascota> repositorio;
 
+    RepositorioDeCaracteristicas repoCaracteristicas = FactoryRepositorioCaracteristicas.get();
+
     public MascotasController(){
         this.repositorio = FactoryRepositorio.get(Mascota.class);
     }
 
-    public Response guardarMascota(Request request, Response response){
-        asignarAtributos(request);
-        response.redirect("/login"); //POST
+    public Response guardarMascota(Request request, Response response) throws IOException {
+        String rutaDeRedireccion = null;
+        rutaDeRedireccion = asignarAtributos(request);
+        response.redirect(rutaDeRedireccion); //POST
         return response;
     }
 
-
-
-    private void asignarAtributos(Request request){
-
+    private String asignarAtributos(Request request) throws IOException {
         String tipo = null;
         String nombre = null;
         String apodo = null;
@@ -53,55 +58,75 @@ public class MascotasController {
         String descripcion = null;
         List<Foto> fotos = null;                           //TODO
         List<Caracteristica> caracteristicas = null;
-        Usuario duenio = null;                             //TODO
+        List<Caracteristica> caracteristicasBD = null;
+        Usuario duenio = null;
         Chapa chapa = null;
         List<Comodidad> necesidades = null;
+        String idSpark = null;
 
-        if(request.queryParams("tipo") != null){
-            tipo = request.queryParams("tipo");
+        apodo = request.queryParams("apodo");
+
+        idSpark = request.session().id();
+
+        duenio = LoginController.obtenerUsuarioConectado(idSpark);
+
+
+        if(duenio != null){
+            RepositorioDeCaracteristicas repoCaracteristicas = FactoryRepositorioCaracteristicas.get();
+
+            if(request.queryParams("tipo") != null){
+                tipo = request.queryParams("tipo");
+            }
+
+            if(request.queryParams("nombre") != null){
+                nombre = request.queryParams("nombre");
+            }
+
+            if(request.queryParams("apodo") != null){
+                apodo = request.queryParams("apodo");
+            }
+
+            if(request.queryParams("fechaDeNacimiento") != null && !request.queryParams("fechaDeNacimiento").isEmpty()){
+                fechaDeNacimiento = LocalDate.parse(request.queryParams("fechaDeNacimiento"));
+            }
+
+            if(request.queryParams("sexo") != null){
+                sexo = request.queryParams("sexo");
+            }
+
+            if(request.queryParams("descripcion") != null){
+                descripcion = request.queryParams("descripcion");
+            }
+
+            String aux = request.queryParams("caracteristica1");
+
+            if(request.queryParams("caracteristica1") != null){
+                Caracteristica caracteristica1 = repoCaracteristicas.buscarCaracteristica(request.queryParams("caracteristica1"));
+                caracteristicas.add(caracteristica1);
+            }
+
+            if(request.queryParams("caracteristica2") != null){
+                Caracteristica caracteristica2 = repoCaracteristicas.buscarCaracteristica(request.queryParams("caracteristica2"));
+                caracteristicas.add(caracteristica2);
+            }
+
+            if(request.queryParams("caracteristica3") != null){
+                Caracteristica caracteristica3 = repoCaracteristicas.buscarCaracteristica(request.queryParams("caracteristica3"));
+                caracteristicas.add(caracteristica3);
+            }
+
+            Mascota mascota = new Mascota(tipo, nombre, apodo, fechaDeNacimiento, sexo, Estado.ENCONTRADO, descripcion,
+                    fotos, caracteristicas, chapa, duenio, necesidades);
+
+            this.repositorio.agregar(mascota);
+
+            DataMascota.agregarMascotaALista(mascota);
+
+            return "/MisMascotas";
         }
-
-        if(request.queryParams("nombre") != null){
-            nombre = request.queryParams("nombre");
+        else{
+            return "/login";
         }
-
-        if(request.queryParams("apodo") != null){
-            apodo = request.queryParams("apodo");
-        }
-
-        if(request.queryParams("fechaDeNacimiento") != null && !request.queryParams("fechaDeNacimiento").isEmpty()){
-            fechaDeNacimiento = LocalDate.parse(request.queryParams("fechaDeNacimiento"));
-        }
-
-        if(request.queryParams("sexo") != null){
-            sexo = request.queryParams("sexo");
-        }
-
-        if(request.queryParams("descripcion") != null){
-            descripcion = request.queryParams("descripcion");
-        }
-
-        if(request.queryParams("caracteristica1") != null){
-            Caracteristica caracteristica1 = new Caracteristica(request.queryParams("caracteristica1"));
-            caracteristicas.add(caracteristica1);
-        }
-
-        if(request.queryParams("caracteristica2") != null){
-            Caracteristica caracteristica2 = new Caracteristica(request.queryParams("caracteristica2"));
-            caracteristicas.add(caracteristica2);
-        }
-
-        if(request.queryParams("caracteristica3") != null){
-            Caracteristica caracteristica3 = new Caracteristica(request.queryParams("caracteristica3"));
-            caracteristicas.add(caracteristica3);
-        }
-
-        Mascota mascota = new Mascota(tipo, nombre, apodo, fechaDeNacimiento, sexo, null, descripcion,
-                fotos, caracteristicas, chapa, duenio, necesidades);
-
-        this.repositorio.agregar(mascota);
-
-        DataMascota.agregarMascotaALista(mascota);
     }
 
 

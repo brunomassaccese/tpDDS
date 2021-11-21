@@ -30,9 +30,20 @@ public class LoginController {
             if(repoUsuarios.existe(nombreDeUsuario, contrasenia)){ //ACA FALLA si no hay Base de Datos
                 Usuario usuario = repoUsuarios.buscarUsuario(nombreDeUsuario, contrasenia);
 
+                String perfil = usuario.getPerfil();
+
                 request.session(true);
-                idUsuariosConectados.put(request.session().id(), obtenerIdDB(nombreDeUsuario));
-                response.redirect("/registrarMascota");
+                idUsuariosConectados.put(request.session().id(), usuario.getId());
+
+                if(perfil.equals("USUARIO")){
+                    response.redirect("/registrarMascota");
+                }
+                else if(perfil.equals("ADMINISTRADOR")){
+                    response.redirect("/adminInicio");
+                }
+                else{
+                    response.redirect("/login");
+                }
 
 //                if(estaRegistrado(nombreDeUsuario, contrasenia)) {
 //                    idUsuariosConectados.put(request.session().id(), obtenerIdDB(nombreDeUsuario));
@@ -65,6 +76,24 @@ public class LoginController {
         request.session().invalidate();
         response.redirect("/");
         return response;
+    }
+
+    public static Usuario obtenerUsuarioConectado(String idSesion){
+        Integer id = 0;
+
+        for (Map.Entry<String, Integer> entry : idUsuariosConectados.entrySet()) {
+            if(entry.getKey().equals(idSesion)){
+                id = entry .getValue();
+            }
+        }
+
+        if(id != 0){
+            RepositorioDeUsuarios repoUsuarios = FactoryRepositorioUsuarios.get();
+            Usuario usuario = repoUsuarios.buscar(id);
+            return usuario;
+        }
+
+        return null;
     }
 
     public Boolean estaRegistrado(String nombreDeUsuario, String contrasenia){

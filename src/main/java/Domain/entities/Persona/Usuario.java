@@ -87,4 +87,8 @@ public class Usuario extends Persona {
     public String getUsuario(){ //Mala seguridad :(
         return this.password;
     }
+
+    public String getPerfil(){ //Mala seguridad :(
+        return this.perfil;
+    }
 }

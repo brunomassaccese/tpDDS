@@ -12,6 +12,8 @@ public class Caracteristica {
     @Column(name = "nombre")
     private String nombre;
 
+    public Caracteristica(){}
+
     public Caracteristica(String nuevaCaracteristica) {
         this.nombre = nuevaCaracteristica;
     }
