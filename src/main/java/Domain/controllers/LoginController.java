@@ -22,8 +22,8 @@ public class LoginController {
     }
 
     public Response login(Request request, Response response){
-        String nombreDeUsuario = request.queryParams("nombreDeUsuario");
-        String contrasenia     = request.queryParams("contrasenia");
+        String nombreDeUsuario = request.queryParams("usuario");
+        String contrasenia     = request.queryParams("password");
         try{
             RepositorioDeUsuarios repoUsuarios = FactoryRepositorioUsuarios.get();
 
@@ -31,15 +31,18 @@ public class LoginController {
                 Usuario usuario = repoUsuarios.buscarUsuario(nombreDeUsuario, contrasenia);
 
                 request.session(true);
-                /*if(estaRegistrado(nombreDeUsuario, contrasenia)) {
-                    idUsuariosConectados.put(request.session().id(), obtenerIdDB(nombreDeUsuario));
-                    response.redirect("/registrarMascota");
-                }else{
-                    response.redirect("/login");
-                }*/
+                idUsuariosConectados.put(request.session().id(), obtenerIdDB(nombreDeUsuario));
+                response.redirect("/registrarMascota");
 
-                response.redirect("/registrarMascota"); //o cualquier otro
-            }
+//                if(estaRegistrado(nombreDeUsuario, contrasenia)) {
+//                    idUsuariosConectados.put(request.session().id(), obtenerIdDB(nombreDeUsuario));
+//                    response.redirect("/registrarMascota");
+//                }else{
+//                    response.redirect("/login");
+//                }
+//
+//                response.redirect("/registrarMascota"); //o cualquier otro
+              }
             else{
                 response.redirect("/login");
             }
@@ -48,7 +51,7 @@ public class LoginController {
             //Funcionalidad del Try sólo disponible solo con persistencia en Base de Datos
             if(estaRegistrado(nombreDeUsuario, contrasenia)) {
                 idUsuariosConectados.put(request.session().id(), obtenerIdDB(nombreDeUsuario));
-                response.redirect("/registrarMascota");
+                response.redirect("/login");
             }else{
                 response.redirect("/login");
             }
@@ -89,3 +92,57 @@ public class LoginController {
 
 
 }
+
+//package Domain.controllers;
+//
+//import Domain.entities.Persona.Usuario;
+//import Domain.repositories.RepositorioDeUsuarios;
+//import Domain.repositories.factories.FactoryRepositorioUsuarios;
+//import spark.ModelAndView;
+//import spark.Request;
+//import spark.Response;
+//
+//import java.util.HashMap;
+//import java.util.Map;
+//
+//public class LoginController {
+//
+//    public ModelAndView inicio(Request request, Response response){
+//        Map<String, Object> parametros = new HashMap<>();
+//        return new ModelAndView(parametros,"login.hbs");
+//    }
+//
+//    public Response login(Request request, Response response){
+//        try{
+//            RepositorioDeUsuarios repoUsuarios = FactoryRepositorioUsuarios.get();
+//
+//            String nombreDeUsuario = request.queryParams("usuario");
+//            String contrasenia     = request.queryParams("password");
+//
+//            if(repoUsuarios.existe(nombreDeUsuario, contrasenia)){
+//                Usuario usuario = repoUsuarios.buscarUsuario(nombreDeUsuario, contrasenia);
+//
+//                request.session(true);
+//                request.session().attribute("id", usuario.getId());
+//
+//                response.redirect("/darEnAdopcion");
+//            }
+//            else{
+//                response.redirect("/login");
+//            }
+//        }
+//        catch (Exception e){
+//            //Funcionalidad disponible solo con persistencia en Base de Datos
+//            response.redirect("/registrarMascota");
+//        }
+//        finally {
+//            return response;
+//        }
+//    }
+//
+//    public Response logout(Request request, Response response){
+//        request.session().invalidate();
+//        response.redirect("/");
+//        return response;
+//    }
+//}

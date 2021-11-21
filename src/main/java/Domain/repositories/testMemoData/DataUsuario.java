@@ -26,26 +26,26 @@ public class DataUsuario {
         Contacto contacto2 = new Contacto(noti1, "claudio", "leal", "4352-7421", "claudio@hotmail.com", true);
         listaContactos2.add(contacto2);
 
-        Usuario mario = new Usuario("Mario", "Lorenzo", LocalDate.of(1990, 11, 13),
+        Usuario mario = new Usuario("Mario", "Lorenzo", "mlorenzo", LocalDate.of(1990, 11, 13),
                 dire1, TipoDeDocumento.DNI, "30120670",
                 listaContactos1, "ab1", "PDR");
         mario.setId(1);
 
-        Usuario claudio = new Usuario("Claudio", "Leal", LocalDate.of(1980, 03, 30),
+        Usuario claudio = new Usuario("Claudio", "Leal", "cleal", LocalDate.of(1980, 03, 30),
                 dire2, TipoDeDocumento.DNI, "40320020", listaContactos2, "ab2", "CLeal");
         claudio.setId(2);
 
         if(usuarios.size() == 0) {
             addAll(mario, claudio);
-            mapUsuariosClaves.put(mario.getNombre(), mario.getPassword());
-            mapUsuariosClaves.put(claudio.getNombre(), claudio.getPassword());
+            mapUsuariosClaves.put(mario.getUsuario(), mario.getPassword());
+            mapUsuariosClaves.put(claudio.getUsuario(), claudio.getPassword());
         }
         return (List<EntidadPersistente>)(List<?>) usuarios;
     }
 
     public static void agregarUsuarioALista(Usuario usuario){ //en memoria
         usuarios.add(usuario);
-        mapUsuariosClaves.put(usuario.getNombre(), usuario.getPassword());
+        mapUsuariosClaves.put(usuario.getUsuario(), usuario.getPassword());
     }
 
     private static void addAll(Usuario ... usuarios){

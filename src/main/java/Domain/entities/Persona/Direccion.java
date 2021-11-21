@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table
 public class Direccion {
 
+    public Direccion(){
+
+    }
+
     public Direccion(String calle_rcv, int altura_rcv) {
         calle = calle_rcv;
         altura = altura_rcv;

@@ -17,7 +17,7 @@ public class Administrador extends Usuario {
 
 
     public Administrador(String nombre, String apellido, LocalDate fechaNacimiento, Direccion direccion, TipoDeDocumento dni, String documento, List<Contacto> contactos, String nombreUsuario, String password, String perfil) {
-        super(nombre, apellido, fechaNacimiento, direccion, dni, documento, contactos, password, perfil);
+        super(nombre, apellido, nombreUsuario, fechaNacimiento, direccion, dni, documento, contactos, password, perfil);
     }
 
     public void agregarCarcateristicas(String nuevaCaracteristica) {

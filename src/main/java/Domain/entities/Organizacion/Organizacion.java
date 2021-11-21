@@ -41,10 +41,10 @@ public class Organizacion {
     private List<PublicacionAdoptante> publicacionesAdoptantes = null;
 
     //E2.P3
-    public void generarVoluntario(String nombre, String apellido,
+    public void generarVoluntario(String nombre, String apellido, String usuario,
                                   LocalDate fechaNacimiento, Direccion direccion,
                                   TipoDeDocumento tipoDeDocumento, String documento, List <Contacto> contactos, String password){
-        Usuario nuevoVoluntario = new Usuario(nombre, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos, password, "VOLUNTARIO");     //Agregar organización?
+        Usuario nuevoVoluntario = new Usuario(nombre, apellido, usuario, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos, password, "VOLUNTARIO");     //Agregar organización?
 
         this.voluntarios.add(nuevoVoluntario);
     }

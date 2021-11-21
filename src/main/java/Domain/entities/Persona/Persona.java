@@ -42,6 +42,10 @@ public class Persona extends EntidadPersistente {
     @OneToMany(mappedBy = "idPersona", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     public List<Contacto> contactos;
 
+    public Persona(){
+
+    }
+
     public Persona(String nombre, String apellido, LocalDate fechaNacimiento, Direccion direccion, TipoDeDocumento tipoDocumento, String documento, List<Contacto> contactos) {
         this.nombre = nombre;
         this.apellido = apellido;

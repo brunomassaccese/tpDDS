@@ -7,25 +7,8 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximumun-scale=1, minumum-scale=1">
         <link rel="stylesheet" href="/css/index.css">
         <link rel="stylesheet" href="/css/fontello.css">
+        <script src="js/registrarUsuario.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-        <script>
-            function showAlert() {
-                Swal.fire({
-                    title: '¿Datos de registro correctos?',
-                    showDenyButton: true,
-                    confirmButtonText: `Registrar`,
-                    denyButtonText: `Cancelar`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        Swal.fire('Registro exitoso', '', 'success')
-                        document.getElementById('formulario-registro-usuario').reset();
-                    } else if (result.isDenied) {
-                        // Swal.fire('No publicado', '', 'info')
-                    }
-                })
-            }
-        </script>
     </head>
 
     <body>
@@ -51,7 +34,7 @@
 
             <div class="main-container">
 
-                <form class="form-registro-usuario" id="formulario-registro-usuario" action="/registrarUsuario" method="post">
+                <form class="form-registro-usuario" id="formulario-registro-usuario" onsubmit ="return validarDatos()" action="/registrarUsuario" method="post">
 
                     <h2 class="titulo-pagina">REGISTRO DE USUARIO</h2>
                     <br>
@@ -63,46 +46,61 @@
 
                         <div class= "grid-item">
                             <label for="">Nombre</label>
-                            <input type="text" name="nombre" value="" class="text-input">
+                            <input type="text" name="nombre" value="" class="text-input" id="id_nombre">
+                            <div style="display:none;" class="validacion" id="id_lnombre"><label>*Nombre vacío</label></div>
                         </div>
 
                         <div class= "grid-item">
                             <label for="Tipo">Apellido</label>
-                            <input type="text" name="apellido" value="" class="text-input">
+                            <input type="text" name="apellido" value="" class="text-input" id="id_apellido">
+                            <div style="display:none;" class="validacion" id="id_lapellido"><label>*Apellido vacío</label></div>
                         </div>
 
                         <div class= "grid-item">
                             <label for="Fecha de nacimiento">Fecha de nacimiento</label>
-                            <input type="date" name="fechaDeNacimiento" class="text-input">
+                            <input type="date" name="fechaDeNacimiento" class="text-input" id="id_fechaDeNacimiento">
+                            <div style="display:none;" class="validacion" id="id_lfechaDeNacimiento"><label>*Fecha de nacimiento vacía</label></div>
                         </div>
 
                         <div class="grid-select">
                             <label for="">Tipo de documento</label>
-                            <select name="tipoDocumento">
+                            <select name="tipoDocumento" id="id_tipodoc">
                                 <option value="DNI">DNI</option>
                                 <option value="CUIL">CUIL</option>
                                 <option value="PASAPORTE">PASAPORTE</option>
                                 <option selected="true" disabled="tipoDocumento"></option>
                             </select>
+                            <div style="display:none;" class="validacion" id="id_ltipodoc"><label>*Tipo de documento vacío</label></div>
+
                         </div>
 
                         <div class="grid-item">
                             <label for="Tipo">Número de documento</label>
-                            <input type="number" name="documento" class="text-input">
+                            <input type="number" name="documento" class="text-input" id="id_nrodoc">
+                            <div style="display:none;" class="validacion" id="id_lnrodoc"><label>*Número de documento vacío</label></div>
+
                         </div>
 
                         <div class="grid-select">
                             <label for="">Perfil</label>
-                            <select name="perfil">
+                            <select name="perfil" id="id_perfil">
                                 <option value="ADMINISTRADOR">Administrador</option>
                                 <option value="USUARIO">Usuario común</option>
                                 <option selected="true" disabled="perfil"></option>
                             </select>
+                            <div style="display:none;" class="validacion" id="id_lperfil"><label>*Perfil vacío</label></div>
+                        </div>
+
+                        <div class= "grid-item">
+                            <label for="">Usuario</label>
+                            <input type="text" name="usuario" value="" class="text-input" id="id_user">
+                            <div style="display:none;" class="validacion" id="id_luser"><label>*Usuario vacío</label></div>
                         </div>
 
                         <div class= "grid-item">
                             <label for="">Contraseña</label>
-                            <input type="text" name="password" value="" class="text-input">
+                            <input type="text" name="password" value="" class="text-input" id="id_pass">
+                            <div style="display:none;" class="validacion" id="id_lpass"><label>*Contraseña vacía</label></div>
                         </div>
 
                     </div>
@@ -113,12 +111,14 @@
 
                         <div class= "grid-item">
                             <label for="">Calle</label>
-                            <input type="text" name="calleDireccion" class="text-input">
+                            <input type="text" name="calleDireccion" class="text-input" id="id_calle">
+                            <div style="display:none;" class="validacion" id="id_lcalle"><label>*Calle vacía</label></div>
                         </div>
 
                         <div class= "grid-item">
                             <label for="">Altura</label>
-                            <input type="text" name="alturaDireccion" class="text-input">
+                            <input type="text" name="alturaDireccion" class="text-input" id="id_altura">
+                            <div style="display:none;" class="validacion" id="id_laltura"><label>*Altura vacía</label></div>
                         </div>
                     </div>
 
@@ -128,22 +128,26 @@
 
                         <div class= "grid-item">
                             <label for="">Nombre de contacto</label>
-                            <input type="text" name="nombreContacto" class="text-input">
+                            <input type="text" name="nombreContacto" class="text-input" id="id_nombrec">
+                            <div style="display:none;" class="validacion" id="id_lnombrec"><label>*Nombre de contacto vacío</label></div>
                         </div>
 
                         <div class= "grid-item">
                             <label for="">Apellido de contacto</label>
-                            <input type="text" name="apellidoContacto" class="text-input">
+                            <input type="text" name="apellidoContacto" class="text-input" id="id_apellidoc">
+                            <div style="display:none;" class="validacion" id="id_lapellidoc"><label>*Apellido de contacto vacío</label></div>
                         </div>
 
                         <div class= "grid-item">
                             <label for="">Teléfono</label>
-                            <input type="tel" name="telefonoContacto" class="text-input">
+                            <input type="tel" name="telefonoContacto" class="text-input" id="id_telc">
+                            <div style="display:none;" class="validacion" id="id_ltelc"><label>*Teléfono vacío</label></div>
                         </div>
 
                         <div class= "grid-item">
                             <label for="">Email</label>
-                            <input type="email" name="emailContacto" class="text-input">
+                            <input type="email" name="emailContacto" class="text-input" id="id_emailc">
+                            <div style="display:none;" class="validacion" id="id_lemailc"><label>*Email vacío</label></div>
                         </div>
 
                     </div>
@@ -153,27 +157,25 @@
                     <div class="preferencia-de-contacto">
 
                         <div class="checkbox">
-                            <input id="WhatsApp" name="formaDeContacto" type="radio" value="WhatsApp">
+                            <input id="WhatsApp" name="formaDeContacto" type="radio" value="WhatsApp" id="id_pwp">
                             <label for="WhatsApp">WhatsApp</label>
                         </div>
 
                         <div class="checkbox">
-                            <input id="SMS" name="formaDeContacto" type="radio" value="SMS">
+                            <input id="SMS" name="formaDeContacto" type="radio" value="SMS" id="id_psms">
                             <label for="SMS">SMS</label>
                         </div>
 
                         <div class="checkbox">
-                            <input id="Email" name="formaDeContacto" type="radio" value="Email">
+                            <input id="Email" name="formaDeContacto" type="radio" value="Email" id="id_pemail">
                             <label for="Email">Email</label>
                         </div>
 
+                        <div style="display:none;" class="validacion" id="id_lpreferencia"><label>*Debe elegir al menos una preferencia de contacto</label></div>
+
                     </div>
 
-                    <button class="boton-siguiente" type="submit" onclick="showAlert()">Registrarse</button>
-                    {{!--<div style="text-align:end">
-                       <button class="boton-siguiente" id="boton-adopcion" type="button" onclick="showAlert()">Registrar</button>
-                    </div>
-                    --}}
+                    <button class="boton-siguiente" type="submit">Registrarse</button>
 
                 </form>
 

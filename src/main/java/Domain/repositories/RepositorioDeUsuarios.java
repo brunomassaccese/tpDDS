@@ -27,8 +27,8 @@ public class RepositorioDeUsuarios extends Repositorio<Usuario> {
         CriteriaQuery<Usuario> usuarioQuery = criteriaBuilder.createQuery(Usuario.class);
         Root<Usuario> condicionRaiz = usuarioQuery.from(Usuario.class);
 
-        Predicate condicionNombreDeUsuario = criteriaBuilder.equal(condicionRaiz.get("nombreDeUsuario"), nombreDeUsuario);
-        Predicate condicionContrasenia = criteriaBuilder.equal(condicionRaiz.get("contrasenia"), contrasenia);
+        Predicate condicionNombreDeUsuario = criteriaBuilder.equal(condicionRaiz.get("usuario"), nombreDeUsuario);
+        Predicate condicionContrasenia = criteriaBuilder.equal(condicionRaiz.get("password"), contrasenia);
 
         Predicate condicionExisteUsuario = criteriaBuilder.and(condicionNombreDeUsuario, condicionContrasenia);
 

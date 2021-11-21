@@ -27,16 +27,24 @@ public class Usuario extends Persona {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "usuario")
+    private String usuario;
+
     @OneToMany(mappedBy = "duenio", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Mascota> mascotas = null;
 
     @Column(name = "perfil")
     private String perfil = null;
 
-    public Usuario(String nombreUsuario, String apellido, LocalDate fechaNacimiento, Direccion direccion, TipoDeDocumento tipoDeDocumento, String documento, List<Contacto> contactos, String password, String perfil) {
-        super(nombreUsuario, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos);
+    public Usuario(){
+
+    }
+
+    public Usuario(String nombre, String apellido, String usuario, LocalDate fechaNacimiento, Direccion direccion, TipoDeDocumento tipoDeDocumento, String documento, List<Contacto> contactos, String password, String perfil) {
+        super(nombre, apellido, fechaNacimiento, direccion, tipoDeDocumento, documento, contactos);
         this.password = password;
         this.perfil = perfil;
+        this.usuario = usuario;
     }
 
     public void registrarMascota(Mascota mascota){
@@ -73,6 +81,10 @@ public class Usuario extends Persona {
     }
 
     public String getPassword(){ //Mala seguridad :(
+        return this.password;
+    }
+
+    public String getUsuario(){ //Mala seguridad :(
         return this.password;
     }
 }

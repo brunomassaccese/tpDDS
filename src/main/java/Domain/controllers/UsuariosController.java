@@ -147,6 +147,7 @@ public class UsuariosController {
         String documento = null;
         String perfil = null;
         String password = null;
+        String usuario = null;
         Direccion direccion = null;
         String calleDireccion = null;
         int alturaDireccion;
@@ -191,12 +192,16 @@ public class UsuariosController {
 
         if(request.queryParams("password") != null){
             ValidadorDePass validador = new ValidadorDePass();
-            if(validador.validar(request.queryParams("password"))) {
+            //if(validador.validar(request.queryParams("password"))) {
                 password = request.queryParams("password");
-            }else{
+            //}else{
                 //System.out.println("Pasword mala");
-                return 0;
-            }
+            //    return 0;
+            //}
+        }
+
+        if(request.queryParams("usuario") != null){
+            usuario = request.queryParams("usuario");
         }
 
         if(request.queryParams("calleDireccion") != null && request.queryParams("alturaDireccion") != null){
@@ -230,12 +235,12 @@ public class UsuariosController {
         }
 
 
-        Usuario usuario = new Usuario(nombre, apellido, fechaDeNacimiento, direccion, tipoDocumento, documento,
+        Usuario nuevoUsuario = new Usuario(nombre, apellido, usuario, fechaDeNacimiento, direccion, tipoDocumento, documento,
                 listaContactos, password, perfil);
 
-        this.repositorio.agregar(usuario);
+        this.repositorio.agregar(nuevoUsuario);
 
-        DataUsuario.agregarUsuarioALista(usuario); //en memoria
+        DataUsuario.agregarUsuarioALista(nuevoUsuario); //en memoria
         return 1;
     }
 }
