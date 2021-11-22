@@ -32,11 +32,16 @@ public class AdminController {
     }
 
     public ModelAndView mostrar(Request request, Response response) {
-        
-        Mascota mascota = repositorioDeMascotas.buscar(Integer.valueOf(request.params("id")));
-
         Map<String, Object> parametros = new HashMap<>();
-        parametros.put("mascotas", mascota);
+
+        try {
+            Mascota mascota = repositorioDeMascotas.buscar(Integer.valueOf(request.params("id")));
+            parametros.put("mascotas", mascota);
+        } 
+        catch (Exception e) {
+            return new ModelAndView(parametros, "pantalla_administrador1.hbs");
+        }
+
         return new ModelAndView(parametros, "pantalla_administrador.hbs");
     }
 

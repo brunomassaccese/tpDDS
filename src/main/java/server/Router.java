@@ -57,11 +57,14 @@ public class Router {
 
         Spark.post("/guardarMascota", mascotasController::guardarMascota);
 
+        -------------------------------------------------
+
         Spark.get("/adminInicio", adminController::inicio);
 
-        // Spark.post("/guardarMascota", adminController::guardarMascota); //por qué este?
+        Spark.get("/buscarMascota/:id", adminController::mostrar, Router.engine);
 
-        //Spark.post("/buscarMascota", adminController::buscarMascota);
+        Spark.post("/guardarMascota", adminController::guardarMascota); //por qué este?
+
 
 
 
