@@ -63,10 +63,10 @@ public class Mascota extends EntidadPersistente {
         this.estado = estado;
         this.descripcion = descripcion;
         this.fotos = fotos;
-        this.caracteristicas.addAll(caracteristicas);
+        //this.caracteristicas.addAll(caracteristicas);
         this.chapa = chapa;
         this.duenio = duenio;
-        this.necesidades.addAll(necesidades);
+        //this.necesidades.addAll(necesidades);
     }
 
 

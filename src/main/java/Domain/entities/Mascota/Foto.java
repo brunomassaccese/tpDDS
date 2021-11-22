@@ -1,5 +1,10 @@
 package Domain.entities.Mascota;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+
 import javax.persistence.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Blob;
 
 @Entity
@@ -12,20 +17,19 @@ public class Foto  {
     //@Column(name = "path")
     //private String path;
     @Column(name = "image")
-    private Blob image = null;
+    private byte[] image;
 
     @ManyToOne
     @JoinColumn(name = "mascota_id", referencedColumnName = "id")
     private Mascota mascota;
 
-    public Foto(Blob image) {
+    public Foto(byte[] image) {
         this.standarizar(image);
         //this.path = path;
         this.image = image;
-
     }
 
-    private void standarizar(Blob image){
+    private void standarizar(byte[] image){
         //TODO
     }
 

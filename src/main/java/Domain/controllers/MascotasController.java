@@ -22,11 +22,17 @@ import Domain.repositories.factories.FactoryRepositorioCaracteristicas;
 import Domain.repositories.factories.FactoryRepositorioUsuarios;
 import Domain.repositories.testMemoData.DataMascota;
 import Domain.repositories.testMemoData.DataUsuario;
+import com.sun.xml.internal.ws.wsdl.writer.document.Part;
+import org.bouncycastle.util.encoders.Base64;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import java.io.IOException;
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.*;
+import java.sql.Blob;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,21 +48,21 @@ public class MascotasController {
         this.repositorio = FactoryRepositorio.get(Mascota.class);
     }
 
-    public Response guardarMascota(Request request, Response response) throws IOException {
+    public Response guardarMascota(Request request, Response response) throws IOException, SQLException {
         String rutaDeRedireccion = null;
         rutaDeRedireccion = asignarAtributos(request);
         response.redirect(rutaDeRedireccion); //POST
         return response;
     }
 
-    private String asignarAtributos(Request request) throws IOException {
+    private String asignarAtributos(Request request) throws IOException, SQLException {
         String tipo = null;
         String nombre = null;
         String apodo = null;
         LocalDate fechaDeNacimiento = null;
         String sexo = null;
         String descripcion = null;
-        List<Foto> fotos = null;                           //TODO
+        List<Foto> fotos = new ArrayList<>();                           //TODO
         List<Caracteristica> caracteristicas = null;
         List<Caracteristica> caracteristicasBD = null;
         Usuario duenio = null;
@@ -85,6 +91,15 @@ public class MascotasController {
             if(request.queryParams("apodo") != null){
                 apodo = request.queryParams("apodo");
             }
+
+            if(request.queryParams("image_1") != null){
+
+                byte[] img = request.queryParams("image_1").getBytes();
+                //Blob blobImg = new SerialBlob(img);
+                Foto foto1 = new Foto(img);
+                fotos.add(foto1);
+            }
+
 
             if(request.queryParams("fechaDeNacimiento") != null && !request.queryParams("fechaDeNacimiento").isEmpty()){
                 fechaDeNacimiento = LocalDate.parse(request.queryParams("fechaDeNacimiento"));
