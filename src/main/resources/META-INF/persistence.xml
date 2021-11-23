@@ -14,14 +14,9 @@
             <property name="hibernate.archive.autodetection" value="class"/>
 
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dds_db" />
-            <property name="hibernate.connection.username" value="admin" />
-            <property name="hibernate.connection.password" value="admin" />
-
-            <property name="hibernate.connection.url2" value="jdbc:mysql://localhost:3306/patitas_image" />
-            <property name="hibernate.connection.username2" value="admin" />
-            <property name="hibernate.connection.password2" value="admin" />
-
+            <property name="hibernate.connection.url" value="mysql://bfe9607cb8ef11:cf3fe6b9@us-cdbr-east-04.cleardb.com/heroku_7390268ca136682?reconnect=true" />
+            <property name="hibernate.connection.username" value="cf3fe6b9" />
+            <property name="hibernate.connection.password" value="b20bcb4862339d0373d8882d80d34b1cdc93116c18a7eb6594bc14a01c4d9966" />
 
             <property name="hibernate.show_sql" value="true" />
             <!-- Enable the logging of all the generated SQL statements to the console -->
